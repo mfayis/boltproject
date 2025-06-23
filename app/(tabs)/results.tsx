@@ -79,17 +79,22 @@ const mockResults = [
   },
 ];
 
-const filterOptions = ['All', 'This Week', 'This Month', 'This Year'];
+const filterOptions = [
+  { id: 'all', label: 'ALL' },
+  { id: 'week', label: 'THIS WEEK' },
+  { id: 'month', label: 'THIS MONTH' },
+  { id: 'year', label: 'THIS YEAR' },
+];
 
 export default function ResultsPage() {
-  const [activeFilter, setActiveFilter] = useState('All');
+  const [activeFilter, setActiveFilter] = useState('all');
 
   return (
     <View style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.header}>
           <View>
-            <Text style={styles.title}>LEADERBOARDS</Text>
+            <Text style={styles.title}>Results 🏆</Text>
             <Text style={styles.subtitle}>Hall of champions</Text>
           </View>
           <TouchableOpacity style={styles.calendarButton}>
@@ -98,25 +103,31 @@ export default function ResultsPage() {
         </View>
 
         <View style={styles.filterContainer}>
-          {filterOptions.map((filter) => (
-            <TouchableOpacity
-              key={filter}
-              style={[
-                styles.filterTab,
-                activeFilter === filter && styles.activeFilterTab,
-              ]}
-              onPress={() => setActiveFilter(filter)}
-            >
-              <Text
+          <ScrollView 
+            horizontal 
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.filterScrollContent}
+          >
+            {filterOptions.map((filter) => (
+              <TouchableOpacity
+                key={filter.id}
                 style={[
-                  styles.filterText,
-                  activeFilter === filter && styles.activeFilterText,
+                  styles.filterTab,
+                  activeFilter === filter.id && styles.activeFilterTab,
                 ]}
+                onPress={() => setActiveFilter(filter.id)}
               >
-                {filter}
-              </Text>
-            </TouchableOpacity>
-          ))}
+                <Text
+                  style={[
+                    styles.filterText,
+                    activeFilter === filter.id && styles.activeFilterText,
+                  ]}
+                >
+                  {filter.label}
+                </Text>
+              </TouchableOpacity>
+            ))}
+          </ScrollView>
         </View>
 
         <View style={styles.statsSection}>
@@ -164,46 +175,47 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 28,
-    fontWeight: '900',
+    fontWeight: '800',
     color: '#FFFFFF',
-    letterSpacing: 1,
+    marginBottom: 4,
   },
   subtitle: {
     fontSize: 16,
-    fontWeight: '600',
-    color: '#6B7280',
-    marginTop: 4,
+    fontWeight: '500',
+    color: '#9CA3AF',
   },
   calendarButton: {
     padding: 12,
     backgroundColor: '#1A1A1A',
-    borderRadius: 12,
-    borderWidth: 1,
+    borderRadius: 16,
+    borderWidth: 2,
     borderColor: '#2A2A2A',
   },
   filterContainer: {
-    flexDirection: 'row',
-    paddingHorizontal: 20,
     paddingBottom: 16,
+  },
+  filterScrollContent: {
+    paddingHorizontal: 20,
+    gap: 8,
   },
   filterTab: {
     paddingHorizontal: 20,
-    paddingVertical: 10,
-    marginRight: 12,
+    paddingVertical: 12,
     borderRadius: 25,
     backgroundColor: '#1A1A1A',
-    borderWidth: 1,
+    borderWidth: 2,
     borderColor: '#2A2A2A',
+    minWidth: 80,
+    alignItems: 'center',
   },
   activeFilterTab: {
     backgroundColor: '#00D4AA',
     borderColor: '#00D4AA',
   },
   filterText: {
-    fontSize: 14,
-    fontWeight: '700',
-    color: '#6B7280',
-    textTransform: 'uppercase',
+    fontSize: 12,
+    fontWeight: '800',
+    color: '#9CA3AF',
     letterSpacing: 0.5,
   },
   activeFilterText: {
@@ -221,19 +233,19 @@ const styles = StyleSheet.create({
     padding: 20,
     borderRadius: 16,
     alignItems: 'center',
-    borderWidth: 1,
+    borderWidth: 2,
     borderColor: '#2A2A2A',
   },
   statNumber: {
     fontSize: 24,
-    fontWeight: '900',
+    fontWeight: '800',
     color: '#FFFFFF',
     marginTop: 8,
     letterSpacing: 0.5,
   },
   statLabel: {
     fontSize: 12,
-    color: '#6B7280',
+    color: '#9CA3AF',
     marginTop: 4,
     fontWeight: '700',
     letterSpacing: 0.5,
