@@ -104,7 +104,6 @@ const filterOptions = ['This Week', 'This Month', 'All Time'];
 
 export default function ResultsPage() {
   const [activeFilter, setActiveFilter] = useState('This Week');
-  const [activeTab, setActiveTab] = useState('leaderboard');
 
   const mockResults = [
   {
@@ -210,26 +209,6 @@ export default function ResultsPage() {
           </TouchableOpacity>
         </View>
 
-        {/* Tab Selector */}
-        <View style={styles.tabContainer}>
-          <TouchableOpacity
-            style={[styles.tab, activeTab === 'leaderboard' && styles.activeTab]}
-            onPress={() => setActiveTab('leaderboard')}
-          >
-            <Text style={[styles.tabText, activeTab === 'leaderboard' && styles.activeTabText]}>
-              Leaderboard
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={[styles.tab, activeTab === 'results' && styles.activeTab]}
-            onPress={() => setActiveTab('results')}
-          >
-            <Text style={[styles.tabText, activeTab === 'results' && styles.activeTabText]}>
-              My Results
-            </Text>
-          </TouchableOpacity>
-        </View>
-
         {/* Filter Options */}
         <View style={styles.filterContainer}>
           {filterOptions.map((filter) => (
@@ -254,77 +233,30 @@ export default function ResultsPage() {
         </View>
 
         <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
-          {activeTab === 'leaderboard' ? (
-            <>
-              {/* Stats Cards */}
-              <View style={styles.statsSection}>
-          <View style={styles.statCard}>
-            <Trophy size={28} color="#FFD700" />
-            <Text style={styles.statNumber}>12</Text>
-            <Text style={styles.statLabel}>VICTORIES</Text>
-          </View>
-          <View style={styles.statCard}>
-            <Award size={28} color="#00D4AA" />
-            <Text style={styles.statNumber}>8</Text>
-            <Text style={styles.statLabel}>PODIUM</Text>
-          </View>
-          <View style={styles.statCard}>
-            <Zap size={28} color="#FF4757" />
-            <Text style={styles.statNumber}>2.4K</Text>
-            <Text style={styles.statLabel}>TOTAL XP</Text>
-          </View>
-        </View>
-
-               <ScrollView style={styles.resultsList} showsVerticalScrollIndicator={false}>
-          {mockResults.map((result) => (
-            <ResultCard key={result.id} result={result} />
-          ))}
-        </ScrollView>
-              
-            </>
-          ) : (
-            /* My Results Tab */
-            <View style={styles.resultsSection}>
-              <Text style={styles.sectionTitle}>Recent Quest Results</Text>
-              {mockRecentResults.map((result) => (
-                <View key={result.id} style={styles.resultCard}>
-                  <Image source={{ uri: result.image }} style={styles.resultImage} />
-                  <View style={styles.resultContent}>
-                    <Text style={styles.resultTitle}>{result.questName}</Text>
-                    <Text style={styles.resultDate}>Completed {result.completedDate}</Text>
-                    
-                    <View style={styles.resultStats}>
-                      <View style={styles.resultStat}>
-                        <Text style={styles.resultStatLabel}>My Rank</Text>
-                        <View style={[styles.rankBadge, { backgroundColor: getRankColor(result.myRank) }]}>
-                          <Text style={styles.rankBadgeText}>#{result.myRank}</Text>
-                        </View>
-                      </View>
-                      <View style={styles.resultStat}>
-                        <Text style={styles.resultStatLabel}>XP Earned</Text>
-                        <View style={styles.xpBadge}>
-                          <Zap size={12} color="#00D4AA" fill="#00D4AA" />
-                          <Text style={styles.xpText}>+{result.xpEarned}</Text>
-                        </View>
-                      </View>
-                    </View>
-
-                    <View style={styles.winnersSection}>
-                      <Text style={styles.winnersTitle}>Top 3</Text>
-                      <View style={styles.winners}>
-                        {result.topWinners.map((winner, index) => (
-                          <View key={index} style={styles.winner}>
-                            <Image source={{ uri: winner.avatar }} style={styles.winnerAvatar} />
-                            <Text style={styles.winnerName}>{winner.name}</Text>
-                          </View>
-                        ))}
-                      </View>
-                    </View>
-                  </View>
-                </View>
-              ))}
+          {/* Stats Cards */}
+          <View style={styles.statsSection}>
+            <View style={styles.statCard}>
+              <Trophy size={28} color="#FFD700" />
+              <Text style={styles.statNumber}>12</Text>
+              <Text style={styles.statLabel}>VICTORIES</Text>
             </View>
-          )}
+            <View style={styles.statCard}>
+              <Award size={28} color="#00D4AA" />
+              <Text style={styles.statNumber}>8</Text>
+              <Text style={styles.statLabel}>PODIUM</Text>
+            </View>
+            <View style={styles.statCard}>
+              <Zap size={28} color="#FF4757" />
+              <Text style={styles.statNumber}>2.4K</Text>
+              <Text style={styles.statLabel}>TOTAL XP</Text>
+            </View>
+          </View>
+
+          <ScrollView style={styles.resultsList} showsVerticalScrollIndicator={false}>
+            {mockResults.map((result) => (
+              <ResultCard key={result.id} result={result} />
+            ))}
+          </ScrollView>
         </ScrollView>
       </SafeAreaView>
     </View>
@@ -363,34 +295,6 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     borderWidth: 2,
     borderColor: '#2A2A2A',
-  },
-  tabContainer: {
-    flexDirection: 'row',
-    paddingHorizontal: 20,
-    marginBottom: 16,
-    gap: 12,
-  },
-  tab: {
-    flex: 1,
-    paddingVertical: 12,
-    paddingHorizontal: 20,
-    borderRadius: 16,
-    backgroundColor: '#1A1A1A',
-    borderWidth: 2,
-    borderColor: '#2A2A2A',
-    alignItems: 'center',
-  },
-  activeTab: {
-    backgroundColor: '#00D4AA',
-    borderColor: '#00D4AA',
-  },
-  tabText: {
-    fontSize: 14,
-    fontWeight: '700',
-    color: '#9CA3AF',
-  },
-  activeTabText: {
-    color: '#0A0A0A',
   },
   filterContainer: {
     flexDirection: 'row',
