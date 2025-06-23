@@ -17,8 +17,16 @@ import {
   Camera,
   Calendar,
   Star,
-  Zap
+  Zap,
+  Crown
 } from 'lucide-react-native';
+
+const mockUserData = {
+  name: 'Alex Champion',
+  avatar: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=200',
+  level: 42,
+  rank: 127,
+};
 
 const mockAchievements = [
   { icon: Trophy, label: 'First Victory', color: '#FFD700' },
@@ -52,22 +60,23 @@ export default function ProfilePage() {
 
         <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
           <View style={styles.profileCard}>
-    <View style={styles.profileHeader}>
-      <View style={styles.avatarContainer}>
-        <Image source={{ uri: mockUserData.avatar }} style={styles.avatar} />
-        <View style={styles.levelBadge}>
-          <Text style={styles.levelText}>{mockUserData.level}</Text>
-        </View>
-      </View>
+            <View style={styles.profileHeader}>
+              <View style={styles.avatarContainer}>
+                <Image source={{ uri: mockUserData.avatar }} style={styles.avatar} />
+                <View style={styles.levelBadge}>
+                  <Text style={styles.levelText}>{mockUserData.level}</Text>
+                </View>
+              </View>
 
-      <View style={styles.profileInfo}>
-        <Text style={styles.name}>{mockUserData.name}</Text>
-        <View style={styles.rankContainer}>
-          <Crown size={16} color="#FFD700" fill="#FFD700" />
-          <Text style={styles.rank}>Rank #{mockUserData.rank}</Text>
-        </View>
-      </View>
-
+              <View style={styles.profileInfo}>
+                <Text style={styles.name}>{mockUserData.name}</Text>
+                <View style={styles.rankContainer}>
+                  <Crown size={16} color="#FFD700" fill="#FFD700" />
+                  <Text style={styles.rank}>Rank #{mockUserData.rank}</Text>
+                </View>
+              </View>
+            </View>
+          </View>
 
           <View style={styles.statsSection}>
             <View style={styles.statCard}>
@@ -188,6 +197,33 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
+  },
+  profileCard: {
+    backgroundColor: '#1A1A1A',
+    marginHorizontal: 20,
+    marginBottom: 20,
+    borderRadius: 20,
+    borderWidth: 1,
+    borderColor: '#2A2A2A',
+    padding: 24,
+  },
+  profileHeader: {
+    alignItems: 'center',
+  },
+  profileInfo: {
+    alignItems: 'center',
+    marginTop: 16,
+  },
+  rankContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 8,
+  },
+  rank: {
+    fontSize: 16,
+    fontWeight: '700',
+    color: '#FFD700',
+    marginLeft: 6,
   },
   profileSection: {
     backgroundColor: '#1A1A1A',
