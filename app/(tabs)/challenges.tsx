@@ -7,98 +7,114 @@ import {
   TouchableOpacity,
   TextInput,
   SafeAreaView,
+  Image,
 } from 'react-native';
-import { Search, Plus, Filter, Zap } from 'lucide-react-native';
-import ChallengeCard from '@/components/ChallengeCard';
+import { Search, Filter, Zap, Users, Clock, Star } from 'lucide-react-native';
 
-const categories = ['All', 'Adventure', 'Fitness', 'Skills', 'Social'];
+const categories = [
+  { id: 'all', name: 'All', icon: '🌟', color: '#00D4AA' },
+  { id: 'health', name: 'Health', icon: '💪', color: '#FF6B6B' },
+  { id: 'learning', name: 'Learning', icon: '📚', color: '#4ECDC4' },
+  { id: 'creativity', name: 'Creative', icon: '🎨', color: '#FFE66D' },
+  { id: 'social', name: 'Social', icon: '👥', color: '#A8E6CF' },
+];
 
 const mockChallenges = [
   {
     id: '1',
-    title: 'Epic Mountain Photography',
-    category: 'Adventure',
-    difficulty: 'Hard',
-    participants: 234,
-    timeRemaining: '5 days',
-    image: 'https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&cs=tinysrgb&w=400',
-    description: 'Capture stunning mountain landscapes and share your adventure photos.',
-    xpReward: 500,
+    title: 'Morning Meditation',
+    description: 'Start your day with 10 minutes of mindfulness',
+    category: 'health',
+    difficulty: 'Easy',
+    participants: 1247,
+    timeRemaining: '2 days',
+    xpReward: 100,
+    image: 'https://images.pexels.com/photos/3822622/pexels-photo-3822622.jpeg?auto=compress&cs=tinysrgb&w=400',
+    completed: false,
   },
   {
     id: '2',
-    title: '30-Day Fitness Transform',
-    category: 'Fitness',
+    title: 'Learn 10 New Words',
+    description: 'Expand your vocabulary in any language',
+    category: 'learning',
     difficulty: 'Medium',
-    participants: 1247,
-    timeRemaining: '12 days',
-    image: 'https://images.pexels.com/photos/416809/pexels-photo-416809.jpeg?auto=compress&cs=tinysrgb&w=400',
-    description: 'Transform your fitness with daily workouts and healthy habits.',
-    xpReward: 750,
+    participants: 892,
+    timeRemaining: '5 days',
+    xpReward: 150,
+    image: 'https://images.pexels.com/photos/256417/pexels-photo-256417.jpeg?auto=compress&cs=tinysrgb&w=400',
+    completed: false,
   },
   {
     id: '3',
-    title: 'Master a New Language',
-    category: 'Skills',
-    difficulty: 'Medium',
+    title: 'Daily Sketch',
+    description: 'Draw something new every day for a week',
+    category: 'creativity',
+    difficulty: 'Easy',
     participants: 567,
-    timeRemaining: '23 days',
-    image: 'https://images.pexels.com/photos/256417/pexels-photo-256417.jpeg?auto=compress&cs=tinysrgb&w=400',
-    description: 'Learn 50 new words in a foreign language of your choice.',
-    xpReward: 400,
+    timeRemaining: '3 days',
+    xpReward: 120,
+    image: 'https://images.pexels.com/photos/1053687/pexels-photo-1053687.jpeg?auto=compress&cs=tinysrgb&w=400',
+    completed: true,
   },
   {
     id: '4',
     title: 'Random Acts of Kindness',
-    category: 'Social',
+    description: 'Spread positivity with daily kind gestures',
+    category: 'social',
     difficulty: 'Easy',
-    participants: 892,
-    timeRemaining: '8 days',
+    participants: 2134,
+    timeRemaining: '1 week',
+    xpReward: 200,
     image: 'https://images.pexels.com/photos/339620/pexels-photo-339620.jpeg?auto=compress&cs=tinysrgb&w=400',
-    description: 'Spread positivity by performing random acts of kindness daily.',
-    xpReward: 300,
+    completed: false,
   },
   {
     id: '5',
-    title: 'Urban Street Art Hunt',
-    category: 'Adventure',
-    difficulty: 'Easy',
-    participants: 156,
-    timeRemaining: '15 days',
-    image: 'https://images.pexels.com/photos/1194420/pexels-photo-1194420.jpeg?auto=compress&cs=tinysrgb&w=400',
-    description: 'Discover and photograph street art in your city.',
-    xpReward: 250,
-  },
-  {
-    id: '6',
-    title: 'Cook Around the World',
-    category: 'Skills',
-    difficulty: 'Medium',
-    participants: 445,
-    timeRemaining: '18 days',
-    image: 'https://images.pexels.com/photos/1640772/pexels-photo-1640772.jpeg?auto=compress&cs=tinysrgb&w=400',
-    description: 'Learn to cook traditional dishes from 5 different countries.',
-    xpReward: 450,
+    title: '30-Day Fitness Challenge',
+    description: 'Build healthy habits with daily exercise',
+    category: 'health',
+    difficulty: 'Hard',
+    participants: 3456,
+    timeRemaining: '2 weeks',
+    xpReward: 500,
+    image: 'https://images.pexels.com/photos/416809/pexels-photo-416809.jpeg?auto=compress&cs=tinysrgb&w=400',
+    completed: false,
   },
 ];
 
 export default function ChallengesPage() {
-  const [activeCategory, setActiveCategory] = useState('All');
+  const [activeCategory, setActiveCategory] = useState('all');
   const [searchText, setSearchText] = useState('');
 
   const filteredChallenges = mockChallenges.filter(challenge => {
-    const matchesCategory = activeCategory === 'All' || challenge.category === activeCategory;
+    const matchesCategory = activeCategory === 'all' || challenge.category === activeCategory;
     const matchesSearch = challenge.title.toLowerCase().includes(searchText.toLowerCase());
     return matchesCategory && matchesSearch;
   });
+
+  const getDifficultyColor = (difficulty: string) => {
+    switch (difficulty) {
+      case 'Easy': return '#00D4AA';
+      case 'Medium': return '#FFD700';
+      case 'Hard': return '#FF6B6B';
+      default: return '#6B7280';
+    }
+  };
+
+  const formatParticipants = (count: number) => {
+    if (count >= 1000) {
+      return `${(count / 1000).toFixed(1)}k`;
+    }
+    return count.toString();
+  };
 
   return (
     <View style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.header}>
           <View>
-            <Text style={styles.title}>ACTIVE QUESTS</Text>
-            <Text style={styles.subtitle}>Choose your adventure</Text>
+            <Text style={styles.title}>Quest Board 🎯</Text>
+            <Text style={styles.subtitle}>Choose your next adventure</Text>
           </View>
           <TouchableOpacity style={styles.filterButton}>
             <Filter size={24} color="#00D4AA" />
@@ -122,20 +138,21 @@ export default function ChallengesPage() {
           <View style={styles.categoryContainer}>
             {categories.map((category) => (
               <TouchableOpacity
-                key={category}
+                key={category.id}
                 style={[
                   styles.categoryTab,
-                  activeCategory === category && styles.activeCategoryTab,
+                  activeCategory === category.id && [styles.activeCategoryTab, { borderColor: category.color }],
                 ]}
-                onPress={() => setActiveCategory(category)}
+                onPress={() => setActiveCategory(category.id)}
               >
+                <Text style={styles.categoryIcon}>{category.icon}</Text>
                 <Text
                   style={[
                     styles.categoryText,
-                    activeCategory === category && styles.activeCategoryText,
+                    activeCategory === category.id && [styles.activeCategoryText, { color: category.color }],
                   ]}
                 >
-                  {category}
+                  {category.name}
                 </Text>
               </TouchableOpacity>
             ))}
@@ -143,16 +160,68 @@ export default function ChallengesPage() {
         </ScrollView>
 
         <ScrollView style={styles.challengesList} showsVerticalScrollIndicator={false}>
-          <View style={styles.challengesGrid}>
+          <View style={styles.challengesContainer}>
             {filteredChallenges.map((challenge) => (
-              <ChallengeCard key={challenge.id} challenge={challenge} />
+              <TouchableOpacity key={challenge.id} style={styles.challengeCard}>
+                <View style={styles.challengeImageContainer}>
+                  <Image source={{ uri: challenge.image }} style={styles.challengeImage} />
+                  {challenge.completed && (
+                    <View style={styles.completedBadge}>
+                      <Text style={styles.completedText}>✓ Completed</Text>
+                    </View>
+                  )}
+                  <View style={styles.difficultyBadge}>
+                    <Star
+                      size={12}
+                      color="#0A0A0A"
+                      fill={getDifficultyColor(challenge.difficulty)}
+                    />
+                    <Text style={[styles.difficultyText, { color: '#0A0A0A' }]}>
+                      {challenge.difficulty}
+                    </Text>
+                  </View>
+                </View>
+                
+                <View style={styles.challengeContent}>
+                  <Text style={styles.challengeTitle}>{challenge.title}</Text>
+                  <Text style={styles.challengeDescription} numberOfLines={2}>
+                    {challenge.description}
+                  </Text>
+                  
+                  <View style={styles.challengeStats}>
+                    <View style={styles.stat}>
+                      <Users size={14} color="#6B7280" />
+                      <Text style={styles.statText}>{formatParticipants(challenge.participants)}</Text>
+                    </View>
+                    <View style={styles.stat}>
+                      <Clock size={14} color="#6B7280" />
+                      <Text style={styles.statText}>{challenge.timeRemaining}</Text>
+                    </View>
+                    <View style={styles.xpBadge}>
+                      <Zap size={12} color="#00D4AA" fill="#00D4AA" />
+                      <Text style={styles.xpText}>{challenge.xpReward} XP</Text>
+                    </View>
+                  </View>
+
+                  <TouchableOpacity 
+                    style={[
+                      styles.joinButton,
+                      challenge.completed && styles.completedButton
+                    ]}
+                    disabled={challenge.completed}
+                  >
+                    <Text style={[
+                      styles.joinButtonText,
+                      challenge.completed && styles.completedButtonText
+                    ]}>
+                      {challenge.completed ? 'Completed! 🎉' : 'Start Quest'}
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+              </TouchableOpacity>
             ))}
           </View>
         </ScrollView>
-
-        <TouchableOpacity style={styles.createButton}>
-          <Plus size={24} color="#0A0A0A" />
-        </TouchableOpacity>
       </SafeAreaView>
     </View>
   );
@@ -175,21 +244,20 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 28,
-    fontWeight: '900',
+    fontWeight: '800',
     color: '#FFFFFF',
-    letterSpacing: 1,
+    marginBottom: 4,
   },
   subtitle: {
     fontSize: 16,
-    fontWeight: '600',
-    color: '#6B7280',
-    marginTop: 4,
+    fontWeight: '500',
+    color: '#9CA3AF',
   },
   filterButton: {
     padding: 12,
     backgroundColor: '#1A1A1A',
-    borderRadius: 12,
-    borderWidth: 1,
+    borderRadius: 16,
+    borderWidth: 2,
     borderColor: '#2A2A2A',
   },
   searchContainer: {
@@ -203,7 +271,7 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     paddingHorizontal: 16,
     paddingVertical: 12,
-    borderWidth: 1,
+    borderWidth: 2,
     borderColor: '#2A2A2A',
   },
   searchInput: {
@@ -211,7 +279,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#FFFFFF',
     marginLeft: 12,
-    fontWeight: '600',
+    fontWeight: '500',
   },
   categoryScroll: {
     paddingBottom: 16,
@@ -219,50 +287,151 @@ const styles = StyleSheet.create({
   categoryContainer: {
     flexDirection: 'row',
     paddingHorizontal: 20,
+    gap: 12,
   },
   categoryTab: {
-    paddingHorizontal: 20,
-    paddingVertical: 10,
-    marginRight: 12,
-    borderRadius: 25,
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    borderRadius: 20,
     backgroundColor: '#1A1A1A',
-    borderWidth: 1,
+    borderWidth: 2,
     borderColor: '#2A2A2A',
   },
   activeCategoryTab: {
-    backgroundColor: '#00D4AA',
-    borderColor: '#00D4AA',
+    backgroundColor: '#2A2A2A',
+    borderWidth: 2,
+  },
+  categoryIcon: {
+    fontSize: 16,
+    marginRight: 8,
   },
   categoryText: {
     fontSize: 14,
     fontWeight: '700',
-    color: '#6B7280',
-    textTransform: 'uppercase',
-    letterSpacing: 0.5,
+    color: '#9CA3AF',
   },
   activeCategoryText: {
-    color: '#0A0A0A',
+    fontWeight: '800',
   },
   challengesList: {
     flex: 1,
   },
-  challengesGrid: {
+  challengesContainer: {
     padding: 20,
   },
-  createButton: {
+  challengeCard: {
+    backgroundColor: '#1A1A1A',
+    borderRadius: 20,
+    marginBottom: 20,
+    borderWidth: 2,
+    borderColor: '#2A2A2A',
+    overflow: 'hidden',
+  },
+  challengeImageContainer: {
+    position: 'relative',
+  },
+  challengeImage: {
+    width: '100%',
+    height: 180,
+    backgroundColor: '#2A2A2A',
+  },
+  completedBadge: {
     position: 'absolute',
-    bottom: 24,
-    right: 24,
+    top: 12,
+    left: 12,
     backgroundColor: '#00D4AA',
-    width: 56,
-    height: 56,
-    borderRadius: 28,
-    justifyContent: 'center',
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 16,
+  },
+  completedText: {
+    color: '#0A0A0A',
+    fontSize: 12,
+    fontWeight: '800',
+  },
+  difficultyBadge: {
+    position: 'absolute',
+    top: 12,
+    right: 12,
+    flexDirection: 'row',
     alignItems: 'center',
-    shadowColor: '#00D4AA',
-    shadowOffset: { width: 0, height: 8 },
-    shadowOpacity: 0.4,
-    shadowRadius: 16,
-    elevation: 8,
+    backgroundColor: '#FFD700',
+    paddingHorizontal: 10,
+    paddingVertical: 6,
+    borderRadius: 16,
+    borderWidth: 2,
+    borderColor: '#2A2A2A',
+  },
+  difficultyText: {
+    fontSize: 12,
+    fontWeight: '800',
+    marginLeft: 4,
+  },
+  challengeContent: {
+    padding: 20,
+  },
+  challengeTitle: {
+    fontSize: 20,
+    fontWeight: '800',
+    color: '#FFFFFF',
+    marginBottom: 8,
+  },
+  challengeDescription: {
+    fontSize: 14,
+    color: '#9CA3AF',
+    lineHeight: 20,
+    marginBottom: 16,
+  },
+  challengeStats: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 16,
+    gap: 16,
+  },
+  stat: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  statText: {
+    fontSize: 12,
+    color: '#9CA3AF',
+    fontWeight: '600',
+    marginLeft: 6,
+  },
+  xpBadge: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#2A2A2A',
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 12,
+    marginLeft: 'auto',
+  },
+  xpText: {
+    fontSize: 12,
+    fontWeight: '800',
+    color: '#00D4AA',
+    marginLeft: 4,
+  },
+  joinButton: {
+    backgroundColor: '#00D4AA',
+    paddingVertical: 16,
+    borderRadius: 16,
+    alignItems: 'center',
+  },
+  joinButtonText: {
+    color: '#0A0A0A',
+    fontSize: 16,
+    fontWeight: '800',
+  },
+  completedButton: {
+    backgroundColor: '#2A2A2A',
+    borderWidth: 2,
+    borderColor: '#2A2A2A',
+  },
+  completedButtonText: {
+    color: '#9CA3AF',
   },
 });
