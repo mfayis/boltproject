@@ -6,11 +6,107 @@ import {
   ScrollView,
   TouchableOpacity,
   SafeAreaView,
+  Image,
 } from 'react-native';
-import { Calendar, Trophy, Award, Zap } from 'lucide-react-native';
-import ResultCard from '@/components/ResultCard';
+import { Trophy, Medal, Award, Calendar, Zap, Crown, Star, Target } from 'lucide-react-native';
+import ResultCard from '../components/ResultCard';
 
-const mockResults = [
+const mockLeaderboard = [
+  {
+    id: '1',
+    rank: 1,
+    name: 'Sarah Chen',
+    avatar: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=100',
+    xp: 2847,
+    level: 28,
+    streak: 45,
+    completedQuests: 89,
+    badges: ['🏆', '🔥', '⭐'],
+  },
+  {
+    id: '2',
+    rank: 2,
+    name: 'Mike Rodriguez',
+    avatar: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=100',
+    xp: 2634,
+    level: 26,
+    streak: 32,
+    completedQuests: 76,
+    badges: ['🥈', '💪', '📚'],
+  },
+  {
+    id: '3',
+    rank: 3,
+    name: 'Emma Wilson',
+    avatar: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=100',
+    xp: 2456,
+    level: 24,
+    streak: 28,
+    completedQuests: 71,
+    badges: ['🥉', '🎨', '🌟'],
+  },
+  {
+    id: '4',
+    rank: 4,
+    name: 'Alex Johnson',
+    avatar: 'https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=100',
+    xp: 2234,
+    level: 22,
+    streak: 19,
+    completedQuests: 65,
+    badges: ['🎯', '🧘', '💡'],
+  },
+  {
+    id: '5',
+    rank: 5,
+    name: 'Lisa Park',
+    avatar: 'https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=100',
+    xp: 2156,
+    level: 21,
+    streak: 15,
+    completedQuests: 58,
+    badges: ['🌱', '📖', '🎵'],
+  },
+];
+
+const mockRecentResults = [
+  {
+    id: '1',
+    questName: 'Morning Meditation Challenge',
+    completedDate: '2024-01-15',
+    participants: 234,
+    myRank: 3,
+    xpEarned: 150,
+    image: 'https://images.pexels.com/photos/3822622/pexels-photo-3822622.jpeg?auto=compress&cs=tinysrgb&w=200',
+    topWinners: [
+      { name: 'Sarah', avatar: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=50' },
+      { name: 'Mike', avatar: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=50' },
+      { name: 'You', avatar: 'https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=50' },
+    ],
+  },
+  {
+    id: '2',
+    questName: 'Daily Reading Quest',
+    completedDate: '2024-01-12',
+    participants: 156,
+    myRank: 1,
+    xpEarned: 200,
+    image: 'https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=200',
+    topWinners: [
+      { name: 'You', avatar: 'https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=50' },
+      { name: 'Emma', avatar: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=50' },
+      { name: 'Alex', avatar: 'https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=50' },
+    ],
+  },
+];
+
+const filterOptions = ['This Week', 'This Month', 'All Time'];
+
+export default function ResultsPage() {
+  const [activeFilter, setActiveFilter] = useState('This Week');
+  const [activeTab, setActiveTab] = useState('leaderboard');
+
+  const mockResults = [
   {
     id: '1',
     challengeName: 'Mountain Photography Quest',
@@ -79,30 +175,42 @@ const mockResults = [
   },
 ];
 
-const filterOptions = [
-  { id: 'all', label: 'ALL' },
-  { id: 'week', label: 'THIS WEEK' },
-  { id: 'month', label: 'THIS MONTH' },
-  { id: 'year', label: 'THIS YEAR' },
-];
+  const getRankIcon = (rank: number) => {
+    switch (rank) {
+      case 1:
+        return <Crown size={20} color="#FFD700" fill="#FFD700" />;
+      case 2:
+        return <Medal size={20} color="#C0C0C0" fill="#C0C0C0" />;
+      case 3:
+        return <Award size={20} color="#CD7F32" fill="#CD7F32" />;
+      default:
+        return <Text style={styles.rankNumber}>#{rank}</Text>;
+    }
+  };
 
-export default function ResultsPage() {
-  const [activeFilter, setActiveFilter] = useState('all');
-  const [activeTab, setActiveTab] = useState('results');
+  const getRankColor = (rank: number) => {
+    switch (rank) {
+      case 1: return '#FFD700';
+      case 2: return '#C0C0C0';
+      case 3: return '#CD7F32';
+      default: return '#00D4AA';
+    }
+  };
 
   return (
     <View style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.header}>
           <View>
-            <Text style={styles.title}>Results 🏆</Text>
-            <Text style={styles.subtitle}>Hall of champions</Text>
+            <Text style={styles.title}>Leaderboard 🏆</Text>
+            <Text style={styles.subtitle}>See how you stack up!</Text>
           </View>
           <TouchableOpacity style={styles.calendarButton}>
             <Calendar size={24} color="#00D4AA" />
           </TouchableOpacity>
         </View>
 
+        {/* Tab Selector */}
         <View style={styles.tabContainer}>
           <TouchableOpacity
             style={[styles.tab, activeTab === 'leaderboard' && styles.activeTab]}
@@ -121,36 +229,35 @@ export default function ResultsPage() {
             </Text>
           </TouchableOpacity>
         </View>
-        
+
+        {/* Filter Options */}
         <View style={styles.filterContainer}>
-          <ScrollView 
-            horizontal 
-            showsHorizontalScrollIndicator={false}
-            contentContainerStyle={styles.filterScrollContent}
-          >
-            {filterOptions.map((filter) => (
-              <TouchableOpacity
-                key={filter.id}
+          {filterOptions.map((filter) => (
+            <TouchableOpacity
+              key={filter}
+              style={[
+                styles.filterTab,
+                activeFilter === filter && styles.activeFilterTab,
+              ]}
+              onPress={() => setActiveFilter(filter)}
+            >
+              <Text
                 style={[
-                  styles.filterTab,
-                  activeFilter === filter.id && styles.activeFilterTab,
+                  styles.filterText,
+                  activeFilter === filter && styles.activeFilterText,
                 ]}
-                onPress={() => setActiveFilter(filter.id)}
               >
-                <Text
-                  style={[
-                    styles.filterText,
-                    activeFilter === filter.id && styles.activeFilterText,
-                  ]}
-                >
-                  {filter.label}
-                </Text>
-              </TouchableOpacity>
-            ))}
-          </ScrollView>
+                {filter}
+              </Text>
+            </TouchableOpacity>
+          ))}
         </View>
 
-        <View style={styles.statsSection}>
+        <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
+          {activeTab === 'leaderboard' ? (
+            <>
+              {/* Stats Cards */}
+              <View style={styles.statsSection}>
           <View style={styles.statCard}>
             <Trophy size={28} color="#FFD700" />
             <Text style={styles.statNumber}>12</Text>
@@ -168,10 +275,56 @@ export default function ResultsPage() {
           </View>
         </View>
 
-        <ScrollView style={styles.resultsList} showsVerticalScrollIndicator={false}>
+               <ScrollView style={styles.resultsList} showsVerticalScrollIndicator={false}>
           {mockResults.map((result) => (
             <ResultCard key={result.id} result={result} />
           ))}
+        </ScrollView>
+              
+            </>
+          ) : (
+            /* My Results Tab */
+            <View style={styles.resultsSection}>
+              <Text style={styles.sectionTitle}>Recent Quest Results</Text>
+              {mockRecentResults.map((result) => (
+                <View key={result.id} style={styles.resultCard}>
+                  <Image source={{ uri: result.image }} style={styles.resultImage} />
+                  <View style={styles.resultContent}>
+                    <Text style={styles.resultTitle}>{result.questName}</Text>
+                    <Text style={styles.resultDate}>Completed {result.completedDate}</Text>
+                    
+                    <View style={styles.resultStats}>
+                      <View style={styles.resultStat}>
+                        <Text style={styles.resultStatLabel}>My Rank</Text>
+                        <View style={[styles.rankBadge, { backgroundColor: getRankColor(result.myRank) }]}>
+                          <Text style={styles.rankBadgeText}>#{result.myRank}</Text>
+                        </View>
+                      </View>
+                      <View style={styles.resultStat}>
+                        <Text style={styles.resultStatLabel}>XP Earned</Text>
+                        <View style={styles.xpBadge}>
+                          <Zap size={12} color="#00D4AA" fill="#00D4AA" />
+                          <Text style={styles.xpText}>+{result.xpEarned}</Text>
+                        </View>
+                      </View>
+                    </View>
+
+                    <View style={styles.winnersSection}>
+                      <Text style={styles.winnersTitle}>Top 3</Text>
+                      <View style={styles.winners}>
+                        {result.topWinners.map((winner, index) => (
+                          <View key={index} style={styles.winner}>
+                            <Image source={{ uri: winner.avatar }} style={styles.winnerAvatar} />
+                            <Text style={styles.winnerName}>{winner.name}</Text>
+                          </View>
+                        ))}
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              ))}
+            </View>
+          )}
         </ScrollView>
       </SafeAreaView>
     </View>
@@ -214,14 +367,14 @@ const styles = StyleSheet.create({
   tabContainer: {
     flexDirection: 'row',
     paddingHorizontal: 20,
-    paddingBottom: 16,
-    gap: 8,
+    marginBottom: 16,
+    gap: 12,
   },
   tab: {
     flex: 1,
     paddingVertical: 12,
-    paddingHorizontal: 16,
-    borderRadius: 25,
+    paddingHorizontal: 20,
+    borderRadius: 16,
     backgroundColor: '#1A1A1A',
     borderWidth: 2,
     borderColor: '#2A2A2A',
@@ -240,34 +393,39 @@ const styles = StyleSheet.create({
     color: '#0A0A0A',
   },
   filterContainer: {
-    paddingBottom: 16,
-  },
-  filterScrollContent: {
+    flexDirection: 'row',
     paddingHorizontal: 20,
-    gap: 8,
+    paddingBottom: 16,
+    gap: 12,
   },
   filterTab: {
-    paddingHorizontal: 20,
-    paddingVertical: 12,
-    borderRadius: 25,
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    borderRadius: 20,
     backgroundColor: '#1A1A1A',
     borderWidth: 2,
     borderColor: '#2A2A2A',
-    minWidth: 80,
-    alignItems: 'center',
   },
   activeFilterTab: {
-    backgroundColor: '#00D4AA',
+    backgroundColor: '#2A2A2A',
     borderColor: '#00D4AA',
   },
   filterText: {
     fontSize: 12,
-    fontWeight: '800',
+    fontWeight: '700',
     color: '#9CA3AF',
-    letterSpacing: 0.5,
   },
   activeFilterText: {
-    color: '#0A0A0A',
+    color: '#00D4AA',
+  },
+  content: {
+    flex: 1,
+  },
+  statsContainer: {
+    flexDirection: 'row',
+    paddingHorizontal: 20,
+    marginBottom: 20,
+    gap: 12,
   },
   statsSection: {
     flexDirection: 'row',
@@ -284,22 +442,204 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: '#2A2A2A',
   },
+  statIcon: {
+    marginBottom: 8,
+  },
   statNumber: {
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: '800',
     color: '#FFFFFF',
-    marginTop: 8,
-    letterSpacing: 0.5,
+    marginBottom: 4,
   },
   statLabel: {
     fontSize: 12,
     color: '#9CA3AF',
-    marginTop: 4,
+    fontWeight: '600',
+  },
+  leaderboardSection: {
+    paddingHorizontal: 20,
+  },
+  sectionTitle: {
+    fontSize: 20,
+    fontWeight: '800',
+    color: '#FFFFFF',
+    marginBottom: 16,
+  },
+  leaderboardItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#1A1A1A',
+    padding: 16,
+    borderRadius: 16,
+    marginBottom: 12,
+    borderWidth: 1,
+    borderColor: '#2A2A2A',
+  },
+  rankContainer: {
+    width: 40,
+    alignItems: 'center',
+    marginRight: 12,
+  },
+  rankNumber: {
+    fontSize: 16,
+    fontWeight: '800',
+    color: '#9CA3AF',
+  },
+  userAvatar: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    marginRight: 16,
+    borderWidth: 2,
+    borderColor: '#00D4AA',
+  },
+  userInfo: {
+    flex: 1,
+  },
+  userName: {
+    fontSize: 16,
+    fontWeight: '800',
+    color: '#FFFFFF',
+    marginBottom: 4,
+  },
+  userStats: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  userLevel: {
+    fontSize: 12,
+    color: '#9CA3AF',
+    fontWeight: '600',
+  },
+  userBadges: {
+    flexDirection: 'row',
+    gap: 4,
+  },
+  badge: {
+    fontSize: 14,
+  },
+  userScore: {
+    alignItems: 'flex-end',
+  },
+  userXp: {
+    fontSize: 16,
+    fontWeight: '800',
+    color: '#FFFFFF',
+    marginBottom: 4,
+  },
+  streakContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  streakEmoji: {
+    fontSize: 12,
+    marginRight: 4,
+  },
+  streakText: {
+    fontSize: 12,
     fontWeight: '700',
-    letterSpacing: 0.5,
+    color: '#FF9500',
+  },
+  resultsSection: {
+    paddingHorizontal: 20,
+  },
+  resultCard: {
+    backgroundColor: '#1A1A1A',
+    borderRadius: 20,
+    marginBottom: 20,
+    borderWidth: 2,
+    borderColor: '#2A2A2A',
+    overflow: 'hidden',
+  },
+  resultImage: {
+    width: '100%',
+    height: 120,
+  },
+  resultContent: {
+    padding: 20,
+  },
+  resultTitle: {
+    fontSize: 18,
+    fontWeight: '800',
+    color: '#FFFFFF',
+    marginBottom: 4,
+  },
+  resultDate: {
+    fontSize: 14,
+    color: '#9CA3AF',
+    marginBottom: 16,
+  },
+  resultStats: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 16,
+  },
+  resultStat: {
+    alignItems: 'center',
+  },
+  resultStatLabel: {
+    fontSize: 12,
+    color: '#9CA3AF',
+    marginBottom: 8,
+    fontWeight: '600',
+  },
+  rankBadge: {
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 16,
+  },
+  rankBadgeText: {
+    color: '#0A0A0A',
+    fontSize: 14,
+    fontWeight: '800',
+  },
+  xpBadge: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#2A2A2A',
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 16,
+  },
+  xpText: {
+    fontSize: 14,
+    fontWeight: '800',
+    color: '#00D4AA',
+    marginLeft: 4,
+  },
+  winnersSection: {
+    borderTopWidth: 1,
+    borderTopColor: '#2A2A2A',
+    paddingTop: 16,
+  },
+  winnersTitle: {
+    fontSize: 14,
+    fontWeight: '800',
+    color: '#FFFFFF',
+    marginBottom: 12,
+  },
+  winners: {
+    flexDirection: 'row',
+    gap: 16,
+  },
+  winner: {
+    alignItems: 'center',
+  },
+  winnerAvatar: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    marginBottom: 4,
+    borderWidth: 2,
+    borderColor: '#00D4AA',
+  },
+  winnerName: {
+    fontSize: 12,
+    fontWeight: '700',
+    color: '#FFFFFF',
   },
   resultsList: {
-    flex: 1,
     paddingHorizontal: 20,
   },
 });
