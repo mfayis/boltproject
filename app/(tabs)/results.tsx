@@ -6,161 +6,97 @@ import {
   ScrollView,
   TouchableOpacity,
   SafeAreaView,
-  Image,
 } from 'react-native';
-import { Trophy, Medal, Award, Calendar, Zap, Crown, Star, Target } from 'lucide-react-native';
+import { Calendar, Trophy, Award, Zap } from 'lucide-react-native';
+import ResultCard from '@/components/ResultCard';
 
-const mockLeaderboard = [
+const mockResults = [
   {
     id: '1',
-    rank: 1,
-    name: 'Sarah Chen',
-    avatar: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=100',
-    xp: 2847,
-    level: 28,
-    streak: 45,
-    completedQuests: 89,
-    badges: ['🏆', '🔥', '⭐'],
+    challengeName: 'Mountain Photography Quest',
+    completedDate: '2024-01-15',
+    winners: [
+      {
+        position: 1,
+        name: 'Sarah Chen',
+        avatar: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=150',
+        photo: 'https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg?auto=compress&cs=tinysrgb&w=400',
+        xp: 500,
+      },
+      {
+        position: 2,
+        name: 'Mike Rodriguez',
+        avatar: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=150',
+        photo: 'https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&cs=tinysrgb&w=400',
+        xp: 350,
+      },
+      {
+        position: 3,
+        name: 'Emma Wilson',
+        avatar: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=150',
+        photo: 'https://images.pexels.com/photos/355747/pexels-photo-355747.jpeg?auto=compress&cs=tinysrgb&w=400',
+        xp: 250,
+      },
+    ],
+    participants: 234,
   },
   {
     id: '2',
-    rank: 2,
-    name: 'Mike Rodriguez',
-    avatar: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=100',
-    xp: 2634,
-    level: 26,
-    streak: 32,
-    completedQuests: 76,
-    badges: ['🥈', '💪', '📚'],
+    challengeName: 'Random Acts of Kindness',
+    completedDate: '2024-01-12',
+    winners: [
+      {
+        position: 1,
+        name: 'Alex Johnson',
+        avatar: 'https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=150',
+        photo: 'https://images.pexels.com/photos/339620/pexels-photo-339620.jpeg?auto=compress&cs=tinysrgb&w=400',
+        xp: 300,
+      },
+      {
+        position: 2,
+        name: 'Lisa Park',
+        avatar: 'https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=150',
+        photo: 'https://images.pexels.com/photos/1170979/pexels-photo-1170979.jpeg?auto=compress&cs=tinysrgb&w=400',
+        xp: 200,
+      },
+    ],
+    participants: 892,
   },
   {
     id: '3',
-    rank: 3,
-    name: 'Emma Wilson',
-    avatar: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=100',
-    xp: 2456,
-    level: 24,
-    streak: 28,
-    completedQuests: 71,
-    badges: ['🥉', '🎨', '🌟'],
-  },
-  {
-    id: '4',
-    rank: 4,
-    name: 'Alex Johnson',
-    avatar: 'https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=100',
-    xp: 2234,
-    level: 22,
-    streak: 19,
-    completedQuests: 65,
-    badges: ['🎯', '🧘', '💡'],
-  },
-  {
-    id: '5',
-    rank: 5,
-    name: 'Lisa Park',
-    avatar: 'https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=100',
-    xp: 2156,
-    level: 21,
-    streak: 15,
-    completedQuests: 58,
-    badges: ['🌱', '📖', '🎵'],
-  },
-];
-
-const mockRecentResults = [
-  {
-    id: '1',
-    questName: 'Morning Meditation Challenge',
-    completedDate: '2024-01-15',
-    participants: 234,
-    myRank: 3,
-    xpEarned: 150,
-    image: 'https://images.pexels.com/photos/3822622/pexels-photo-3822622.jpeg?auto=compress&cs=tinysrgb&w=200',
-    topWinners: [
-      { name: 'Sarah', avatar: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=50' },
-      { name: 'Mike', avatar: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=50' },
-      { name: 'You', avatar: 'https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=50' },
+    challengeName: 'Urban Street Art Hunt',
+    completedDate: '2024-01-08',
+    winners: [
+      {
+        position: 1,
+        name: 'David Kim',
+        avatar: 'https://images.pexels.com/photos/428364/pexels-photo-428364.jpeg?auto=compress&cs=tinysrgb&w=150',
+        photo: 'https://images.pexels.com/photos/1194420/pexels-photo-1194420.jpeg?auto=compress&cs=tinysrgb&w=400',
+        xp: 250,
+      },
     ],
-  },
-  {
-    id: '2',
-    questName: 'Daily Reading Quest',
-    completedDate: '2024-01-12',
     participants: 156,
-    myRank: 1,
-    xpEarned: 200,
-    image: 'https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=200',
-    topWinners: [
-      { name: 'You', avatar: 'https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=50' },
-      { name: 'Emma', avatar: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=50' },
-      { name: 'Alex', avatar: 'https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=50' },
-    ],
   },
 ];
 
-const filterOptions = ['This Week', 'This Month', 'All Time'];
+const filterOptions = ['All', 'This Week', 'This Month', 'This Year'];
 
 export default function ResultsPage() {
-  const [activeFilter, setActiveFilter] = useState('This Week');
-  const [activeTab, setActiveTab] = useState('leaderboard');
-
-  const getRankIcon = (rank: number) => {
-    switch (rank) {
-      case 1:
-        return <Crown size={20} color="#FFD700" fill="#FFD700" />;
-      case 2:
-        return <Medal size={20} color="#C0C0C0" fill="#C0C0C0" />;
-      case 3:
-        return <Award size={20} color="#CD7F32" fill="#CD7F32" />;
-      default:
-        return <Text style={styles.rankNumber}>#{rank}</Text>;
-    }
-  };
-
-  const getRankColor = (rank: number) => {
-    switch (rank) {
-      case 1: return '#FFD700';
-      case 2: return '#C0C0C0';
-      case 3: return '#CD7F32';
-      default: return '#00D4AA';
-    }
-  };
+  const [activeFilter, setActiveFilter] = useState('All');
 
   return (
     <View style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.header}>
           <View>
-            <Text style={styles.title}>Leaderboard 🏆</Text>
-            <Text style={styles.subtitle}>See how you stack up!</Text>
+            <Text style={styles.title}>LEADERBOARDS</Text>
+            <Text style={styles.subtitle}>Hall of champions</Text>
           </View>
           <TouchableOpacity style={styles.calendarButton}>
             <Calendar size={24} color="#00D4AA" />
           </TouchableOpacity>
         </View>
 
-        {/* Tab Selector */}
-        <View style={styles.tabContainer}>
-          <TouchableOpacity
-            style={[styles.tab, activeTab === 'leaderboard' && styles.activeTab]}
-            onPress={() => setActiveTab('leaderboard')}
-          >
-            <Text style={[styles.tabText, activeTab === 'leaderboard' && styles.activeTabText]}>
-              Leaderboard
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={[styles.tab, activeTab === 'results' && styles.activeTab]}
-            onPress={() => setActiveTab('results')}
-          >
-            <Text style={[styles.tabText, activeTab === 'results' && styles.activeTabText]}>
-              My Results
-            </Text>
-          </TouchableOpacity>
-        </View>
-
-        {/* Filter Options */}
         <View style={styles.filterContainer}>
           {filterOptions.map((filter) => (
             <TouchableOpacity
@@ -183,152 +119,28 @@ export default function ResultsPage() {
           ))}
         </View>
 
-        <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
-          {activeTab === 'leaderboard' ? (
-            <>
-              {/* Stats Cards */}
-              <View style={styles.statsContainer}>
-                <View style={styles.statCard}>
-                  <View style={styles.statIcon}>
-                    <Trophy size={20} color="#FFD700" fill="#FFD700" />
-                  </View>
-                  <Text style={styles.statNumber}>34</Text>
-                  <Text style={styles.statLabel}>Victories</Text>
-                </View>
-                <View style={styles.statCard}>
-                  <View style={styles.statIcon}>
-                    <Zap size={20} color="#00D4AA" fill="#00D4AA" />
-                  </View>
-                  <Text style={styles.statNumber}>1250</Text>
-                  <Text style={styles.statLabel}>Points</Text>
-                </View>
-                <View style={styles.statCard}>
-                  <View style={styles.statIcon}>
-                    <Target size={20} color="#FF6B6B" />
-                  </View>
-                  <Text style={styles.statNumber}>#156</Text>
-                  <Text style={styles.statLabel}>Rank</Text>
-                </View>
-              </View>
+        <View style={styles.statsSection}>
+          <View style={styles.statCard}>
+            <Trophy size={28} color="#FFD700" />
+            <Text style={styles.statNumber}>12</Text>
+            <Text style={styles.statLabel}>VICTORIES</Text>
+          </View>
+          <View style={styles.statCard}>
+            <Award size={28} color="#00D4AA" />
+            <Text style={styles.statNumber}>8</Text>
+            <Text style={styles.statLabel}>PODIUM</Text>
+          </View>
+          <View style={styles.statCard}>
+            <Zap size={28} color="#FF4757" />
+            <Text style={styles.statNumber}>2.4K</Text>
+            <Text style={styles.statLabel}>TOTAL XP</Text>
+          </View>
+        </View>
 
-              {/* Top 3 Podium */}
-              <View style={styles.podiumSection}>
-                <View style={styles.podium}>
-                  {/* Second Place */}
-                  <View style={styles.podiumPosition}>
-                    <View style={[styles.podiumBar, styles.secondPlace]}>
-                      <Image source={{ uri: mockLeaderboard[1].avatar }} style={styles.podiumAvatar} />
-                      <View style={styles.podiumRank}>
-                        <Medal size={16} color="#C0C0C0" fill="#C0C0C0" />
-                      </View>
-                    </View>
-                    <Text style={styles.podiumName}>{mockLeaderboard[1].name.split(' ')[0]}</Text>
-                    <Text style={styles.podiumXp}>{mockLeaderboard[1].xp} XP</Text>
-                  </View>
-
-                  {/* First Place */}
-                  <View style={styles.podiumPosition}>
-                    <View style={[styles.podiumBar, styles.firstPlace]}>
-                      <Image source={{ uri: mockLeaderboard[0].avatar }} style={styles.podiumAvatar} />
-                      <View style={styles.podiumRank}>
-                        <Crown size={16} color="#FFD700" fill="#FFD700" />
-                      </View>
-                    </View>
-                    <Text style={styles.podiumName}>{mockLeaderboard[0].name.split(' ')[0]}</Text>
-                    <Text style={styles.podiumXp}>{mockLeaderboard[0].xp} XP</Text>
-                  </View>
-
-                  {/* Third Place */}
-                  <View style={styles.podiumPosition}>
-                    <View style={[styles.podiumBar, styles.thirdPlace]}>
-                      <Image source={{ uri: mockLeaderboard[2].avatar }} style={styles.podiumAvatar} />
-                      <View style={styles.podiumRank}>
-                        <Award size={16} color="#CD7F32" fill="#CD7F32" />
-                      </View>
-                    </View>
-                    <Text style={styles.podiumName}>{mockLeaderboard[2].name.split(' ')[0]}</Text>
-                    <Text style={styles.podiumXp}>{mockLeaderboard[2].xp} XP</Text>
-                  </View>
-                </View>
-              </View>
-
-              {/* Full Leaderboard */}
-              <View style={styles.leaderboardSection}>
-                <Text style={styles.sectionTitle}>Full Rankings</Text>
-                {mockLeaderboard.map((user) => (
-                  <View key={user.id} style={[
-                    styles.leaderboardItem,
-                    user.rank <= 3 && { borderColor: getRankColor(user.rank), borderWidth: 2 }
-                  ]}>
-                    <View style={styles.rankContainer}>
-                      {getRankIcon(user.rank)}
-                    </View>
-                    <Image source={{ uri: user.avatar }} style={styles.userAvatar} />
-                    <View style={styles.userInfo}>
-                      <Text style={styles.userName}>{user.name}</Text>
-                      <View style={styles.userStats}>
-                        <Text style={styles.userLevel}>Level {user.level}</Text>
-                        <View style={styles.userBadges}>
-                          {user.badges.map((badge, index) => (
-                            <Text key={index} style={styles.badge}>{badge}</Text>
-                          ))}
-                        </View>
-                      </View>
-                    </View>
-                    <View style={styles.userScore}>
-                      <Text style={styles.userXp}>{user.xp} XP</Text>
-                      <View style={styles.streakContainer}>
-                        <Text style={styles.streakEmoji}>🔥</Text>
-                        <Text style={styles.streakText}>{user.streak}</Text>
-                      </View>
-                    </View>
-                  </View>
-                ))}
-              </View>
-            </>
-          ) : (
-            /* My Results Tab */
-            <View style={styles.resultsSection}>
-              <Text style={styles.sectionTitle}>Recent Quest Results</Text>
-              {mockRecentResults.map((result) => (
-                <View key={result.id} style={styles.resultCard}>
-                  <Image source={{ uri: result.image }} style={styles.resultImage} />
-                  <View style={styles.resultContent}>
-                    <Text style={styles.resultTitle}>{result.questName}</Text>
-                    <Text style={styles.resultDate}>Completed {result.completedDate}</Text>
-                    
-                    <View style={styles.resultStats}>
-                      <View style={styles.resultStat}>
-                        <Text style={styles.resultStatLabel}>My Rank</Text>
-                        <View style={[styles.rankBadge, { backgroundColor: getRankColor(result.myRank) }]}>
-                          <Text style={styles.rankBadgeText}>#{result.myRank}</Text>
-                        </View>
-                      </View>
-                      <View style={styles.resultStat}>
-                        <Text style={styles.resultStatLabel}>XP Earned</Text>
-                        <View style={styles.xpBadge}>
-                          <Zap size={12} color="#00D4AA" fill="#00D4AA" />
-                          <Text style={styles.xpText}>+{result.xpEarned}</Text>
-                        </View>
-                      </View>
-                    </View>
-
-                    <View style={styles.winnersSection}>
-                      <Text style={styles.winnersTitle}>Top 3</Text>
-                      <View style={styles.winners}>
-                        {result.topWinners.map((winner, index) => (
-                          <View key={index} style={styles.winner}>
-                            <Image source={{ uri: winner.avatar }} style={styles.winnerAvatar} />
-                            <Text style={styles.winnerName}>{winner.name}</Text>
-                          </View>
-                        ))}
-                      </View>
-                    </View>
-                  </View>
-                </View>
-              ))}
-            </View>
-          )}
+        <ScrollView style={styles.resultsList} showsVerticalScrollIndicator={false}>
+          {mockResults.map((result) => (
+            <ResultCard key={result.id} result={result} />
+          ))}
         </ScrollView>
       </SafeAreaView>
     </View>
@@ -352,353 +164,82 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 28,
-    fontWeight: '800',
+    fontWeight: '900',
     color: '#FFFFFF',
-    marginBottom: 4,
+    letterSpacing: 1,
   },
   subtitle: {
     fontSize: 16,
-    fontWeight: '500',
-    color: '#9CA3AF',
+    fontWeight: '600',
+    color: '#6B7280',
+    marginTop: 4,
   },
   calendarButton: {
     padding: 12,
     backgroundColor: '#1A1A1A',
-    borderRadius: 16,
-    borderWidth: 2,
+    borderRadius: 12,
+    borderWidth: 1,
     borderColor: '#2A2A2A',
-  },
-  tabContainer: {
-    flexDirection: 'row',
-    paddingHorizontal: 20,
-    marginBottom: 16,
-    gap: 12,
-  },
-  tab: {
-    flex: 1,
-    paddingVertical: 12,
-    paddingHorizontal: 20,
-    borderRadius: 16,
-    backgroundColor: '#1A1A1A',
-    borderWidth: 2,
-    borderColor: '#2A2A2A',
-    alignItems: 'center',
-  },
-  activeTab: {
-    backgroundColor: '#00D4AA',
-    borderColor: '#00D4AA',
-  },
-  tabText: {
-    fontSize: 14,
-    fontWeight: '700',
-    color: '#9CA3AF',
-  },
-  activeTabText: {
-    color: '#0A0A0A',
   },
   filterContainer: {
     flexDirection: 'row',
     paddingHorizontal: 20,
     paddingBottom: 16,
-    gap: 12,
   },
   filterTab: {
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    borderRadius: 20,
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    marginRight: 12,
+    borderRadius: 25,
     backgroundColor: '#1A1A1A',
-    borderWidth: 2,
+    borderWidth: 1,
     borderColor: '#2A2A2A',
   },
   activeFilterTab: {
-    backgroundColor: '#2A2A2A',
+    backgroundColor: '#00D4AA',
     borderColor: '#00D4AA',
   },
   filterText: {
-    fontSize: 12,
+    fontSize: 14,
     fontWeight: '700',
-    color: '#9CA3AF',
+    color: '#6B7280',
+    textTransform: 'uppercase',
+    letterSpacing: 0.5,
   },
   activeFilterText: {
-    color: '#00D4AA',
+    color: '#0A0A0A',
   },
-  content: {
-    flex: 1,
-  },
-  statsContainer: {
+  statsSection: {
     flexDirection: 'row',
     paddingHorizontal: 20,
-    marginBottom: 20,
+    paddingBottom: 20,
     gap: 12,
   },
   statCard: {
     flex: 1,
     backgroundColor: '#1A1A1A',
-    padding: 16,
+    padding: 20,
     borderRadius: 16,
     alignItems: 'center',
-    borderWidth: 2,
-    borderColor: '#2A2A2A',
-  },
-  statIcon: {
-    marginBottom: 8,
-  },
-  statNumber: {
-    fontSize: 20,
-    fontWeight: '800',
-    color: '#FFFFFF',
-    marginBottom: 4,
-  },
-  statLabel: {
-    fontSize: 12,
-    color: '#9CA3AF',
-    fontWeight: '600',
-  },
-  podiumSection: {
-    paddingHorizontal: 20,
-    marginBottom: 32,
-  },
-  podium: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'flex-end',
-    gap: 16,
-  },
-  podiumPosition: {
-    alignItems: 'center',
-  },
-  podiumBar: {
-    width: 80,
-    borderRadius: 16,
-    alignItems: 'center',
-    paddingTop: 16,
-    paddingBottom: 20,
-    position: 'relative',
-    borderWidth: 2,
-  },
-  firstPlace: {
-    height: 120,
-    backgroundColor: '#2A2A2A',
-    borderColor: '#FFD700',
-  },
-  secondPlace: {
-    height: 100,
-    backgroundColor: '#2A2A2A',
-    borderColor: '#C0C0C0',
-  },
-  thirdPlace: {
-    height: 80,
-    backgroundColor: '#2A2A2A',
-    borderColor: '#CD7F32',
-  },
-  podiumAvatar: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
-    borderWidth: 3,
-    borderColor: '#1A1A1A',
-  },
-  podiumRank: {
-    position: 'absolute',
-    top: -8,
-    backgroundColor: '#1A1A1A',
-    borderRadius: 12,
-    padding: 4,
-    borderWidth: 2,
-    borderColor: '#2A2A2A',
-  },
-  podiumName: {
-    fontSize: 14,
-    fontWeight: '800',
-    color: '#FFFFFF',
-    marginTop: 8,
-  },
-  podiumXp: {
-    fontSize: 12,
-    color: '#9CA3AF',
-    fontWeight: '600',
-  },
-  leaderboardSection: {
-    paddingHorizontal: 20,
-  },
-  sectionTitle: {
-    fontSize: 20,
-    fontWeight: '800',
-    color: '#FFFFFF',
-    marginBottom: 16,
-  },
-  leaderboardItem: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#1A1A1A',
-    padding: 16,
-    borderRadius: 16,
-    marginBottom: 12,
     borderWidth: 1,
     borderColor: '#2A2A2A',
   },
-  rankContainer: {
-    width: 40,
-    alignItems: 'center',
-    marginRight: 12,
+  statNumber: {
+    fontSize: 24,
+    fontWeight: '900',
+    color: '#FFFFFF',
+    marginTop: 8,
+    letterSpacing: 0.5,
   },
-  rankNumber: {
-    fontSize: 16,
-    fontWeight: '800',
-    color: '#9CA3AF',
+  statLabel: {
+    fontSize: 12,
+    color: '#6B7280',
+    marginTop: 4,
+    fontWeight: '700',
+    letterSpacing: 0.5,
   },
-  userAvatar: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
-    marginRight: 16,
-    borderWidth: 2,
-    borderColor: '#00D4AA',
-  },
-  userInfo: {
+  resultsList: {
     flex: 1,
-  },
-  userName: {
-    fontSize: 16,
-    fontWeight: '800',
-    color: '#FFFFFF',
-    marginBottom: 4,
-  },
-  userStats: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  userLevel: {
-    fontSize: 12,
-    color: '#9CA3AF',
-    fontWeight: '600',
-  },
-  userBadges: {
-    flexDirection: 'row',
-    gap: 4,
-  },
-  badge: {
-    fontSize: 14,
-  },
-  userScore: {
-    alignItems: 'flex-end',
-  },
-  userXp: {
-    fontSize: 16,
-    fontWeight: '800',
-    color: '#FFFFFF',
-    marginBottom: 4,
-  },
-  streakContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  streakEmoji: {
-    fontSize: 12,
-    marginRight: 4,
-  },
-  streakText: {
-    fontSize: 12,
-    fontWeight: '700',
-    color: '#FF9500',
-  },
-  resultsSection: {
     paddingHorizontal: 20,
-  },
-  resultCard: {
-    backgroundColor: '#1A1A1A',
-    borderRadius: 20,
-    marginBottom: 20,
-    borderWidth: 2,
-    borderColor: '#2A2A2A',
-    overflow: 'hidden',
-  },
-  resultImage: {
-    width: '100%',
-    height: 120,
-  },
-  resultContent: {
-    padding: 20,
-  },
-  resultTitle: {
-    fontSize: 18,
-    fontWeight: '800',
-    color: '#FFFFFF',
-    marginBottom: 4,
-  },
-  resultDate: {
-    fontSize: 14,
-    color: '#9CA3AF',
-    marginBottom: 16,
-  },
-  resultStats: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 16,
-  },
-  resultStat: {
-    alignItems: 'center',
-  },
-  resultStatLabel: {
-    fontSize: 12,
-    color: '#9CA3AF',
-    marginBottom: 8,
-    fontWeight: '600',
-  },
-  rankBadge: {
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    borderRadius: 16,
-  },
-  rankBadgeText: {
-    color: '#0A0A0A',
-    fontSize: 14,
-    fontWeight: '800',
-  },
-  xpBadge: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#2A2A2A',
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    borderRadius: 16,
-  },
-  xpText: {
-    fontSize: 14,
-    fontWeight: '800',
-    color: '#00D4AA',
-    marginLeft: 4,
-  },
-  winnersSection: {
-    borderTopWidth: 1,
-    borderTopColor: '#2A2A2A',
-    paddingTop: 16,
-  },
-  winnersTitle: {
-    fontSize: 14,
-    fontWeight: '800',
-    color: '#FFFFFF',
-    marginBottom: 12,
-  },
-  winners: {
-    flexDirection: 'row',
-    gap: 16,
-  },
-  winner: {
-    alignItems: 'center',
-  },
-  winnerAvatar: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    marginBottom: 4,
-    borderWidth: 2,
-    borderColor: '#00D4AA',
-  },
-  winnerName: {
-    fontSize: 12,
-    fontWeight: '700',
-    color: '#FFFFFF',
   },
 });
