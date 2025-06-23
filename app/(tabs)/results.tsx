@@ -102,6 +102,25 @@ export default function ResultsPage() {
           </TouchableOpacity>
         </View>
 
+  <View style={styles.tabContainer}>
+          <TouchableOpacity
+            style={[styles.tab, activeTab === 'leaderboard' && styles.activeTab]}
+            onPress={() => setActiveTab('leaderboard')}
+          >
+            <Text style={[styles.tabText, activeTab === 'leaderboard' && styles.activeTabText]}>
+              Leaderboard
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.tab, activeTab === 'results' && styles.activeTab]}
+            onPress={() => setActiveTab('results')}
+          >
+            <Text style={[styles.tabText, activeTab === 'results' && styles.activeTabText]}>
+              My Results
+            </Text>
+          </TouchableOpacity>
+        </View>
+        
         <View style={styles.filterContainer}>
           <ScrollView 
             horizontal 
