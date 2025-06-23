@@ -104,16 +104,21 @@ export default function ProfilePage() {
             </View>
           </View>
 
-          <View style={styles.statsSection}>
+         <View style={styles.statsGrid}>
             <View style={styles.statCard}>
-              <Trophy size={32} color="#FFD700" />
-              <Text style={styles.statNumber}>23</Text>
-              <Text style={styles.statLabel}>VICTORIES</Text>
+              <Trophy size={24} color="#FFD700" fill="#FFD700" />
+              <Text style={styles.statNumber}>{mockUserData.completedQuests}</Text>
+              <Text style={styles.statLabel}>Completed</Text>
             </View>
             <View style={styles.statCard}>
-              <Award size={32} color="#00D4AA" />
-              <Text style={styles.statNumber}>78%</Text>
-              <Text style={styles.statLabel}>WIN RATE</Text>
+              <Target size={24} color="#00D4AA" />
+              <Text style={styles.statNumber}>{mockUserData.winRate}%</Text>
+              <Text style={styles.statLabel}>Success Rate</Text>
+            </View>
+            <View style={styles.statCard}>
+              <Zap size={24} color="#FF6B6B" fill="#FF6B6B" />
+              <Text style={styles.statNumber}>{mockUserData.xp}</Text>
+              <Text style={styles.statLabel}>Total XP</Text>
             </View>
           </View>
 
