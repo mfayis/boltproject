@@ -155,50 +155,7 @@ export default function ProfilePage() {
             </View>
           </View>
 
-          {/* Recent Activity */}
-          <View style={styles.section}>
-            <Text style={styles.sectionTitle}>Recent Activity 📅</Text>
-            {mockRecentActivity.map((activity) => (
-              <View key={activity.id} style={styles.activityItem}>
-                <View style={styles.activityIcon}>
-                  {activity.image ? (
-                    <Image source={{ uri: activity.image }} style={styles.activityImage} />
-                  ) : (
-                    <View style={styles.levelUpIcon}>
-                      <Star size={20} color="#FFD700" fill="#FFD700" />
-                    </View>
-                  )}
-                </View>
-                <View style={styles.activityContent}>
-                  <Text style={styles.activityTitle}>{activity.title}</Text>
-                  <Text style={styles.activityDate}>{activity.date}</Text>
-                </View>
-                {activity.xp > 0 && (
-                  <View style={styles.activityXp}>
-                    <Zap size={12} color="#00D4AA" fill="#00D4AA" />
-                    <Text style={styles.activityXpText}>+{activity.xp}</Text>
-                  </View>
-                )}
-              </View>
-            ))}
-          </View>
-
-          {/* Friends Section */}
-          <View style={styles.section}>
-            <View style={styles.sectionHeader}>
-              <Text style={styles.sectionTitle}>Friends 👥</Text>
-              <TouchableOpacity style={styles.viewAllButton}>
-                <Text style={styles.viewAllText}>View All</Text>
-              </TouchableOpacity>
-            </View>
-            <View style={styles.friendsContainer}>
-              <TouchableOpacity style={styles.friendsButton}>
-                <Users size={20} color="#00D4AA" />
-                <Text style={styles.friendsButtonText}>Find Friends</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-
+         
           {/* Motivational Card */}
           <View style={styles.motivationCard}>
             <Image
