@@ -141,34 +141,8 @@ export default function ProfilePage() {
               <Text style={styles.statLabel}>Total XP</Text>
             </View>
           </View>
-
-          {/* Achievements - Reverted to Previous Design */}
-          <View style={styles.achievementsSection}>
-            <Text style={styles.sectionTitle}>ACHIEVEMENTS</Text>
-            <View style={styles.achievementGrid}>
-              {mockAchievements.map((achievement, index) => (
-                <View key={index} style={styles.achievementCard}>
-                  <achievement.icon size={24} color={achievement.color} />
-                  <Text style={styles.achievementLabel}>{achievement.label}</Text>
-                </View>
-              ))}
-            </View>
-          </View>
-
+          
          
-          {/* Motivational Card */}
-          <View style={styles.motivationCard}>
-            <Image
-              source={{ uri: 'https://images.pexels.com/photos/1552617/pexels-photo-1552617.jpeg?auto=compress&cs=tinysrgb&w=300' }}
-              style={styles.motivationImage}
-            />
-            <View style={styles.motivationContent}>
-              <Text style={styles.motivationTitle}>Keep Going! 🚀</Text>
-              <Text style={styles.motivationText}>
-                You're doing amazing! Complete one more quest today to maintain your {mockUserData.streak}-day streak.
-              </Text>
-            </View>
-          </View>
         </ScrollView>
       </SafeAreaView>
     </View>
