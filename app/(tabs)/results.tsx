@@ -88,6 +88,7 @@ const filterOptions = [
 
 export default function ResultsPage() {
   const [activeFilter, setActiveFilter] = useState('all');
+  const [activeTab, setActiveTab] = useState('results');
 
   return (
     <View style={styles.container}>
@@ -102,7 +103,7 @@ export default function ResultsPage() {
           </TouchableOpacity>
         </View>
 
-  <View style={styles.tabContainer}>
+        <View style={styles.tabContainer}>
           <TouchableOpacity
             style={[styles.tab, activeTab === 'leaderboard' && styles.activeTab]}
             onPress={() => setActiveTab('leaderboard')}
@@ -209,6 +210,34 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     borderWidth: 2,
     borderColor: '#2A2A2A',
+  },
+  tabContainer: {
+    flexDirection: 'row',
+    paddingHorizontal: 20,
+    paddingBottom: 16,
+    gap: 8,
+  },
+  tab: {
+    flex: 1,
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+    borderRadius: 25,
+    backgroundColor: '#1A1A1A',
+    borderWidth: 2,
+    borderColor: '#2A2A2A',
+    alignItems: 'center',
+  },
+  activeTab: {
+    backgroundColor: '#00D4AA',
+    borderColor: '#00D4AA',
+  },
+  tabText: {
+    fontSize: 14,
+    fontWeight: '700',
+    color: '#9CA3AF',
+  },
+  activeTabText: {
+    color: '#0A0A0A',
   },
   filterContainer: {
     paddingBottom: 16,
