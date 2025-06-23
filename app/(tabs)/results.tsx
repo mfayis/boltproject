@@ -9,7 +9,7 @@ import {
   Image,
 } from 'react-native';
 import { Trophy, Medal, Award, Calendar, Zap, Crown, Star, Target } from 'lucide-react-native';
-import ResultCard from '../components/ResultCard';
+import ResultCard from '../../components/ResultCard';
 
 const mockLeaderboard = [
   {
