@@ -84,10 +84,8 @@ export default function ProfilePage() {
               </View>
 
               <View style={styles.streakContainer}>
-                <View style={styles.streakBadge}>
-                  <Flame size={20} color="#FF6B35" fill="#FF6B35" />
-                  <Text style={styles.streakNumber}>{mockUserData.dayStreak}</Text>
-                </View>
+                <Flame size={20} color="#FF9500" fill="#FF9500" />
+                <Text style={styles.streakNumber}>7</Text>
                 <Text style={styles.streakLabel}>day streak</Text>
               </View>
             </View>
