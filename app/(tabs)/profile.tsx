@@ -51,41 +51,23 @@ export default function ProfilePage() {
         </View>
 
         <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
-          <View style={styles.profileSection}>
-            <View style={styles.avatarContainer}>
-              <Image
-                source={{ uri: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=150' }}
-                style={styles.avatar}
-              />
-              <View style={styles.levelBadge}>
-                <Text style={styles.levelText}>27</Text>
-              </View>
-            </View>
-            <Text style={styles.name}>SARAH CHEN</Text>
-            <Text style={styles.bio}>Adventure seeker | Fitness enthusiast | Photography lover</Text>
-            
-            <View style={styles.xpSection}>
-              <View style={styles.xpBar}>
-                <View style={[styles.xpFill, { width: '75%' }]} />
-              </View>
-              <View style={styles.xpInfo}>
-                <Zap size={16} color="#FFD700" fill="#FFD700" />
-                <Text style={styles.xpText}>2,403 XP</Text>
-                <Text style={styles.xpNext}>• 597 to Level 28</Text>
-              </View>
-            </View>
-            
-            <View style={styles.followSection}>
-              <TouchableOpacity style={styles.followButton}>
-                <Users size={16} color="#6B7280" />
-                <Text style={styles.followText}>342 Following</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.followButton}>
-                <Users size={16} color="#6B7280" />
-                <Text style={styles.followText}>1.2k Followers</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
+          <View style={styles.profileCard}>
+    <View style={styles.profileHeader}>
+      <View style={styles.avatarContainer}>
+        <Image source={{ uri: mockUserData.avatar }} style={styles.avatar} />
+        <View style={styles.levelBadge}>
+          <Text style={styles.levelText}>{mockUserData.level}</Text>
+        </View>
+      </View>
+
+      <View style={styles.profileInfo}>
+        <Text style={styles.name}>{mockUserData.name}</Text>
+        <View style={styles.rankContainer}>
+          <Crown size={16} color="#FFD700" fill="#FFD700" />
+          <Text style={styles.rank}>Rank #{mockUserData.rank}</Text>
+        </View>
+      </View>
+
 
           <View style={styles.statsSection}>
             <View style={styles.statCard}>
