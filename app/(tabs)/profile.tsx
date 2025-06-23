@@ -18,14 +18,19 @@ import {
   Calendar,
   Star,
   Zap,
-  Crown
+  Crown,
+  Flame
 } from 'lucide-react-native';
 
 const mockUserData = {
-  name: 'Alex Champion',
+  name: 'Alex Johnson',
   avatar: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=200',
-  level: 42,
-  rank: 127,
+  level: 12,
+  rank: 156,
+  currentXP: 1250,
+  nextLevelXP: 1600,
+  xpToNext: 350,
+  dayStreak: 7,
 };
 
 const mockAchievements = [
@@ -45,6 +50,8 @@ const mockGallery = [
 ];
 
 export default function ProfilePage() {
+  const xpProgress = (mockUserData.currentXP / mockUserData.nextLevelXP) * 100;
+
   return (
     <View style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
@@ -75,6 +82,27 @@ export default function ProfilePage() {
                   <Text style={styles.rank}>Rank #{mockUserData.rank}</Text>
                 </View>
               </View>
+
+              <View style={styles.streakContainer}>
+                <View style={styles.streakBadge}>
+                  <Flame size={16} color="#FF6B35" fill="#FF6B35" />
+                  <Text style={styles.streakNumber}>{mockUserData.dayStreak}</Text>
+                </View>
+                <Text style={styles.streakLabel}>day streak</Text>
+              </View>
+            </View>
+
+            <View style={styles.progressSection}>
+              <Text style={styles.progressTitle}>Level Progress</Text>
+              <Text style={styles.xpText}>{mockUserData.currentXP} / {mockUserData.nextLevelXP} XP</Text>
+              
+              <View style={styles.progressBarContainer}>
+                <View style={styles.progressBar}>
+                  <View style={[styles.progressFill, { width: `${xpProgress}%` }]} />
+                </View>
+              </View>
+              
+              <Text style={styles.xpToNext}>{mockUserData.xpToNext} XP to Level {mockUserData.level + 1}</Text>
             </View>
           </View>
 
@@ -208,22 +236,119 @@ const styles = StyleSheet.create({
     padding: 24,
   },
   profileHeader: {
+    flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 24,
+  },
+  avatarContainer: {
+    position: 'relative',
+  },
+  avatar: {
+    width: 64,
+    height: 64,
+    borderRadius: 32,
+    borderWidth: 3,
+    borderColor: '#00D4AA',
+  },
+  levelBadge: {
+    position: 'absolute',
+    bottom: -4,
+    right: -4,
+    backgroundColor: '#00D4AA',
+    borderRadius: 16,
+    minWidth: 32,
+    height: 32,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderWidth: 3,
+    borderColor: '#1A1A1A',
+  },
+  levelText: {
+    fontSize: 14,
+    fontWeight: '900',
+    color: '#0A0A0A',
   },
   profileInfo: {
-    alignItems: 'center',
-    marginTop: 16,
+    flex: 1,
+    marginLeft: 16,
+  },
+  name: {
+    fontSize: 20,
+    fontWeight: '900',
+    color: '#FFFFFF',
+    marginBottom: 4,
   },
   rankContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 8,
   },
   rank: {
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: '700',
     color: '#FFD700',
     marginLeft: 6,
+  },
+  streakContainer: {
+    alignItems: 'center',
+  },
+  streakBadge: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#2A2A2A',
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    borderRadius: 16,
+    borderWidth: 2,
+    borderColor: '#FF6B35',
+  },
+  streakNumber: {
+    fontSize: 16,
+    fontWeight: '900',
+    color: '#FF6B35',
+    marginLeft: 4,
+  },
+  streakLabel: {
+    fontSize: 12,
+    color: '#9CA3AF',
+    marginTop: 4,
+    fontWeight: '600',
+  },
+  progressSection: {
+    marginTop: 8,
+  },
+  progressTitle: {
+    fontSize: 16,
+    fontWeight: '800',
+    color: '#FFFFFF',
+    marginBottom: 8,
+  },
+  xpText: {
+    fontSize: 18,
+    fontWeight: '700',
+    color: '#00D4AA',
+    textAlign: 'right',
+    marginBottom: 12,
+  },
+  progressBarContainer: {
+    marginBottom: 8,
+  },
+  progressBar: {
+    height: 8,
+    backgroundColor: '#2A2A2A',
+    borderRadius: 4,
+    overflow: 'hidden',
+  },
+  progressFill: {
+    height: '100%',
+    backgroundColor: '#00D4AA',
+    borderRadius: 4,
+  },
+  xpToNext: {
+    fontSize: 14,
+    color: '#9CA3AF',
+    textAlign: 'center',
+    fontWeight: '600',
   },
   profileSection: {
     backgroundColor: '#1A1A1A',
@@ -234,48 +359,6 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     borderWidth: 1,
     borderColor: '#2A2A2A',
-  },
-  avatarContainer: {
-    position: 'relative',
-    marginBottom: 16,
-  },
-  avatar: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
-    borderWidth: 3,
-    borderColor: '#00D4AA',
-  },
-  levelBadge: {
-    position: 'absolute',
-    bottom: -8,
-    right: -8,
-    backgroundColor: '#00D4AA',
-    borderRadius: 20,
-    minWidth: 40,
-    height: 40,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderWidth: 3,
-    borderColor: '#1A1A1A',
-  },
-  levelText: {
-    fontSize: 16,
-    fontWeight: '900',
-    color: '#0A0A0A',
-  },
-  name: {
-    fontSize: 24,
-    fontWeight: '900',
-    color: '#FFFFFF',
-    marginBottom: 8,
-    letterSpacing: 1,
-  },
-  bio: {
-    fontSize: 16,
-    color: '#9CA3AF',
-    textAlign: 'center',
-    marginBottom: 20,
   },
   xpSection: {
     width: '100%',
@@ -296,12 +379,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  xpText: {
-    fontSize: 16,
-    color: '#FFD700',
-    fontWeight: '700',
-    marginLeft: 6,
   },
   xpNext: {
     fontSize: 14,
