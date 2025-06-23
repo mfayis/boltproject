@@ -134,30 +134,7 @@ export default function ChallengesPage() {
           </View>
         </View>
 
-        <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.categoryScroll}>
-          <View style={styles.categoryContainer}>
-            {categories.map((category) => (
-              <TouchableOpacity
-                key={category.id}
-                style={[
-                  styles.categoryTab,
-                  activeCategory === category.id && [styles.activeCategoryTab, { borderColor: category.color }],
-                ]}
-                onPress={() => setActiveCategory(category.id)}
-              >
-                <Text style={styles.categoryIcon}>{category.icon}</Text>
-                <Text
-                  style={[
-                    styles.categoryText,
-                    activeCategory === category.id && [styles.activeCategoryText, { color: category.color }],
-                  ]}
-                >
-                  {category.name}
-                </Text>
-              </TouchableOpacity>
-            ))}
-          </View>
-        </ScrollView>
+       
 
         <ScrollView style={styles.challengesList} showsVerticalScrollIndicator={false}>
           <View style={styles.challengesContainer}>
