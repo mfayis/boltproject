@@ -14,51 +14,72 @@ import {
   Target, 
   Award, 
   Users, 
-  Camera,
   Calendar,
   Star,
   Zap,
-  Crown,
-  Flame
+  Flame,
+  Crown
 } from 'lucide-react-native';
 
 const mockUserData = {
   name: 'Alex Johnson',
-  avatar: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=200',
+  avatar: 'https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=200',
   level: 12,
-  rank: 156,
-  currentXP: 1250,
-  nextLevelXP: 1600,
+  xp: 1250,
   xpToNext: 350,
-  dayStreak: 7,
+  streak: 7,
+  totalQuests: 47,
+  completedQuests: 34,
+  winRate: 72,
+  rank: 156,
 };
 
 const mockAchievements = [
-  { icon: Trophy, label: 'First Victory', color: '#FFD700' },
-  { icon: Target, label: '10 Challenges', color: '#00D4AA' },
-  { icon: Award, label: 'Podium Master', color: '#FF4757' },
-  { icon: Star, label: 'Community Hero', color: '#00D4AA' },
+  { id: '1', icon: Trophy, title: 'First Victory', description: 'Complete your first quest', unlocked: true, color: '#FFD700' },
+  { id: '2', icon: Flame, title: 'Hot Streak', description: '7-day streak', unlocked: true, color: '#FF9500' },
+  { id: '3', icon: Star, title: 'Rising Star', description: 'Reach Level 10', unlocked: true, color: '#00D4AA' },
+  { id: '4', icon: Target, title: 'Fitness Guru', description: 'Complete 10 fitness quests', unlocked: true, color: '#FF6B6B' },
+  { id: '5', icon: Award, title: 'Bookworm', description: 'Complete 5 learning quests', unlocked: false, color: '#6B7280' },
+  { id: '6', icon: Crown, title: 'Quest Master', description: 'Complete 100 quests', unlocked: false, color: '#6B7280' },
 ];
 
-const mockGallery = [
-  'https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg?auto=compress&cs=tinysrgb&w=200',
-  'https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg?auto=compress&cs=tinysrgb&w=200',
-  'https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=200',
-  'https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&cs=tinysrgb&w=200',
-  'https://images.pexels.com/photos/1194420/pexels-photo-1194420.jpeg?auto=compress&cs=tinysrgb&w=200',
-  'https://images.pexels.com/photos/1640772/pexels-photo-1640772.jpeg?auto=compress&cs=tinysrgb&w=200',
+const mockRecentActivity = [
+  {
+    id: '1',
+    type: 'completed',
+    title: 'Morning Meditation',
+    xp: 100,
+    date: '2 hours ago',
+    image: 'https://images.pexels.com/photos/3822622/pexels-photo-3822622.jpeg?auto=compress&cs=tinysrgb&w=100',
+  },
+  {
+    id: '2',
+    type: 'level_up',
+    title: 'Reached Level 12!',
+    xp: 0,
+    date: '1 day ago',
+    image: null,
+  },
+  {
+    id: '3',
+    type: 'completed',
+    title: 'Daily Reading',
+    xp: 75,
+    date: '2 days ago',
+    image: 'https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=100',
+  },
 ];
 
 export default function ProfilePage() {
-  const xpProgress = (mockUserData.currentXP / mockUserData.nextLevelXP) * 100;
+  const progressPercentage = (mockUserData.xp / (mockUserData.xp + mockUserData.xpToNext)) * 100;
 
   return (
     <View style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.header}>
           <View>
-            <Text style={styles.title}>PROFILE</Text>
-            <Text style={styles.subtitle}>Your legend</Text>
+            <Text style={styles.title}>Profile 👤</Text>
+            <Text style={styles.subtitle}>Your quest journey</Text>
           </View>
           <TouchableOpacity style={styles.settingsButton}>
             <Settings size={24} color="#00D4AA" />
@@ -66,6 +87,7 @@ export default function ProfilePage() {
         </View>
 
         <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
+          {/* Profile Card */}
           <View style={styles.profileCard}>
             <View style={styles.profileHeader}>
               <View style={styles.avatarContainer}>
@@ -74,7 +96,6 @@ export default function ProfilePage() {
                   <Text style={styles.levelText}>{mockUserData.level}</Text>
                 </View>
               </View>
-
               <View style={styles.profileInfo}>
                 <Text style={styles.name}>{mockUserData.name}</Text>
                 <View style={styles.rankContainer}>
@@ -82,7 +103,6 @@ export default function ProfilePage() {
                   <Text style={styles.rank}>Rank #{mockUserData.rank}</Text>
                 </View>
               </View>
-
               <View style={styles.streakContainer}>
                 <Flame size={20} color="#FF9500" fill="#FF9500" />
                 <Text style={styles.streakNumber}>7</Text>
@@ -90,21 +110,21 @@ export default function ProfilePage() {
               </View>
             </View>
 
-            <View style={styles.progressSection}>
-              <Text style={styles.progressTitle}>Level Progress</Text>
-              <Text style={styles.xpText}>{mockUserData.currentXP} / {mockUserData.nextLevelXP} XP</Text>
-              
-              <View style={styles.progressBarContainer}>
-                <View style={styles.progressBar}>
-                  <View style={[styles.progressFill, { width: `${xpProgress}%` }]} />
-                </View>
+            {/* XP Progress */}
+            <View style={styles.xpSection}>
+              <View style={styles.xpHeader}>
+                <Text style={styles.xpTitle}>Level Progress</Text>
+                <Text style={styles.xpText}>{mockUserData.xp} / {mockUserData.xp + mockUserData.xpToNext} XP</Text>
               </View>
-              
+              <View style={styles.progressBar}>
+                <View style={[styles.progressFill, { width: `${progressPercentage}%` }]} />
+              </View>
               <Text style={styles.xpToNext}>{mockUserData.xpToNext} XP to Level {mockUserData.level + 1}</Text>
             </View>
           </View>
 
-         <View style={styles.statsGrid}>
+          {/* Stats Grid */}
+          <View style={styles.statsGrid}>
             <View style={styles.statCard}>
               <Trophy size={24} color="#FFD700" fill="#FFD700" />
               <Text style={styles.statNumber}>{mockUserData.completedQuests}</Text>
@@ -122,6 +142,7 @@ export default function ProfilePage() {
             </View>
           </View>
 
+          {/* Achievements - Reverted to Previous Design */}
           <View style={styles.achievementsSection}>
             <Text style={styles.sectionTitle}>ACHIEVEMENTS</Text>
             <View style={styles.achievementGrid}>
@@ -134,56 +155,61 @@ export default function ProfilePage() {
             </View>
           </View>
 
-          <View style={styles.gallerySection}>
-            <View style={styles.galleryHeader}>
-              <Text style={styles.sectionTitle}>VICTORY GALLERY</Text>
+          {/* Recent Activity */}
+          <View style={styles.section}>
+            <Text style={styles.sectionTitle}>Recent Activity 📅</Text>
+            {mockRecentActivity.map((activity) => (
+              <View key={activity.id} style={styles.activityItem}>
+                <View style={styles.activityIcon}>
+                  {activity.image ? (
+                    <Image source={{ uri: activity.image }} style={styles.activityImage} />
+                  ) : (
+                    <View style={styles.levelUpIcon}>
+                      <Star size={20} color="#FFD700" fill="#FFD700" />
+                    </View>
+                  )}
+                </View>
+                <View style={styles.activityContent}>
+                  <Text style={styles.activityTitle}>{activity.title}</Text>
+                  <Text style={styles.activityDate}>{activity.date}</Text>
+                </View>
+                {activity.xp > 0 && (
+                  <View style={styles.activityXp}>
+                    <Zap size={12} color="#00D4AA" fill="#00D4AA" />
+                    <Text style={styles.activityXpText}>+{activity.xp}</Text>
+                  </View>
+                )}
+              </View>
+            ))}
+          </View>
+
+          {/* Friends Section */}
+          <View style={styles.section}>
+            <View style={styles.sectionHeader}>
+              <Text style={styles.sectionTitle}>Friends 👥</Text>
               <TouchableOpacity style={styles.viewAllButton}>
-                <Text style={styles.viewAllText}>VIEW ALL</Text>
+                <Text style={styles.viewAllText}>View All</Text>
               </TouchableOpacity>
             </View>
-            <View style={styles.galleryGrid}>
-              {mockGallery.map((image, index) => (
-                <TouchableOpacity key={index} style={styles.galleryItem}>
-                  <Image source={{ uri: image }} style={styles.galleryImage} />
-                </TouchableOpacity>
-              ))}
+            <View style={styles.friendsContainer}>
+              <TouchableOpacity style={styles.friendsButton}>
+                <Users size={20} color="#00D4AA" />
+                <Text style={styles.friendsButtonText}>Find Friends</Text>
+              </TouchableOpacity>
             </View>
           </View>
 
-          <View style={styles.historySection}>
-            <Text style={styles.sectionTitle}>RECENT ACTIVITY</Text>
-            <View style={styles.activityItem}>
-              <Calendar size={20} color="#6B7280" />
-              <View style={styles.activityContent}>
-                <Text style={styles.activityText}>Completed "Mountain Photography Quest"</Text>
-                <Text style={styles.activityDate}>2 days ago</Text>
-              </View>
-              <View style={styles.activityXp}>
-                <Zap size={14} color="#FFD700" fill="#FFD700" />
-                <Text style={styles.activityXpText}>+500</Text>
-              </View>
-            </View>
-            <View style={styles.activityItem}>
-              <Trophy size={20} color="#FFD700" />
-              <View style={styles.activityContent}>
-                <Text style={styles.activityText}>Won "30-Day Fitness Challenge"</Text>
-                <Text style={styles.activityDate}>1 week ago</Text>
-              </View>
-              <View style={styles.activityXp}>
-                <Zap size={14} color="#FFD700" fill="#FFD700" />
-                <Text style={styles.activityXpText}>+750</Text>
-              </View>
-            </View>
-            <View style={styles.activityItem}>
-              <Camera size={20} color="#6B7280" />
-              <View style={styles.activityContent}>
-                <Text style={styles.activityText}>Shared victory photo</Text>
-                <Text style={styles.activityDate}>2 weeks ago</Text>
-              </View>
-              <View style={styles.activityXp}>
-                <Zap size={14} color="#FFD700" fill="#FFD700" />
-                <Text style={styles.activityXpText}>+50</Text>
-              </View>
+          {/* Motivational Card */}
+          <View style={styles.motivationCard}>
+            <Image
+              source={{ uri: 'https://images.pexels.com/photos/1552617/pexels-photo-1552617.jpeg?auto=compress&cs=tinysrgb&w=300' }}
+              style={styles.motivationImage}
+            />
+            <View style={styles.motivationContent}>
+              <Text style={styles.motivationTitle}>Keep Going! 🚀</Text>
+              <Text style={styles.motivationText}>
+                You're doing amazing! Complete one more quest today to maintain your {mockUserData.streak}-day streak.
+              </Text>
             </View>
           </View>
         </ScrollView>
@@ -209,21 +235,20 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 28,
-    fontWeight: '900',
+    fontWeight: '800',
     color: '#FFFFFF',
-    letterSpacing: 1,
+    marginBottom: 4,
   },
   subtitle: {
     fontSize: 16,
-    fontWeight: '600',
-    color: '#6B7280',
-    marginTop: 4,
+    fontWeight: '500',
+    color: '#9CA3AF',
   },
   settingsButton: {
     padding: 12,
     backgroundColor: '#1A1A1A',
-    borderRadius: 12,
-    borderWidth: 1,
+    borderRadius: 16,
+    borderWidth: 2,
     borderColor: '#2A2A2A',
   },
   content: {
@@ -234,23 +259,23 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     marginBottom: 20,
     borderRadius: 20,
-    borderWidth: 1,
+    padding: 20,
+    borderWidth: 2,
     borderColor: '#2A2A2A',
-    padding: 24,
   },
   profileHeader: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
-    marginBottom: 24,
+    marginBottom: 20,
   },
   avatarContainer: {
     position: 'relative',
+    marginRight: 16,
   },
   avatar: {
-    width: 64,
-    height: 64,
-    borderRadius: 32,
+    width: 80,
+    height: 80,
+    borderRadius: 40,
     borderWidth: 3,
     borderColor: '#00D4AA',
   },
@@ -269,16 +294,15 @@ const styles = StyleSheet.create({
   },
   levelText: {
     fontSize: 14,
-    fontWeight: '900',
+    fontWeight: '800',
     color: '#0A0A0A',
   },
   profileInfo: {
     flex: 1,
-    marginLeft: 16,
   },
   name: {
     fontSize: 20,
-    fontWeight: '900',
+    fontWeight: '800',
     color: '#FFFFFF',
     marginBottom: 4,
   },
@@ -288,198 +312,110 @@ const styles = StyleSheet.create({
   },
   rank: {
     fontSize: 14,
-    fontWeight: '700',
-    color: '#FFD700',
-    marginLeft: 6,
+    color: '#9CA3AF',
+    fontWeight: '600',
+    marginLeft: 4,
   },
   streakContainer: {
-    alignItems: 'center',
-  },
-  streakBadge: {
-    flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#2A2A2A',
     paddingHorizontal: 12,
     paddingVertical: 8,
     borderRadius: 16,
     borderWidth: 2,
-    borderColor: '#FF6B35',
+    borderColor: '#FF9500',
   },
   streakNumber: {
-    fontSize: 16,
-    fontWeight: '900',
-    color: '#FF6B35',
-    marginLeft: 4,
+    fontSize: 18,
+    fontWeight: '800',
+    color: '#FF9500',
+    marginTop: 4,
   },
   streakLabel: {
-    fontSize: 12,
-    color: '#9CA3AF',
-    marginTop: 4,
+    fontSize: 10,
+    color: '#FF9500',
     fontWeight: '600',
   },
-  progressSection: {
-    marginTop: 8,
+  xpSection: {
+    borderTopWidth: 1,
+    borderTopColor: '#2A2A2A',
+    paddingTop: 20,
   },
-  progressTitle: {
+  xpHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 12,
+  },
+  xpTitle: {
     fontSize: 16,
     fontWeight: '800',
     color: '#FFFFFF',
-    marginBottom: 8,
   },
   xpText: {
-    fontSize: 18,
-    fontWeight: '700',
-    color: '#00D4AA',
-    textAlign: 'right',
-    marginBottom: 12,
-  },
-  progressBarContainer: {
-    marginBottom: 8,
+    fontSize: 14,
+    color: '#9CA3AF',
+    fontWeight: '600',
   },
   progressBar: {
-    height: 8,
+    height: 12,
     backgroundColor: '#2A2A2A',
-    borderRadius: 4,
+    borderRadius: 6,
     overflow: 'hidden',
+    marginBottom: 8,
   },
   progressFill: {
     height: '100%',
     backgroundColor: '#00D4AA',
-    borderRadius: 4,
+    borderRadius: 6,
   },
   xpToNext: {
-    fontSize: 14,
+    fontSize: 12,
     color: '#9CA3AF',
     textAlign: 'center',
-    fontWeight: '600',
   },
-  profileSection: {
-    backgroundColor: '#1A1A1A',
-    padding: 24,
-    alignItems: 'center',
-    marginHorizontal: 20,
-    marginBottom: 20,
-    borderRadius: 20,
-    borderWidth: 1,
-    borderColor: '#2A2A2A',
-  },
-  xpSection: {
-    width: '100%',
-    marginBottom: 20,
-  },
-  xpBar: {
-    height: 8,
-    backgroundColor: '#2A2A2A',
-    borderRadius: 4,
-    marginBottom: 8,
-  },
-  xpFill: {
-    height: '100%',
-    backgroundColor: '#00D4AA',
-    borderRadius: 4,
-  },
-  xpInfo: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  xpNext: {
-    fontSize: 14,
-    color: '#6B7280',
-    marginLeft: 8,
-  },
-  followSection: {
-    flexDirection: 'row',
-    gap: 24,
-  },
-  followButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  followText: {
-    fontSize: 16,
-    color: '#9CA3AF',
-    marginLeft: 6,
-    fontWeight: '600',
-  },
-  statsSection: {
+  statsGrid: {
     flexDirection: 'row',
     paddingHorizontal: 20,
-    paddingBottom: 20,
+    marginBottom: 20,
     gap: 12,
   },
   statCard: {
     flex: 1,
     backgroundColor: '#1A1A1A',
-    padding: 20,
+    padding: 16,
     borderRadius: 16,
     alignItems: 'center',
-    borderWidth: 1,
+    borderWidth: 2,
     borderColor: '#2A2A2A',
   },
   statNumber: {
-    fontSize: 28,
-    fontWeight: '900',
+    fontSize: 20,
+    fontWeight: '800',
     color: '#FFFFFF',
-    marginTop: 12,
-    letterSpacing: 0.5,
+    marginTop: 8,
+    marginBottom: 4,
   },
   statLabel: {
     fontSize: 12,
-    color: '#6B7280',
-    marginTop: 4,
-    textAlign: 'center',
-    fontWeight: '700',
-    letterSpacing: 0.5,
-  },
-  achievementsSection: {
-    backgroundColor: '#1A1A1A',
-    margin: 20,
-    padding: 20,
-    borderRadius: 16,
-    borderWidth: 1,
-    borderColor: '#2A2A2A',
-  },
-  sectionTitle: {
-    fontSize: 20,
-    fontWeight: '900',
-    color: '#FFFFFF',
-    marginBottom: 16,
-    letterSpacing: 1,
-  },
-  achievementGrid: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 12,
-  },
-  achievementCard: {
-    flex: 1,
-    minWidth: '45%',
-    backgroundColor: '#2A2A2A',
-    padding: 16,
-    borderRadius: 12,
-    alignItems: 'center',
-  },
-  achievementLabel: {
-    fontSize: 12,
     color: '#9CA3AF',
-    fontWeight: '700',
-    marginTop: 8,
+    fontWeight: '600',
     textAlign: 'center',
   },
-  gallerySection: {
-    backgroundColor: '#1A1A1A',
-    margin: 20,
-    padding: 20,
-    borderRadius: 16,
-    borderWidth: 1,
-    borderColor: '#2A2A2A',
+  section: {
+    paddingHorizontal: 20,
+    marginBottom: 24,
   },
-  galleryHeader: {
+  sectionHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: 16,
+  },
+  sectionTitle: {
+    fontSize: 20,
+    fontWeight: '800',
+    color: '#FFFFFF',
   },
   viewAllButton: {
     paddingHorizontal: 12,
@@ -490,50 +426,87 @@ const styles = StyleSheet.create({
     color: '#00D4AA',
     fontWeight: '700',
   },
-  galleryGrid: {
+  achievementsGrid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    gap: 8,
+    gap: 12,
   },
-  galleryItem: {
-    width: '31%',
-    aspectRatio: 1,
-  },
-  galleryImage: {
-    width: '100%',
-    height: '100%',
-    borderRadius: 8,
-    backgroundColor: '#2A2A2A',
-  },
-  historySection: {
+  achievementCard: {
+    width: '48%',
     backgroundColor: '#1A1A1A',
-    margin: 20,
-    marginBottom: 32,
-    padding: 20,
+    padding: 16,
     borderRadius: 16,
-    borderWidth: 1,
+    alignItems: 'center',
+    borderWidth: 2,
     borderColor: '#2A2A2A',
+  },
+  lockedAchievement: {
+    backgroundColor: '#1A1A1A',
+    borderColor: '#2A2A2A',
+  },
+  achievementIconContainer: {
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 12,
+  },
+  achievementTitle: {
+    fontSize: 14,
+    fontWeight: '800',
+    color: '#FFFFFF',
+    marginBottom: 4,
+    textAlign: 'center',
+  },
+  achievementDescription: {
+    fontSize: 12,
+    color: '#9CA3AF',
+    textAlign: 'center',
+  },
+  lockedText: {
+    opacity: 0.5,
   },
   activityItem: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 12,
-    borderBottomWidth: 1,
-    borderBottomColor: '#2A2A2A',
+    backgroundColor: '#1A1A1A',
+    padding: 16,
+    borderRadius: 16,
+    marginBottom: 12,
+    borderWidth: 2,
+    borderColor: '#2A2A2A',
+  },
+  activityIcon: {
+    marginRight: 16,
+  },
+  activityImage: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+  },
+  levelUpIcon: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: '#2A2A2A',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderWidth: 2,
+    borderColor: '#FFD700',
   },
   activityContent: {
     flex: 1,
-    marginLeft: 12,
   },
-  activityText: {
+  activityTitle: {
     fontSize: 16,
+    fontWeight: '700',
     color: '#FFFFFF',
-    fontWeight: '600',
+    marginBottom: 2,
   },
   activityDate: {
-    fontSize: 14,
-    color: '#6B7280',
-    marginTop: 2,
+    fontSize: 12,
+    color: '#9CA3AF',
   },
   activityXp: {
     flexDirection: 'row',
@@ -545,8 +518,54 @@ const styles = StyleSheet.create({
   },
   activityXpText: {
     fontSize: 12,
-    fontWeight: '700',
-    color: '#FFD700',
+    fontWeight: '800',
+    color: '#00D4AA',
     marginLeft: 4,
+  },
+  friendsContainer: {
+    alignItems: 'center',
+  },
+  friendsButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#1A1A1A',
+    paddingHorizontal: 20,
+    paddingVertical: 16,
+    borderRadius: 16,
+    borderWidth: 2,
+    borderColor: '#2A2A2A',
+  },
+  friendsButtonText: {
+    fontSize: 16,
+    fontWeight: '700',
+    color: '#00D4AA',
+    marginLeft: 8,
+  },
+  motivationCard: {
+    backgroundColor: '#1A1A1A',
+    marginHorizontal: 20,
+    marginBottom: 32,
+    borderRadius: 20,
+    overflow: 'hidden',
+    borderWidth: 2,
+    borderColor: '#2A2A2A',
+  },
+  motivationImage: {
+    width: '100%',
+    height: 120,
+  },
+  motivationContent: {
+    padding: 20,
+  },
+  motivationTitle: {
+    fontSize: 18,
+    fontWeight: '800',
+    color: '#FFFFFF',
+    marginBottom: 8,
+  },
+  motivationText: {
+    fontSize: 14,
+    color: '#9CA3AF',
+    lineHeight: 20,
   },
 });
