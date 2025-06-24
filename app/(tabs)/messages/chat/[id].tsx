@@ -11,7 +11,7 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from 'react-native';
-import { ArrowLeft, Send, Users, MoreVertical, Camera, Mic, Smile } from 'lucide-react-native';
+import { ArrowLeft, Send, Users, MoveVertical as MoreVertical, Camera, Mic, Smile } from 'lucide-react-native';
 import { router, useLocalSearchParams } from 'expo-router';
 
 interface Message {
