@@ -1,5 +1,5 @@
 import { Tabs } from 'expo-router';
-import { MessageCircle, User, Chrome as Home } from 'lucide-react-native';
+import { MessageCircle, Award, User, Target } from 'lucide-react-native';
 import { View, Text, StyleSheet } from 'react-native';
 
 function TabBarIcon({ focused, icon: Icon, label }: { focused: boolean; icon: any; label: string }) {
@@ -41,7 +41,7 @@ export default function TabLayout() {
         options={{
           title: 'Home',
           tabBarIcon: ({ focused }) => (
-            <TabBarIcon focused={focused} icon={Home} label="Home" />
+            <TabBarIcon focused={focused} icon={Target} label="Home" />
           ),
         }}
       />
@@ -51,6 +51,15 @@ export default function TabLayout() {
           title: 'DMs',
           tabBarIcon: ({ focused }) => (
             <TabBarIcon focused={focused} icon={MessageCircle} label="DMs" />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="results"
+        options={{
+          title: 'Activity',
+          tabBarIcon: ({ focused }) => (
+            <TabBarIcon focused={focused} icon={Award} label="Activity" />
           ),
         }}
       />
