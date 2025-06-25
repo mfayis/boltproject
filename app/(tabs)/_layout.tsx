@@ -1,5 +1,5 @@
 import { Tabs } from 'expo-router';
-import { Trophy, MessageCircle, Award, User } from 'lucide-react-native';
+import { MessageCircle, Award, User, Target } from 'lucide-react-native';
 
 export default function TabLayout() {
   return (
@@ -23,20 +23,11 @@ export default function TabLayout() {
         },
       }}>
       <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Quests',
-          tabBarIcon: ({ size, color }) => (
-            <Trophy size={size} color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
         name="challenges"
         options={{
           title: 'Challenges',
           tabBarIcon: ({ size, color }) => (
-            <Trophy size={size} color={color} />
+            <Target size={size} color={color} />
           ),
         }}
       />
