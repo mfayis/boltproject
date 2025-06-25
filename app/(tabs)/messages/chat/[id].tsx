@@ -11,7 +11,7 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from 'react-native';
-import { ArrowLeft, Send, Users, MoveVertical as MoreVertical, Camera, Mic, Smile } from 'lucide-react-native';
+import { ArrowLeft, Send, Users, MoreVertical, Camera, Mic, Smile } from 'lucide-react-native';
 import { router, useLocalSearchParams } from 'expo-router';
 
 interface Message {
@@ -115,6 +115,93 @@ const mockChatData = {
       },
     ],
   },
+  '3': {
+    name: 'Mindful Moments 🧘',
+    questName: 'Morning Meditation',
+    participants: 15,
+    image: 'https://images.pexels.com/photos/3822622/pexels-photo-3822622.jpeg?auto=compress&cs=tinysrgb&w=100',
+    isOnline: true,
+    messages: [
+      {
+        id: '1',
+        senderId: 'system',
+        senderName: 'System',
+        senderAvatar: '',
+        message: 'Welcome to Mindful Moments! Let\'s practice mindfulness together 🧘‍♀️',
+        timestamp: '7:00 AM',
+        isMe: false,
+        type: 'system' as const,
+      },
+      {
+        id: '2',
+        senderId: 'sarah',
+        senderName: 'Sarah',
+        senderAvatar: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=100',
+        message: 'Completed today\'s session! Feeling zen ✨',
+        timestamp: '7:30 AM',
+        isMe: false,
+        type: 'text' as const,
+      },
+    ],
+  },
+  '4': {
+    name: 'Creative Minds 🎨',
+    questName: 'Daily Art Challenge',
+    participants: 6,
+    image: 'https://images.pexels.com/photos/1053687/pexels-photo-1053687.jpeg?auto=compress&cs=tinysrgb&w=100',
+    isOnline: false,
+    messages: [
+      {
+        id: '1',
+        senderId: 'system',
+        senderName: 'System',
+        senderAvatar: '',
+        message: 'Welcome to Creative Minds! Share your daily art creations here 🎨',
+        timestamp: '6:00 PM',
+        isMe: false,
+        type: 'system' as const,
+      },
+      {
+        id: '2',
+        senderId: 'alex',
+        senderName: 'Alex',
+        senderAvatar: 'https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=100',
+        message: 'Check out my latest sketch!',
+        timestamp: '6:30 PM',
+        isMe: false,
+        type: 'text' as const,
+      },
+    ],
+  },
+  '5': {
+    name: 'Coding Ninjas 💻',
+    questName: 'Learn to Code',
+    participants: 20,
+    image: 'https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=100',
+    isOnline: true,
+    messages: [
+      {
+        id: '1',
+        senderId: 'system',
+        senderName: 'System',
+        senderAvatar: '',
+        message: 'Welcome to Coding Ninjas! Let\'s code together and help each other learn 💻',
+        timestamp: '2:00 PM',
+        isMe: false,
+        type: 'system' as const,
+      },
+      {
+        id: '2',
+        senderId: 'david',
+        senderName: 'David',
+        senderAvatar: 'https://images.pexels.com/photos/428364/pexels-photo-428364.jpeg?auto=compress&cs=tinysrgb&w=100',
+        message: 'Anyone stuck on today\'s challenge?',
+        timestamp: '2:30 PM',
+        isMe: false,
+        type: 'text' as const,
+      },
+    ],
+  },
 };
 
 export default function ChatScreen() {
@@ -123,7 +210,7 @@ export default function ChatScreen() {
   const [messages, setMessages] = useState<Message[]>([]);
   const scrollViewRef = useRef<ScrollView>(null);
 
-  const chatData = mockChatData[id as keyof typeof mockChatData];
+  const chatData = id ? mockChatData[id as keyof typeof mockChatData] : null;
 
   useEffect(() => {
     if (chatData) {
@@ -163,7 +250,17 @@ export default function ChatScreen() {
   if (!chatData) {
     return (
       <View style={styles.container}>
-        <Text style={styles.errorText}>Chat not found</Text>
+        <SafeAreaView style={styles.safeArea}>
+          <View style={styles.errorContainer}>
+            <Text style={styles.errorText}>Chat not found</Text>
+            <TouchableOpacity 
+              style={styles.backButton}
+              onPress={() => router.back()}
+            >
+              <Text style={styles.backButtonText}>Go Back</Text>
+            </TouchableOpacity>
+          </View>
+        </SafeAreaView>
       </View>
     );
   }
@@ -177,7 +274,7 @@ export default function ChatScreen() {
         {/* Header */}
         <View style={styles.header}>
           <TouchableOpacity 
-            style={styles.backButton}
+            style={styles.headerBackButton}
             onPress={() => router.back()}
           >
             <ArrowLeft size={24} color="#FFFFFF" />
@@ -295,6 +392,29 @@ const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
   },
+  errorContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
+  },
+  errorText: {
+    color: '#FFFFFF',
+    fontSize: 18,
+    fontWeight: '700',
+    marginBottom: 20,
+  },
+  backButton: {
+    backgroundColor: '#00D4AA',
+    paddingHorizontal: 20,
+    paddingVertical: 12,
+    borderRadius: 16,
+  },
+  backButtonText: {
+    color: '#0A0A0A',
+    fontSize: 16,
+    fontWeight: '800',
+  },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -304,7 +424,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#2A2A2A',
   },
-  backButton: {
+  headerBackButton: {
     padding: 8,
     marginRight: 8,
   },
@@ -471,11 +591,5 @@ const styles = StyleSheet.create({
   },
   sendButtonInactive: {
     backgroundColor: '#2A2A2A',
-  },
-  errorText: {
-    color: '#FFFFFF',
-    fontSize: 16,
-    textAlign: 'center',
-    marginTop: 50,
   },
 });
