@@ -1,5 +1,5 @@
 import { Tabs } from 'expo-router';
-import { MessageCircle, User, Home } from 'lucide-react-native';
+import { MessageCircle, User, Chrome as Home } from 'lucide-react-native';
 import { View, Text, StyleSheet } from 'react-native';
 
 function TabBarIcon({ focused, icon: Icon, label }: { focused: boolean; icon: any; label: string }) {
