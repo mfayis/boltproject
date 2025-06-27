@@ -89,7 +89,7 @@ export default function ResultCard({ result }: ResultCardProps) {
             </View>
             <View style={styles.winnerRight}>
               <View style={styles.xpBadge}>
-                <Zap size={12} color="#FFD700" fill="#FFD700" />
+                <Trophy size={12} color="#FFD700" fill="#FFD700" />
                 <Text style={styles.xpText}>{winner.xp}</Text>
               </View>
             </View>
