@@ -9,7 +9,7 @@ import {
   SafeAreaView,
   Image,
 } from 'react-native';
-import { Search, Filter, Zap, Users, Clock, Star } from 'lucide-react-native';
+import { Search, Filter, IndianRupee, Users, Clock, Star } from 'lucide-react-native';
 
 const categories = [
   { id: 'all', name: 'All', icon: '🌟', color: '#00D4AA' },
@@ -158,7 +158,7 @@ export default function ChallengesPage() {
                       <Text style={styles.statText}>{challenge.timeRemaining}</Text>
                     </View>
                     <View style={styles.xpBadge}>
-                      <Zap size={12} color="#00D4AA" fill="#00D4AA" />
+                      <IndianRupee size={12} color="#00D4AA" fill="#00D4AA" />
                       <Text style={styles.xpText}>{challenge.xpReward} XP</Text>
                     </View>
                   </View>
