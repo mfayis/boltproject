@@ -101,7 +101,7 @@ export default function ProfilePage() {
                 <Text style={styles.name}>{mockUserData.name}</Text>
                 <View style={styles.rankContainer}>
                   <Phone size={16} color="#FFD700" fill="#FFD700" />
-                  <Text style={styles.rank}>Rank #{mockUserData.rank}</Text>
+                  <Text style={styles.rank}>9539692702</Text>
                 </View>
               </View>
               <View style={styles.streakContainer}>
