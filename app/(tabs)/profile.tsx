@@ -104,7 +104,6 @@ export default function ProfilePage() {
                 </View>
               </View>
               <View style={styles.streakContainer}>
-                <Flame size={20} color="#FF9500" fill="#FF9500" />
                 <Trophy size={24} color="#FF9500" fill="#FF9500" />
                 <Text style={styles.streakNumber}>7</Text>
                 <Text style={styles.streakLabel}>day streak</Text>
