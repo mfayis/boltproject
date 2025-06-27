@@ -82,9 +82,6 @@ export default function ProfilePage() {
             <Text style={styles.title}>Profile 👤</Text>
             <Text style={styles.subtitle}>Your quest journey</Text>
           </View>
-          <TouchableOpacity style={styles.settingsButton}>
-            <Settings size={24} color="#00D4AA" />
-          </TouchableOpacity>
         </View>
 
         <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
