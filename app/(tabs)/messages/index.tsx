@@ -9,7 +9,7 @@ import {
   Image,
   TextInput,
 } from 'react-native';
-import { Search, Users, Zap, MessageCircle } from 'lucide-react-native';
+import { Search, Users, IndianRupee, MessageCircle } from 'lucide-react-native';
 import { router } from 'expo-router';
 
 const mockGroupChats = [
@@ -158,7 +158,7 @@ export default function MessagesPage() {
 
                 <View style={styles.chatFooter}>
                   <View style={styles.xpBadge}>
-                    <Zap size={12} color="#00D4AA" fill="#00D4AA" />
+                    <IndianRupee size={12} color="#00D4AA" fill="#00D4AA" />
                     <Text style={styles.xpText}>{chat.xpReward} XP</Text>
                   </View>
                   <MessageCircle size={14} color="#6B7280" />
