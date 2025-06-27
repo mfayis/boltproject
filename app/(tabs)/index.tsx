@@ -113,7 +113,7 @@ export default function ChallengesPage() {
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.header}>
           <View>
-            <Text style={styles.title}>Quest Board 🎯</Text>
+            <Text style={styles.title}>No Games 🎯</Text>
             <Text style={styles.subtitle}>Choose your next adventure</Text>
           </View>
           <TouchableOpacity style={styles.filterButton}>
