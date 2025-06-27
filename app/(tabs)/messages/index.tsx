@@ -129,10 +129,7 @@ export default function MessagesPage() {
               <View style={styles.chatImageContainer}>
                 <Image source={{ uri: chat.image }} style={styles.chatImage} />
         
-                <View style={styles.participantsBadge}>
-                  <Users size={10} color="#0A0A0A" />
-                  <Text style={styles.participantsText}>{chat.participants}</Text>
-                </View>
+               
               </View>
               
               <View style={styles.chatContent}>
