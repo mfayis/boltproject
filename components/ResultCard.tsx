@@ -93,7 +93,6 @@ export default function ResultCard({ result }: ResultCardProps) {
                 <Text style={styles.xpText}>{winner.xp}</Text>
               </View>
             </View>
-            
           </View>
         ))}
       </View>
