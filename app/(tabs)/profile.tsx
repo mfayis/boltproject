@@ -110,17 +110,7 @@ export default function ProfilePage() {
               </View>
             </View>
 
-            {/* XP Progress */}
-            <View style={styles.xpSection}>
-              <View style={styles.xpHeader}>
-                <Text style={styles.xpTitle}>Level Progress</Text>
-                <Text style={styles.xpText}>{mockUserData.xp} / {mockUserData.xp + mockUserData.xpToNext} XP</Text>
-              </View>
-              <View style={styles.progressBar}>
-                <View style={[styles.progressFill, { width: `${progressPercentage}%` }]} />
-              </View>
-              <Text style={styles.xpToNext}>{mockUserData.xpToNext} XP to Level {mockUserData.level + 1}</Text>
-            </View>
+           
           </View>
           
          
