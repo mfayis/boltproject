@@ -79,7 +79,7 @@ export default function ProfilePage() {
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.header}>
           <View>
-            <Text style={styles.title}>Profile </Text>
+            <Text style={styles.title}>Profile 👤</Text>
             <Text style={styles.subtitle}>Your quest journey</Text>
           </View>
         </View>
@@ -136,7 +136,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 28,
     fontWeight: '800',
-    color: '#FFFFFF',
+    color: '#00D4AA',
     marginBottom: 4,
   },
   subtitle: {
