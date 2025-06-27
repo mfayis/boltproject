@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   profileCard: {
-    backgroundColor: '#232046',
+    backgroundColor: '#1A1A1A',
     marginHorizontal: 20,
     marginBottom: 20,
     borderRadius: 20,
