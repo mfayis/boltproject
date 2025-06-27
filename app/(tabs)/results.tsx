@@ -310,7 +310,7 @@ const styles = StyleSheet.create({
   },
   activeFilterTab: {
     backgroundColor: '#2D254D',
-    borderColor: '#A084E8',
+    borderColor: '#00D4AA',
   },
   filterText: {
     fontSize: 12,
