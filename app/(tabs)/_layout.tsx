@@ -10,9 +10,7 @@ function TabBarIcon({ focused, icon: Icon, label }: { focused: boolean; icon: an
         color={focused ? '#FFFFFF' : '#6B7280'} 
         strokeWidth={focused ? 2.5 : 2}
       />
-      {focused && (
-        <Text style={styles.activeTabLabel}>{label}</Text>
-      )}
+      <Text style={focused ? styles.activeTabLabel : styles.inactiveTabLabel}>{label}</Text>
     </View>
   );
 }
@@ -37,7 +35,7 @@ export default function TabLayout() {
         tabBarInactiveTintColor: '#6B7280',
       }}>
       <Tabs.Screen
-        name="challenges"
+        name="index"
         options={{
           title: 'Home',
           tabBarIcon: ({ focused }) => (
@@ -48,27 +46,27 @@ export default function TabLayout() {
       <Tabs.Screen
         name="messages"
         options={{
-          title: 'DMs',
+          title: 'messages',
           tabBarIcon: ({ focused }) => (
-            <TabBarIcon focused={focused} icon={MessageCircle} label="DMs" />
+            <TabBarIcon focused={focused} icon={MessageCircle} label="messages" />
           ),
         }}
       />
       <Tabs.Screen
         name="results"
         options={{
-          title: 'Activity',
+          title: 'results',
           tabBarIcon: ({ focused }) => (
-            <TabBarIcon focused={focused} icon={Award} label="Activity" />
+            <TabBarIcon focused={focused} icon={Award} label="results" />
           ),
         }}
       />
       <Tabs.Screen
         name="profile"
         options={{
-          title: 'More',
+          title: 'profile',
           tabBarIcon: ({ focused }) => (
-            <TabBarIcon focused={focused} icon={User} label="More" />
+            <TabBarIcon focused={focused} icon={User} label="profile" />
           ),
         }}
       />
@@ -78,14 +76,13 @@ export default function TabLayout() {
 
 const styles = StyleSheet.create({
   tabContainer: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     alignItems: 'center',
+    justifyContent: 'center',
     paddingHorizontal: 18,
     paddingVertical: 10,
     borderRadius: 25,
     minWidth: 50,
-    justifyContent: 'center',
-    transition: 'all 0.2s ease',
   },
   activeTabContainer: {
     backgroundColor: '#E91E63',
@@ -101,9 +98,16 @@ const styles = StyleSheet.create({
   },
   activeTabLabel: {
     color: '#FFFFFF',
-    fontSize: 15,
+    fontSize: 13,
     fontWeight: '700',
-    marginLeft: 10,
+    marginTop: 6,
+    letterSpacing: 0.5,
+  },
+  inactiveTabLabel: {
+    color: '#6B7280',
+    fontSize: 13,
+    fontWeight: '700',
+    marginTop: 6,
     letterSpacing: 0.5,
   },
 });
