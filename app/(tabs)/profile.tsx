@@ -249,7 +249,7 @@ const styles = StyleSheet.create({
   },
   streakContainer: {
     alignItems: 'center',
-    backgroundColor: '#FFD700',
+    backgroundColor: '#2A2A2A',
     paddingHorizontal: 12,
     paddingVertical: 8,
     borderRadius: 16,
