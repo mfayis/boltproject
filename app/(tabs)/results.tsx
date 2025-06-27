@@ -212,8 +212,6 @@ export default function ResultsPage() {
             <TextInput
               style={styles.searchInput}
               placeholder="Search quests..."
-              value={searchText}
-              onChangeText={setSearchText}
               placeholderTextColor="#6B7280"
             />
           </View>
