@@ -144,7 +144,7 @@ export default function MessagesPage() {
                   </View>
                 </View>
                 
-                <Text style={styles.questName} numberOfLines={1}>{chat.questName}</Text>
+        
                 
                 <View style={styles.messageRow}>
                   <Text style={styles.lastMessage} numberOfLines={1}>
