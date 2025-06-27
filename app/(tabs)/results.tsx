@@ -204,9 +204,6 @@ export default function ResultsPage() {
             <Text style={styles.title}>Results 🏆</Text>
             <Text style={styles.subtitle}>See how you stack up!</Text>
           </View>
-          <TouchableOpacity style={styles.calendarButton}>
-            <Calendar size={24} color="#00D4AA" />
-          </TouchableOpacity>
         </View>
 
         {/* Filter Options */}
