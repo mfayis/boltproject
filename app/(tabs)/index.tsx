@@ -157,7 +157,10 @@ export default function ChallengesPage() {
                       <Clock size={14} color="#6B7280" />
                       <Text style={styles.statText}>{challenge.timeRemaining}</Text>
                     </View>
-                    
+                    <View style={styles.xpBadge}>
+                      <Zap size={12} color="#00D4AA" fill="#00D4AA" />
+                      <Text style={styles.xpText}>{challenge.xpReward} XP</Text>
+                    </View>
                   </View>
 
                   <TouchableOpacity 
