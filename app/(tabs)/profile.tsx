@@ -102,7 +102,6 @@ export default function ProfilePage() {
                   <Crown size={16} color="#FFD700" fill="#FFD700" />
                   <Text style={styles.rank}>Rank #{mockUserData.rank}</Text>
                 </View>
-                
               </View>
               <View style={styles.streakContainer}>
                 <Trophy size={20} color="#FF9500" fill="#FFD700" />
