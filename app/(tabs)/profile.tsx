@@ -107,7 +107,7 @@ export default function ProfilePage() {
               <View style={styles.streakContainer}>
                 <Trophy size={20} color="#FF9500" fill="#FFD700" />
                 <Text style={styles.streakNumber}>7</Text>
-                <Text style={styles.streakLabel}>TWins</Text>
+                <Text style={styles.streakLabel}>Tropies</Text>
               </View>
             </View>
 
