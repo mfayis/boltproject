@@ -7,8 +7,9 @@ import {
   TouchableOpacity,
   SafeAreaView,
   Image,
+  TextInput,
 } from 'react-native';
-import { Trophy, Medal, Award, Calendar, IndianRupee, Crown, Star, Target } from 'lucide-react-native';
+import { Trophy, Medal, Award, Calendar, IndianRupee, Crown, Star, Target, Search } from 'lucide-react-native';
 import ResultCard from '../../components/ResultCard';
 
 const mockLeaderboard = [
@@ -104,6 +105,7 @@ const filterOptions = ['This Week', 'This Month', 'This Year'];
 
 export default function ResultsPage() {
   const [activeFilter, setActiveFilter] = useState('This Week');
+  const [searchText, setSearchText] = useState('');
 
   const mockResults = [
   {
