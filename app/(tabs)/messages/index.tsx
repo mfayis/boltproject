@@ -97,7 +97,7 @@ export default function MessagesPage() {
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.header}>
           <View>
-            <Text style={styles.title}>No Games</Text>
+            <Text style={styles.title}>No Messages</Text>
             <Text style={styles.subtitle}>{mockGroupChats.length} active groups</Text>
           </View>
           <TouchableOpacity style={styles.searchButton}>
