@@ -159,7 +159,7 @@ export default function MessagesPage() {
                 <View style={styles.chatFooter}>
                   <View style={styles.xpBadge}>
                     <IndianRupee size={12} color="#00D4AA" fill="#00D4AA" />
-                    <Text style={styles.xpText}>{chat.xpReward} XP</Text>
+                    <Text style={styles.xpText}>{chat.xpReward}</Text>
                   </View>
                   <MessageCircle size={14} color="#6B7280" />
                 </View>
