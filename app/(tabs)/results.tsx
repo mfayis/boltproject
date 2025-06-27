@@ -214,7 +214,6 @@ export default function ResultsPage() {
               placeholder="Search quests..."
               value={searchText}
               onChangeText={setSearchText}
-              
               placeholderTextColor="#6B7280"
             />
           </View>
