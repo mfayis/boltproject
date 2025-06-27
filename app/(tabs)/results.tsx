@@ -245,7 +245,7 @@ export default function ResultsPage() {
             <View style={styles.statCard}>
               <Award size={28} color="#FF4757" />
               <Text style={styles.statNumber}>2.4K</Text>
-              <Text style={styles.statLabel}>P</Text>
+              <Text style={styles.statLabel}>PRIZES</Text>
             </View>
           </View>
 
