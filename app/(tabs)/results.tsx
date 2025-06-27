@@ -8,7 +8,7 @@ import {
   SafeAreaView,
   Image,
 } from 'react-native';
-import { Trophy, Medal, Award, Calendar, CircleDollarSign, Crown, Star, Target } from 'lucide-react-native';
+import { Trophy, Medal, Award, Calendar, IndianRupee, Crown, Star, Target } from 'lucide-react-native';
 import ResultCard from '../../components/ResultCard';
 
 const mockLeaderboard = [
@@ -233,7 +233,7 @@ export default function ResultsPage() {
           {/* Stats Cards */}
           <View style={styles.statsSection}>
             <View style={styles.statCard}>
-              <CircleDollarSign size={28} color="#FFD700" />
+              <IndianRupee size={28} color="#FFD700" />
               <Text style={styles.statNumber}>12</Text>
               <Text style={styles.statLabel}>TROPIES</Text>
             </View>
