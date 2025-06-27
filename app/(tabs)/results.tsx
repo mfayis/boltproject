@@ -201,7 +201,7 @@ export default function ResultsPage() {
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.header}>
           <View>
-            <Text style={styles.title}>Leaderboard 🏆</Text>
+            <Text style={styles.title}>Results 🏆</Text>
             <Text style={styles.subtitle}>See how you stack up!</Text>
           </View>
           <TouchableOpacity style={styles.calendarButton}>
