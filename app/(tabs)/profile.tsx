@@ -18,7 +18,8 @@ import {
   Star,
   Zap,
   Flame,
-  Crown
+  Crown,
+  Phone
 } from 'lucide-react-native';
 
 const mockUserData = {
@@ -99,7 +100,7 @@ export default function ProfilePage() {
               <View style={styles.profileInfo}>
                 <Text style={styles.name}>{mockUserData.name}</Text>
                 <View style={styles.rankContainer}>
-                  <Crown size={16} color="#FFD700" fill="#FFD700" />
+                  <Phone size={16} color="#FFD700" fill="#FFD700" />
                   <Text style={styles.rank}>Rank #{mockUserData.rank}</Text>
                 </View>
               </View>
