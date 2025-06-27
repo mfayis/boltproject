@@ -104,7 +104,7 @@ export default function ProfilePage() {
                 </View>
               </View>
               <View style={styles.streakContainer}>
-                <Flame size={20} color="#FF9500" fill="#FF9500" />
+                <Trophy size={20} color="#FFD700" fill="#FFD700" />
                 <Text style={styles.streakNumber}>7</Text>
                 <Text style={styles.streakLabel}>day streak</Text>
               </View>
@@ -123,6 +123,24 @@ export default function ProfilePage() {
             </View>
           </View>
 
+          {/* Stats Grid */}
+          <View style={styles.statsGrid}>
+            <View style={styles.statCard}>
+              <Trophy size={24} color="#FFD700" fill="#FFD700" />
+              <Text style={styles.statNumber}>{mockUserData.completedQuests}</Text>
+              <Text style={styles.statLabel}>Completed</Text>
+            </View>
+            <View style={styles.statCard}>
+              <Target size={24} color="#00D4AA" />
+              <Text style={styles.statNumber}>{mockUserData.winRate}%</Text>
+              <Text style={styles.statLabel}>Success Rate</Text>
+            </View>
+            <View style={styles.statCard}>
+              <Zap size={24} color="#FF6B6B" fill="#FF6B6B" />
+              <Text style={styles.statNumber}>{mockUserData.xp}</Text>
+              <Text style={styles.statLabel}>Total XP</Text>
+            </View>
+          </View>
           
          
         </ScrollView>
