@@ -239,13 +239,13 @@ export default function ResultsPage() {
             </View>
             <View style={styles.statCard}>
               <IndianRupee size={28} color="#00D4AA" />
-              <Text style={styles.statNumber}>8</Text>
-              <Text style={styles.statLabel}>PLAYERS</Text>
+              <Text style={styles.statNumber}>5.2K</Text>
+              <Text style={styles.statLabel}>PRIZES</Text>
             </View>
             <View style={styles.statCard}>
               <Award size={28} color="#FF4757" />
-              <Text style={styles.statNumber}>2.4K</Text>
-              <Text style={styles.statLabel}>PRIZES</Text>
+              <Text style={styles.statNumber}>25</Text>
+              <Text style={styles.statLabel}>PLAYERS</Text>
             </View>
           </View>
 
