@@ -139,16 +139,7 @@ export default function ChallengesPage() {
               <TouchableOpacity key={challenge.id} style={styles.challengeCard}>
                 <View style={styles.challengeImageContainer}>
                   <Image source={{ uri: challenge.image }} style={styles.challengeImage} />
-                  <View style={styles.difficultyBadge}>
-                    <Star
-                      size={12}
-                      color="#0A0A0A"
-                      fill={getDifficultyColor(challenge.difficulty)}
-                    />
-                    <Text style={[styles.difficultyText, { color: '#0A0A0A' }]}>
-                      {challenge.difficulty}
-                    </Text>
-                  </View>
+                  
                 </View>
                 
                 <View style={styles.challengeContent}>
