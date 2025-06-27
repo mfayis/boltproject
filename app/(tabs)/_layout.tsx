@@ -6,7 +6,7 @@ function TabBarIcon({ focused, icon: Icon, label }: { focused: boolean; icon: an
   return (
     <View style={[styles.tabContainer, focused && styles.activeTabContainer]}>
       <Icon 
-        size={22} 
+        size={20} 
         color={focused ? '#FFFFFF' : '#6B7280'} 
         strokeWidth={focused ? 2.5 : 2}
       />
@@ -79,14 +79,14 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: 18,
-    paddingVertical: 10,
-    borderRadius: 25,
-    minWidth: 50,
+    paddingHorizontal: 6,
+    paddingVertical: 4,
+    borderRadius: 20,
+    minWidth: 36,
   },
   activeTabContainer: {
     backgroundColor: '#E91E63',
-    paddingHorizontal: 24,
+    paddingHorizontal: 12,
     shadowColor: '#E91E63',
     shadowOffset: {
       width: 0,
@@ -98,16 +98,16 @@ const styles = StyleSheet.create({
   },
   activeTabLabel: {
     color: '#FFFFFF',
-    fontSize: 13,
+    fontSize: 11,
     fontWeight: '700',
-    marginTop: 6,
+    marginTop: 3,
     letterSpacing: 0.5,
   },
   inactiveTabLabel: {
     color: '#6B7280',
-    fontSize: 13,
+    fontSize: 11,
     fontWeight: '700',
-    marginTop: 6,
+    marginTop: 3,
     letterSpacing: 0.5,
   },
 });
