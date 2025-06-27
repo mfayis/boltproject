@@ -307,6 +307,27 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: '#2D254D',
   },
+  searchContainer: {
+    paddingHorizontal: 20,
+    paddingBottom: 16,
+  },
+  searchBar: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#1A1A1A',
+    borderRadius: 16,
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    borderWidth: 2,
+    borderColor: '#2A2A2A',
+  },
+  searchInput: {
+    flex: 1,
+    fontSize: 16,
+    color: '#FFFFFF',
+    marginLeft: 12,
+    fontWeight: '500',
+  },
   filterContainer: {
     flexDirection: 'row',
     paddingHorizontal: 20,
