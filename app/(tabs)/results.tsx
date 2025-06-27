@@ -318,7 +318,7 @@ const styles = StyleSheet.create({
     color: '#B8B8D1',
   },
   activeFilterText: {
-    color: '#A084E8',
+    color: '#00D4AA',
   },
   content: {
     flex: 1,
