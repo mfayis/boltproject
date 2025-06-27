@@ -159,7 +159,7 @@ export default function ChallengesPage() {
                     </View>
                     <View style={styles.xpBadge}>
                       <IndianRupee size={12} color="#00D4AA" fill="#00D4AA" />
-                      <Text style={styles.xpText}>{challenge.xpReward} XP</Text>
+                      <Text style={styles.xpText}>{challenge.xpReward}</Text>
                     </View>
                   </View>
 
