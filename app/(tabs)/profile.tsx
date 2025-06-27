@@ -152,7 +152,7 @@ export default function ProfilePage() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#0A0A0A',
+    backgroundColor: '#18122B',
   },
   safeArea: {
     flex: 1,
@@ -173,26 +173,26 @@ const styles = StyleSheet.create({
   subtitle: {
     fontSize: 16,
     fontWeight: '500',
-    color: '#9CA3AF',
+    color: '#B8B8D1',
   },
   settingsButton: {
     padding: 12,
-    backgroundColor: '#1A1A1A',
+    backgroundColor: '#232046',
     borderRadius: 16,
     borderWidth: 2,
-    borderColor: '#2A2A2A',
+    borderColor: '#2D254D',
   },
   content: {
     flex: 1,
   },
   profileCard: {
-    backgroundColor: '#1A1A1A',
+    backgroundColor: '#232046',
     marginHorizontal: 20,
     marginBottom: 20,
     borderRadius: 20,
     padding: 20,
     borderWidth: 2,
-    borderColor: '#2A2A2A',
+    borderColor: '#2D254D',
   },
   profileHeader: {
     flexDirection: 'row',
@@ -313,12 +313,12 @@ const styles = StyleSheet.create({
   },
   statCard: {
     flex: 1,
-    backgroundColor: '#1A1A1A',
+    backgroundColor: '#232046',
     padding: 16,
     borderRadius: 16,
     alignItems: 'center',
     borderWidth: 2,
-    borderColor: '#2A2A2A',
+    borderColor: '#2D254D',
   },
   statNumber: {
     fontSize: 20,
@@ -364,16 +364,16 @@ const styles = StyleSheet.create({
   },
   achievementCard: {
     width: '48%',
-    backgroundColor: '#1A1A1A',
+    backgroundColor: '#232046',
     padding: 16,
     borderRadius: 16,
     alignItems: 'center',
     borderWidth: 2,
-    borderColor: '#2A2A2A',
+    borderColor: '#2D254D',
   },
   lockedAchievement: {
-    backgroundColor: '#1A1A1A',
-    borderColor: '#2A2A2A',
+    backgroundColor: '#232046',
+    borderColor: '#2D254D',
   },
   achievementIconContainer: {
     width: 48,
@@ -401,12 +401,12 @@ const styles = StyleSheet.create({
   activityItem: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#1A1A1A',
+    backgroundColor: '#232046',
     padding: 16,
     borderRadius: 16,
     marginBottom: 12,
     borderWidth: 2,
-    borderColor: '#2A2A2A',
+    borderColor: '#2D254D',
   },
   activityIcon: {
     marginRight: 16,
@@ -459,12 +459,12 @@ const styles = StyleSheet.create({
   friendsButton: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#1A1A1A',
+    backgroundColor: '#232046',
     paddingHorizontal: 20,
     paddingVertical: 16,
     borderRadius: 16,
     borderWidth: 2,
-    borderColor: '#2A2A2A',
+    borderColor: '#2D254D',
   },
   friendsButtonText: {
     fontSize: 16,
@@ -473,13 +473,13 @@ const styles = StyleSheet.create({
     marginLeft: 8,
   },
   motivationCard: {
-    backgroundColor: '#1A1A1A',
+    backgroundColor: '#232046',
     marginHorizontal: 20,
     marginBottom: 32,
     borderRadius: 20,
     overflow: 'hidden',
     borderWidth: 2,
-    borderColor: '#2A2A2A',
+    borderColor: '#2D254D',
   },
   motivationImage: {
     width: '100%',

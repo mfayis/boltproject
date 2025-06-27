@@ -266,10 +266,11 @@ export default function ResultsPage() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#0A0A0A',
+    backgroundColor: '#18122B',
   },
   safeArea: {
     flex: 1,
+    backgroundColor: '#18122B',
   },
   header: {
     flexDirection: 'row',
@@ -287,14 +288,14 @@ const styles = StyleSheet.create({
   subtitle: {
     fontSize: 16,
     fontWeight: '500',
-    color: '#9CA3AF',
+    color: '#B8B8D1',
   },
   calendarButton: {
     padding: 12,
-    backgroundColor: '#1A1A1A',
+    backgroundColor: '#232046',
     borderRadius: 16,
     borderWidth: 2,
-    borderColor: '#2A2A2A',
+    borderColor: '#2D254D',
   },
   filterContainer: {
     flexDirection: 'row',
@@ -306,21 +307,21 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 8,
     borderRadius: 20,
-    backgroundColor: '#1A1A1A',
+    backgroundColor: '#232046',
     borderWidth: 2,
-    borderColor: '#2A2A2A',
+    borderColor: '#2D254D',
   },
   activeFilterTab: {
-    backgroundColor: '#2A2A2A',
-    borderColor: '#00D4AA',
+    backgroundColor: '#2D254D',
+    borderColor: '#A084E8',
   },
   filterText: {
     fontSize: 12,
     fontWeight: '700',
-    color: '#9CA3AF',
+    color: '#B8B8D1',
   },
   activeFilterText: {
-    color: '#00D4AA',
+    color: '#A084E8',
   },
   content: {
     flex: 1,
@@ -339,12 +340,12 @@ const styles = StyleSheet.create({
   },
   statCard: {
     flex: 1,
-    backgroundColor: '#1A1A1A',
+    backgroundColor: '#232046',
     padding: 20,
     borderRadius: 16,
     alignItems: 'center',
     borderWidth: 2,
-    borderColor: '#2A2A2A',
+    borderColor: '#2D254D',
   },
   statIcon: {
     marginBottom: 8,
@@ -357,7 +358,7 @@ const styles = StyleSheet.create({
   },
   statLabel: {
     fontSize: 12,
-    color: '#9CA3AF',
+    color: '#B8B8D1',
     fontWeight: '600',
   },
   leaderboardSection: {
@@ -372,12 +373,12 @@ const styles = StyleSheet.create({
   leaderboardItem: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#1A1A1A',
+    backgroundColor: '#232046',
     padding: 16,
     borderRadius: 16,
     marginBottom: 12,
     borderWidth: 1,
-    borderColor: '#2A2A2A',
+    borderColor: '#2D254D',
   },
   rankContainer: {
     width: 40,
@@ -387,7 +388,7 @@ const styles = StyleSheet.create({
   rankNumber: {
     fontSize: 16,
     fontWeight: '800',
-    color: '#9CA3AF',
+    color: '#B8B8D1',
   },
   userAvatar: {
     width: 50,
@@ -395,7 +396,7 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     marginRight: 16,
     borderWidth: 2,
-    borderColor: '#00D4AA',
+    borderColor: '#A084E8',
   },
   userInfo: {
     flex: 1,
@@ -413,7 +414,7 @@ const styles = StyleSheet.create({
   },
   userLevel: {
     fontSize: 12,
-    color: '#9CA3AF',
+    color: '#B8B8D1',
     fontWeight: '600',
   },
   userBadges: {
@@ -443,17 +444,17 @@ const styles = StyleSheet.create({
   streakText: {
     fontSize: 12,
     fontWeight: '700',
-    color: '#FF9500',
+    color: '#FFD700',
   },
   resultsSection: {
     paddingHorizontal: 20,
   },
   resultCard: {
-    backgroundColor: '#1A1A1A',
+    backgroundColor: '#232046',
     borderRadius: 20,
     marginBottom: 20,
     borderWidth: 2,
-    borderColor: '#2A2A2A',
+    borderColor: '#2D254D',
     overflow: 'hidden',
   },
   resultImage: {
@@ -471,7 +472,7 @@ const styles = StyleSheet.create({
   },
   resultDate: {
     fontSize: 14,
-    color: '#9CA3AF',
+    color: '#B8B8D1',
     marginBottom: 16,
   },
   resultStats: {
@@ -484,7 +485,7 @@ const styles = StyleSheet.create({
   },
   resultStatLabel: {
     fontSize: 12,
-    color: '#9CA3AF',
+    color: '#B8B8D1',
     marginBottom: 8,
     fontWeight: '600',
   },
@@ -492,16 +493,17 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 6,
     borderRadius: 16,
+    backgroundColor: '#A084E8',
   },
   rankBadgeText: {
-    color: '#0A0A0A',
+    color: '#18122B',
     fontSize: 14,
     fontWeight: '800',
   },
   xpBadge: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#2A2A2A',
+    backgroundColor: '#2D254D',
     paddingHorizontal: 12,
     paddingVertical: 6,
     borderRadius: 16,
@@ -509,12 +511,12 @@ const styles = StyleSheet.create({
   xpText: {
     fontSize: 14,
     fontWeight: '800',
-    color: '#00D4AA',
+    color: '#A084E8',
     marginLeft: 4,
   },
   winnersSection: {
     borderTopWidth: 1,
-    borderTopColor: '#2A2A2A',
+    borderTopColor: '#2D254D',
     paddingTop: 16,
   },
   winnersTitle: {
@@ -536,7 +538,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     marginBottom: 4,
     borderWidth: 2,
-    borderColor: '#00D4AA',
+    borderColor: '#A084E8',
   },
   winnerName: {
     fontSize: 12,

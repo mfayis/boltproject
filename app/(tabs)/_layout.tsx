@@ -10,7 +10,13 @@ function TabBarIcon({ focused, icon: Icon, label }: { focused: boolean; icon: an
         color={focused ? '#FFFFFF' : '#6B7280'} 
         strokeWidth={focused ? 2.5 : 2}
       />
-      <Text style={focused ? styles.activeTabLabel : styles.inactiveTabLabel}>{label}</Text>
+      <Text
+        style={focused ? styles.activeTabLabel : styles.inactiveTabLabel}
+        numberOfLines={1}
+        ellipsizeMode="tail"
+      >
+        {label}
+      </Text>
     </View>
   );
 }
@@ -21,7 +27,7 @@ export default function TabLayout() {
       screenOptions={{
         headerShown: false,
         tabBarStyle: {
-          backgroundColor: '#0A0A0A',
+          backgroundColor: '#232046',
           borderTopWidth: 0,
           paddingBottom: 25,
           paddingTop: 20,
@@ -79,14 +85,17 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: 6,
-    paddingVertical: 4,
-    borderRadius: 20,
-    minWidth: 36,
+    paddingHorizontal: 10,
+    paddingVertical: 8,
+    borderRadius: 32,
+    minWidth: 60,
+    minHeight: 64,
   },
   activeTabContainer: {
-    backgroundColor: '#E91E63',
-    paddingHorizontal: 12,
+    backgroundColor: '#A084E8',
+    paddingHorizontal: 22,
+    paddingVertical: 14,
+    borderRadius: 32,
     shadowColor: '#E91E63',
     shadowOffset: {
       width: 0,
@@ -98,16 +107,24 @@ const styles = StyleSheet.create({
   },
   activeTabLabel: {
     color: '#FFFFFF',
-    fontSize: 11,
+    fontSize: 13,
     fontWeight: '700',
-    marginTop: 3,
+    marginTop: 6,
     letterSpacing: 0.5,
+    textAlign: 'center',
+    width: '100%',
+    maxWidth: 70,
+    alignSelf: 'center',
   },
   inactiveTabLabel: {
-    color: '#6B7280',
-    fontSize: 11,
+    color: '#B8B8D1',
+    fontSize: 13,
     fontWeight: '700',
-    marginTop: 3,
+    marginTop: 6,
     letterSpacing: 0.5,
+    textAlign: 'center',
+    width: '100%',
+    maxWidth: 70,
+    alignSelf: 'center',
   },
 });
