@@ -206,6 +206,19 @@ export default function ResultsPage() {
           </View>
         </View>
 
+          <View style={styles.searchContainer}>
+          <View style={styles.searchBar}>
+            <Search size={20} color="#6B7280" />
+            <TextInput
+              style={styles.searchInput}
+              placeholder="Search quests..."
+              value={searchText}
+              onChangeText={setSearchText}
+              placeholderTextColor="#6B7280"
+            />
+          </View>
+        </View>
+
         {/* Filter Options */}
         <View style={styles.filterContainer}>
           {filterOptions.map((filter) => (
