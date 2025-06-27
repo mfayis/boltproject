@@ -104,7 +104,7 @@ export default function ResultCard({ result }: ResultCardProps) {
           <Text style={styles.participantText}>{result.participants} participants</Text>
         </View>
         <TouchableOpacity style={styles.certificateButton}>
-          <Text style={styles.certificateText}>VIEW CERTIFICATE</Text>
+          <Text style={styles.certificateText}>VIEW PARTICIPANTS</Text>
         </TouchableOpacity>
       </View>
     </View>
