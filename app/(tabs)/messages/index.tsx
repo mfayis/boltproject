@@ -8,7 +8,6 @@ import {
   SafeAreaView,
   Image,
   TextInput,
-  MessageSquare,
 } from 'react-native';
 import { Search, Users, Zap, MessageCircle } from 'lucide-react-native';
 import { router } from 'expo-router';
