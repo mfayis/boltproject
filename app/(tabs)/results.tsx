@@ -337,7 +337,7 @@ const styles = StyleSheet.create({
   },
   statCard: {
     flex: 1,
-    backgroundColor: '#232046',
+    backgroundColor: '#1A1A1A',
     padding: 20,
     borderRadius: 16,
     alignItems: 'center',
