@@ -107,7 +107,6 @@ export default function ProfilePage() {
                 <Trophy size={20} color="#FFD700" fill="#FFD700" />
                 <Text style={styles.streakNumber}>7</Text>
                 <Text style={styles.streakLabel}>day streak</Text>
-                
               </View>
             </View>
 
