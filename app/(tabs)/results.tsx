@@ -238,12 +238,12 @@ export default function ResultsPage() {
               <Text style={styles.statLabel}>TROPIES</Text>
             </View>
             <View style={styles.statCard}>
-              <Award size={28} color="#00D4AA" />
+              <IndianRupee size={28} color="#00D4AA" />
               <Text style={styles.statNumber}>8</Text>
               <Text style={styles.statLabel}>PLAYERS</Text>
             </View>
             <View style={styles.statCard}>
-              <IndianRupee size={28} color="#FF4757" />
+              <Award size={28} color="#FF4757" />
               <Text style={styles.statNumber}>2.4K</Text>
               <Text style={styles.statLabel}>points</Text>
             </View>
