@@ -128,7 +128,7 @@ export default function MessagesPage() {
             >
               <View style={styles.chatImageContainer}>
                 <Image source={{ uri: chat.image }} style={styles.chatImage} />
-                <View style={[styles.onlineIndicator, { backgroundColor: chat.isOnline ? '#00D4AA' : '#6B7280' }]} />
+        
                 <View style={styles.participantsBadge}>
                   <Users size={10} color="#0A0A0A" />
                   <Text style={styles.participantsText}>{chat.participants}</Text>
@@ -248,16 +248,6 @@ const styles = StyleSheet.create({
     height: 56,
     borderRadius: 28,
     backgroundColor: '#2A2A2A',
-  },
-  onlineIndicator: {
-    position: 'absolute',
-    top: 2,
-    right: 2,
-    width: 12,
-    height: 12,
-    borderRadius: 6,
-    borderWidth: 2,
-    borderColor: '#1A1A1A',
   },
   participantsBadge: {
     position: 'absolute',
