@@ -208,7 +208,7 @@ export default function ResultsPage() {
 
         {/* Filter Options */}
         <View style={styles.filterContainer}>
-          {filterOptions.map((filter) => (
+          {filterOpt          ions.map((filter) => (
             <TouchableOpacity
               key={filter}
               style={[
