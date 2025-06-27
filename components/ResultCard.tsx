@@ -71,9 +71,6 @@ export default function ResultCard({ result }: ResultCardProps) {
           <Text style={styles.challengeName}>{result.challengeName}</Text>
           <Text style={styles.completedDate}>Completed {formatDate(result.completedDate)}</Text>
         </View>
-        <TouchableOpacity style={styles.shareButton}>
-          <Share size={20} color="#6B7280" />
-        </TouchableOpacity>
       </View>
 
       <View style={styles.winnersSection}>
