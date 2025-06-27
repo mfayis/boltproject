@@ -87,12 +87,7 @@ export default function ResultCard({ result }: ResultCardProps) {
               <Image source={{ uri: winner.avatar }} style={styles.winnerAvatar} />
               <Text style={styles.winnerName}>{winner.name}</Text>
             </View>
-            <View style={styles.winnerRight}>
-              <View style={styles.xpBadge}>
-                <Zap size={12} color="#FFD700" fill="#FFD700" />
-                <Text style={styles.xpText}>{winner.xp}</Text>
-              </View>
-            </View>
+            
           </View>
         ))}
       </View>
