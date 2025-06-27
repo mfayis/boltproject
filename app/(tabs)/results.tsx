@@ -100,7 +100,7 @@ const mockRecentResults = [
   },
 ];
 
-const filterOptions = ['This Week', 'This Month', 'All Time'];
+const filterOptions = ['This Week', 'This Month', 'This Year'];
 
 export default function ResultsPage() {
   const [activeFilter, setActiveFilter] = useState('This Week');
