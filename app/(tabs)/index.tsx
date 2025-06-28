@@ -174,7 +174,7 @@ export default function ChallengesPage() {
                       styles.joinButtonText,
                       challenge.completed && styles.completedButtonText
                     ]}>
-                      {challenge.completed ? 'Completed! 🎉' : 'Start Quest'}
+                      {challenge.completed ? 'Completed! 🎉' : 'Join'}
                     </Text>
                   </TouchableOpacity>
                 </View>
