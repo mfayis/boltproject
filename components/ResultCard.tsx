@@ -209,23 +209,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#2A2A2A',
   },
-  footer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: 20,
-    backgroundColor: '#2A2A2A',
-  },
-  participantInfo: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  participantText: {
-    fontSize: 14,
-    color: '#9CA3AF',
-    marginLeft: 8,
-    fontWeight: '600',
-  },
   certificateButton: {
     backgroundColor: '#00D4AA',
     paddingHorizontal: 14,
