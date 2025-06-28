@@ -236,7 +236,7 @@ const styles = StyleSheet.create({
   },
   certificateButton: {
     backgroundColor: '#00D4AA',
-    paddingHorizontal: 16,
+    paddingHorizontal: 20,
     paddingVertical: 8,
     borderRadius: 12,
   },
