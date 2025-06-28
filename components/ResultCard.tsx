@@ -96,15 +96,7 @@ export default function ResultCard({ result }: ResultCardProps) {
         ))}
       </View>
 
-      <View style={styles.footer}>
-        <View style={styles.participantInfo}>
-          <Users size={16} color="#6B7280" />
-          <Text style={styles.participantText}>{result.participants} participants</Text>
-        </View>
-        <TouchableOpacity style={styles.certificateButton}>
-          <Text style={styles.certificateText}>VIEW PARTICIPANTS</Text>
-        </TouchableOpacity>
-      </View>
+      
     </View>
   );
 }
