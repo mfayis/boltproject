@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import { Search, Filter, IndianRupee, Users, Clock, Star } from 'lucide-react-native';
 import JawgMapView from '../../components/JawgMapView';
+import { useRouter } from 'expo-router';
 
 const categories = [
   { id: 'all', name: 'All', icon: '🌟', color: '#00D4AA' },
@@ -86,6 +87,7 @@ const mockChallenges = [
 export default function ChallengesPage() {
   const [activeCategory, setActiveCategory] = useState('all');
   const [searchText, setSearchText] = useState('');
+  const router = useRouter();
 
   const filteredChallenges = mockChallenges.filter(challenge => {
     const matchesCategory = activeCategory === 'all' || challenge.category === activeCategory;
@@ -138,53 +140,45 @@ export default function ChallengesPage() {
        
 
         <ScrollView style={styles.challengesList} showsVerticalScrollIndicator={false}>
-          <View style={styles.challengesContainer}>
-            {filteredChallenges.map((challenge) => (
-              <TouchableOpacity key={challenge.id} style={styles.challengeCard}>
-                <View style={styles.challengeImageContainer}>
-                  <Image source={{ uri: challenge.image }} style={styles.challengeImage} />
-                  
-                </View>
-                
-                <View style={styles.challengeContent}>
-                  <Text style={styles.challengeTitle}>{challenge.title}</Text>
-                  <Text style={styles.challengeDescription} numberOfLines={2}>
-                    {challenge.description}
-                  </Text>
-                  
-                  <View style={styles.challengeStats}>
-                    <View style={styles.stat}>
-                      <Users size={14} color="#6B7280" />
-                      <Text style={styles.statText}>{formatParticipants(challenge.participants)}</Text>
-                    </View>
-                    <View style={styles.stat}>
-                      <Clock size={14} color="#6B7280" />
-                      <Text style={styles.statText}>{challenge.timeRemaining}</Text>
-                    </View>
-                    <View style={styles.xpBadge}>
+          {filteredChallenges.map((challenge) => (
+            <TouchableOpacity
+              key={challenge.id}
+              style={[styles.challengeItem, challenge.completed && styles.completedChallengeItem]}
+              disabled={challenge.completed}
+              activeOpacity={challenge.completed ? 1 : 0.7}
+              onPress={() => {
+                if (!challenge.completed) {
+                  router.push(`/challenge/${challenge.id}`);
+                }
+              }}
+            >
+              <View style={styles.challengeImageContainerRow}>
+                <Image source={{ uri: challenge.image }} style={styles.challengeImageRow} />
+              </View>
+              <View style={styles.challengeContentRow}>
+                <View style={styles.challengeHeaderRow}>
+                  <Text style={styles.challengeTitleRow} numberOfLines={1}>{challenge.title}</Text>
+                  <View style={styles.statusAndXPRow}>
+                    <View style={styles.xpBadgeRow}>
                       <IndianRupee size={12} color="#00D4AA" fill="#00D4AA" />
-                      <Text style={styles.xpText}>{challenge.xpReward}</Text>
+                      <Text style={styles.xpTextRow}>{challenge.xpReward}</Text>
                     </View>
                   </View>
-
-                  <TouchableOpacity 
-                    style={[
-                      styles.joinButton,
-                      challenge.completed && styles.completedButton
-                    ]}
-                    disabled={challenge.completed}
-                  >
-                    <Text style={[
-                      styles.joinButtonText,
-                      challenge.completed && styles.completedButtonText
-                    ]}>
-                      {challenge.completed ? 'Completed! 🎉' : 'Join 🤠'}
-                    </Text>
-                  </TouchableOpacity>
                 </View>
-              </TouchableOpacity>
-            ))}
-          </View>
+                <Text style={styles.challengeDescriptionRow} numberOfLines={1}>{challenge.description}</Text>
+                <View style={styles.challengeStatsRow}>
+                  <View style={styles.statRow}>
+                    <Users size={12} color="#6B7280" />
+                    <Text style={styles.statTextRow}>{formatParticipants(challenge.participants)}</Text>
+                  </View>
+                  <View style={styles.statRow}>
+                    <Clock size={12} color="#6B7280" />
+                    <Text style={styles.statTextRow}>{challenge.timeRemaining}</Text>
+                  </View>
+                </View>
+              </View>
+            </TouchableOpacity>
+          ))}
         </ScrollView>
       </SafeAreaView>
     </View>
@@ -216,7 +210,7 @@ const styles = StyleSheet.create({
   subtitle: {
     fontSize: 16,
     fontWeight: '500',
-    color: '#B8B8D1',
+    color: '#9CA3AF',
   },
   filterButton: {
     padding: 12,
@@ -412,5 +406,84 @@ const styles = StyleSheet.create({
     backgroundColor: '#18122B',
     borderBottomWidth: 2,
     borderColor: '#2A2A2A',
+  },
+  challengeItem: {
+    flexDirection: 'row',
+    backgroundColor: '#1A1A1A',
+    marginHorizontal: 20,
+    marginBottom: 8,
+    borderRadius: 16,
+    padding: 12,
+    borderWidth: 2,
+    borderColor: '#2A2A2A',
+    alignItems: 'center',
+  },
+  challengeImageContainerRow: {
+    marginRight: 16,
+  },
+  challengeImageRow: {
+    width: 56,
+    height: 56,
+    borderRadius: 16,
+    backgroundColor: '#2A2A2A',
+  },
+  challengeContentRow: {
+    flex: 1,
+  },
+  challengeHeaderRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 2,
+  },
+  challengeTitleRow: {
+    fontSize: 16,
+    fontWeight: '800',
+    color: '#FFFFFF',
+    flex: 1,
+    marginRight: 8,
+  },
+  statusAndXPRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+  },
+  xpBadgeRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#2A2A2A',
+    paddingHorizontal: 8,
+    paddingVertical: 2,
+    borderRadius: 12,
+  },
+  xpTextRow: {
+    fontSize: 12,
+    fontWeight: '800',
+    color: '#00D4AA',
+    marginLeft: 4,
+  },
+  challengeDescriptionRow: {
+    fontSize: 13,
+    color: '#9CA3AF',
+    marginBottom: 2,
+  },
+  challengeStatsRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+  },
+  statRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  statTextRow: {
+    fontSize: 11,
+    color: '#9CA3AF',
+    fontWeight: '600',
+    marginLeft: 4,
+  },
+  completedChallengeItem: {
+    backgroundColor: '#232136', // a muted/darker color for completed
+    opacity: 0.7,
   },
 });
