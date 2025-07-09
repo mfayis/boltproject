@@ -50,6 +50,15 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
+        name="messages"
+        options={{
+          title: 'messages',
+          tabBarIcon: ({ focused }) => (
+            <TabBarIcon focused={focused} icon={MessageCircle} label="messages" />
+          ),
+        }}
+      />
+      <Tabs.Screen
         name="results"
         options={{
           title: 'results',
