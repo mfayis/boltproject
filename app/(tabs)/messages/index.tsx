@@ -98,7 +98,7 @@ export default function MessagesPage() {
         <View style={styles.header}>
           <View>
             <Text style={styles.title}>No Messages 📨</Text>
-            <Text style={styles.subtitle}>{mockGroupChats.length} active groups</Text>
+            <Text style={styles.subtitle}>{mockGroupChats.length}Connect with fellow</Text>
           </View>
           <TouchableOpacity style={styles.searchButton}>
             <Search size={24} color="#00D4AA" />
