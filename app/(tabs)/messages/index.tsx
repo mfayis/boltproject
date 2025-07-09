@@ -8,6 +8,7 @@ import {
   SafeAreaView,
   Image,
   TextInput,
+  Linking,
 } from 'react-native';
 import { Search, Users, IndianRupee, MessageCircle } from 'lucide-react-native';
 import { router } from 'expo-router';
@@ -89,7 +90,7 @@ export default function MessagesPage() {
   );
 
   const handleChatPress = (chatId: string) => {
-    router.push(`/messages/chat/${chatId}`);
+    Linking.openURL('https://www.google.com');
   };
 
   return (
