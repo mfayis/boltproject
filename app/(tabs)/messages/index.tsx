@@ -137,11 +137,7 @@ export default function MessagesPage() {
                 <View style={styles.chatHeader}>
                   <Text style={styles.chatName} numberOfLines={1}>{chat.name}</Text>                
                   <View style={styles.timeAndBadge}>
-                    {chat.unreadCount > 0 && (
-                      <View style={styles.unreadBadge}>
-                        <Text style={styles.unreadText}>{chat.unreadCount}</Text>
-                      </View>
-                    )}
+                   
                   </View>
                 </View>
                 
