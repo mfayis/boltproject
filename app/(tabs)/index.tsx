@@ -112,11 +112,16 @@ export default function ChallengesPage() {
   return (
     <View style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
-        {/* Map Section */}
-        <View style={styles.mapContainer}>
-          <JawgMapView />
+        <View style={styles.header}>
+          <View>
+            <Text style={styles.title}>No Home 🎯</Text>
+            <Text style={styles.subtitle}>discover your next adventure !</Text>
+          </View>
+          <TouchableOpacity style={styles.searchButton}>
+            <Search size={24} color="#00D4AA" />
+          </TouchableOpacity>
         </View>
-
+        
         <View style={styles.searchContainer}>
           <View style={styles.searchBar}>
             <Search size={20} color="#6B7280" />
@@ -173,7 +178,7 @@ export default function ChallengesPage() {
                       styles.joinButtonText,
                       challenge.completed && styles.completedButtonText
                     ]}>
-                      {challenge.completed ? 'Completed! 🎉' : 'Join'}
+                      {challenge.completed ? 'Completed! 🎉' : 'Join 🤠'}
                     </Text>
                   </TouchableOpacity>
                 </View>
@@ -305,6 +310,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 6,
     borderRadius: 16,
+  },
+  searchButton: {
+    padding: 12,
+    backgroundColor: '#1A1A1A',
+    borderRadius: 16,
+    borderWidth: 2,
+    borderColor: '#2A2A2A'
   },
   completedText: {
     color: '#0A0A0A',
