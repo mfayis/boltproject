@@ -10,7 +10,7 @@ import {
   Image,
 } from 'react-native';
 import { Search, Filter, IndianRupee, Users, Clock, Star } from 'lucide-react-native';
-import { WebView } from 'react-native-webview';
+import MapView from '../../components/MapView';
 
 const categories = [
   { id: 'all', name: 'All', icon: '🌟', color: '#00D4AA' },
@@ -114,43 +114,7 @@ export default function ChallengesPage() {
       <SafeAreaView style={styles.safeArea}>
         {/* Map Section */}
         <View style={styles.mapContainer}>
-          <WebView
-            source={{
-              html: `
-                <!DOCTYPE html>
-                <html>
-                <head>
-                  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                  <style>
-                    html, body, #map { height: 100%; margin: 0; padding: 0; }
-                  </style>
-                  <link href='https://unpkg.com/maplibre-gl@3.6.1/dist/maplibre-gl.css' rel='stylesheet' />
-                </head>
-                <body>
-                  <div id="map" style="width:100vw;height:100vh;"></div>
-                  <script src="https://unpkg.com/maplibre-gl@3.6.1/dist/maplibre-gl.js"></script>
-                  <script>
-                    var map = new maplibregl.Map({
-                      container: 'map',
-                      style: 'https://tiles.jawg.io/jawg-streets.json?lang=en&access-token=U6KBGetzPdDmNVhpquQbRStGmsj39unTyg3MGtjUn6jm8na1cVoosOJb7pGCiKQt',
-                      center: [35.51, 33.88],
-                      zoom: 12,
-                      attributionControl: true
-                    });
-                    map.addControl(new maplibregl.NavigationControl());
-                  </script>
-                </body>
-                </html>
-              `
-            }}
-            style={{ height: 250, width: '100%', borderRadius: 0 }}
-            originWhitelist={["*"]}
-            javaScriptEnabled={true}
-            domStorageEnabled={true}
-            scalesPageToFit={true}
-            automaticallyAdjustContentInsets={false}
-            scrollEnabled={false}
-          />
+          <MapView />
         </View>
 
         <View style={styles.searchContainer}>
@@ -433,7 +397,7 @@ const styles = StyleSheet.create({
   mapContainer: {
     width: '100%',
     height: 250,
-    backgroundColor: '#18122B',
+    backgroundColor: '#0A0A0A',
     borderBottomWidth: 2,
     borderColor: '#2A2A2A',
   },
