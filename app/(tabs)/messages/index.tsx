@@ -192,7 +192,7 @@ const styles = StyleSheet.create({
   subtitle: {
     fontSize: 16,
     fontWeight: '500',
-    color: '#9CA3AF',
+    color: '#B8B8D1',
   },
   searchButton: {
     padding: 12,
