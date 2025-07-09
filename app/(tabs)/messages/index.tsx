@@ -136,9 +136,7 @@ export default function MessagesPage() {
               <View style={styles.chatContent}>
                 <View style={styles.chatHeader}>
                   <Text style={styles.chatName} numberOfLines={1}>{chat.name}</Text>                
-                  <View style={styles.timeAndBadge}>
-                   
-                  </View>
+              
                 </View>
                 
         
