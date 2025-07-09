@@ -10,7 +10,7 @@ import {
   Image,
 } from 'react-native';
 import { Search, Filter, IndianRupee, Users, Clock, Star } from 'lucide-react-native';
-import MapView from '../../components/MapView';
+import JawgMapView from '../../components/JawgMapView';
 
 const categories = [
   { id: 'all', name: 'All', icon: '🌟', color: '#00D4AA' },
@@ -114,7 +114,7 @@ export default function ChallengesPage() {
       <SafeAreaView style={styles.safeArea}>
         {/* Map Section */}
         <View style={styles.mapContainer}>
-          <MapView />
+          <JawgMapView />
         </View>
 
         <View style={styles.searchContainer}>
@@ -397,7 +397,7 @@ const styles = StyleSheet.create({
   mapContainer: {
     width: '100%',
     height: 250,
-    backgroundColor: '#0A0A0A',
+    backgroundColor: '#18122B',
     borderBottomWidth: 2,
     borderColor: '#2A2A2A',
   },
