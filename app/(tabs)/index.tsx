@@ -117,7 +117,7 @@ export default function ChallengesPage() {
         <View style={styles.header}>
           <View>
             <Text style={styles.title}>No Home 🎯</Text>
-            <Text style={styles.subtitle}>discover your next adventure !</Text>
+            <Text style={styles.subtitle}>Choose your next adventure !</Text>
           </View>
           <TouchableOpacity style={styles.searchButton}>
             <Search size={24} color="#00D4AA" />
