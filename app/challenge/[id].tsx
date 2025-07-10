@@ -184,7 +184,6 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#B8B8D1',
     fontWeight: '600',
-    marginTop: 2,
   },
   sectionCard: {
     width: '100%',
