@@ -573,8 +573,9 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 20,
     borderBottomWidth: 1,
-    borderBottomColor: '#FFFFFF',
+    borderBottomColor: '#2A2A2A',
     borderRadius: 20,
+    
   },
   locationDropdownItemSelected: {
     backgroundColor: '#00D4AA',
