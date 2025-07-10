@@ -49,7 +49,8 @@ export default function ChallengeDetailPage() {
                 <Text style={styles.statValue}>{challenge.participants}</Text>
                 <Text style={styles.statLabel}>PLAYERS</Text>
               </View>
-              <View style={styles.statCard}> 
+              <View style={styles.statCard}>
+                <Text style={styles.statIcon}>⏰</Text>       
                 <Text style={styles.statValue}>{challenge.timeRemaining}</Text>
                 <Text style={styles.statLabel}>TIME LEFT</Text>
               </View>
@@ -182,7 +183,7 @@ const styles = StyleSheet.create({
     color: '#FFD700',
   },
   statValue: {
-    fontSize: 20,
+    fontSize: 2,
     fontWeight: 'bold',
     color: '#00FFD1',
     marginBottom: 2,
