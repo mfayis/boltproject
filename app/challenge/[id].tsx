@@ -183,6 +183,7 @@ const styles = StyleSheet.create({
     color: '#FFD700',
   },
   statValue: {
+    
     fontSize: 15,
     fontWeight: 'bold',
     color: '#00FFD1',
@@ -190,7 +191,7 @@ const styles = StyleSheet.create({
   },
   statLabel: {
     fontSize: 13,
-    color: '#FFFFFF',
+    color: '#B8B8D1',
     fontWeight: '700',
     marginTop: 2,
     letterSpacing: 1,
