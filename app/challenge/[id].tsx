@@ -165,8 +165,6 @@ const styles = StyleSheet.create({
     borderColor: '#2D254D',
     alignItems: 'center',
     marginHorizontal: 4,
-    paddingVertical: 20,
-    paddingHorizontal: 20,
   },
   statValue: {   
     fontSize: 18,
