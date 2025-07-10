@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, ScrollView, TouchableOpacity, SafeAreaView, Ima
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { IndianRupee, Award, Clock } from 'lucide-react-native';
 
+
 // Mock data (should be replaced with real data source)
 const mockChallenges = [
   {
