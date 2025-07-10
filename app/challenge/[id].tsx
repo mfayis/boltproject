@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, SafeAreaView, Image } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { IndianRupee, Award, Clock } from 'lucide-react-native';
+import { IndianRupee, Award, Clock, MoveLeft } from 'lucide-react-native';
 
 // Mock data (should be replaced with real data source)
 const mockChallenges = [
@@ -37,7 +37,7 @@ export default function ChallengeDetailPage() {
       <SafeAreaView style={styles.safeArea}>
         {/* Back Button */}
         <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
-          <Text style={styles.backButtonIcon}>←</Text>
+          <MoveLeft size={30} />
         </TouchableOpacity>
         <ScrollView contentContainerStyle={styles.contentContainer}>
           <View style={styles.card}>
@@ -98,13 +98,13 @@ const styles = StyleSheet.create({
   },
   backButton: {
     position: 'absolute',
-    top: 18,
+    top: 35,
     left: 18,
     zIndex: 10,
     width: 44,
     height: 44,
     borderRadius: 22,
-    backgroundColor: '#232042',
+    backgroundColor: '#FFFFFF',
     alignItems: 'center',
     justifyContent: 'center',
     shadowColor: '#000',
@@ -112,12 +112,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.15,
     shadowRadius: 4,
     elevation: 3,
-  },
-  backButtonIcon: {
-    fontSize: 22,
-    color: '#00FFD1',
-    fontWeight: '900',
-    marginTop: -2,
   },
   contentContainer: {
     padding: 24,
