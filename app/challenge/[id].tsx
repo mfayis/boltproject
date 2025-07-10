@@ -182,7 +182,7 @@ const styles = StyleSheet.create({
     maxWidth: 120,
   },
   statValue: {   
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: '800',
     color: '#FFFFFF',
     marginBottom: 4,
