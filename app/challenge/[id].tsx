@@ -14,7 +14,7 @@ const mockChallenges = [
     date: '2024-06-10',
     prize: '100',
     participants: 1247,
-    timeRemaining: '2 days',
+    timeRemaining: '2days',
     xpReward: 100,
     completed: false,
   },
