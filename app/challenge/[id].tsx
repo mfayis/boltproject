@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#232042',
     borderRadius: 16,
-    paddingHorizontal: 0, // slightly reduced for fit
+    paddingHorizontal: 2, // slightly reduced for fit
     paddingVertical: 4, // more compact
     marginHorizontal: 0,
     shadowColor: '#000',
