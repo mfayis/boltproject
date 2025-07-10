@@ -3,7 +3,6 @@ import { View, Text, StyleSheet, ScrollView, TouchableOpacity, SafeAreaView, Ima
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { IndianRupee, Award, Clock } from 'lucide-react-native';
 
-
 // Mock data (should be replaced with real data source)
 const mockChallenges = [
   {
@@ -56,6 +55,7 @@ export default function ChallengeDetailPage() {
                 <Text style={styles.statLabel}>TIME LEFT</Text>
               </View>
               <View style={styles.statCard}>
+                <IndianRupee/>
                 <Text style={styles.statIcon}>📅</Text>
                 <Text style={styles.statValue}>{challenge.date}</Text>
                 <Text style={styles.statLabel}>DATE</Text>
