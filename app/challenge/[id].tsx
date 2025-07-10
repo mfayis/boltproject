@@ -175,7 +175,8 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.10,
     shadowRadius: 6,
-    elevation: 3,
+    minWidth: 90,
+    maxWidth: 120,
   },
   statValue: {   
     fontSize: 18,
