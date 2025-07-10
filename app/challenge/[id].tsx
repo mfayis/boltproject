@@ -159,8 +159,7 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
     marginBottom: 10, // less space below
     marginTop: 0, // no extra space above
-    gap: 16,
-    width: '100%',
+    gap: 12,
   },
   statCard: {
     flex: 1,
