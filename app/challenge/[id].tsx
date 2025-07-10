@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, SafeAreaView, Image } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { IndianRupee, Users, Clock } from 'lucide-react-native';
+import { IndianRupee, award, alarm-clock} from 'lucide-react-native';
 
 // Mock data (should be replaced with real data source)
 const mockChallenges = [
