@@ -561,7 +561,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#18122B',
     borderRadius: 20,
     borderWidth: 2,
-    borderColor: '#2A2A2A',
+    borderColor: '#00D4AA',
     marginTop: 4,
     elevation: 6,
     shadowColor: '#000',
