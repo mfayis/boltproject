@@ -192,7 +192,6 @@ const styles = StyleSheet.create({
     color: '#B8B8D1',
     fontWeight: '600',
     marginTop: 2,
-    letterSpacing: 1,
   },
   sectionCard: {
     width: '100%',
