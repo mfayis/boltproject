@@ -188,9 +188,9 @@ const styles = StyleSheet.create({
     marginBottom: 4,
   },
   statLabel: {
-    fontSize: 13,
+    fontSize: 12,
     color: '#B8B8D1',
-    fontWeight: '700',
+    fontWeight: '600',
     marginTop: 2,
     letterSpacing: 1,
   },
