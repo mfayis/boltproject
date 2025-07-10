@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
     maxWidth: 120,
   },
   statNumber: {
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: '800',
     color: '#FFFFFF',
     marginBottom: 4,
