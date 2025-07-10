@@ -190,7 +190,7 @@ const styles = StyleSheet.create({
   },
   statLabel: {
     fontSize: 13,
-    color: '#B8B8D1',
+    color: '#FFFFFF',
     fontWeight: '700',
     marginTop: 2,
     letterSpacing: 1,
