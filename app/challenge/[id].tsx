@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingBottom: 20,
     marginBottom: 10, // less space below
-    marginTop: 10, // no extra space above
+    marginTop: 15, // no extra space above
     gap: 12,
   },
   statCard: {
