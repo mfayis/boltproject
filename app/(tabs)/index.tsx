@@ -552,6 +552,7 @@ const styles = StyleSheet.create({
     color: '#00D4AA',
     fontWeight: '700',
     fontSize: 16,
+     borderColor: '#00D4AA',
   },
   locationDropdownList: {
     position: 'absolute',
@@ -575,7 +576,6 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#2A2A2A',
     borderRadius: 20,
-    
   },
   locationDropdownItemSelected: {
     backgroundColor: '#00D4AA',
