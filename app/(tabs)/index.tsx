@@ -587,6 +587,5 @@ const styles = StyleSheet.create({
   locationDropdownItemTextSelected: {
     color: '#18122B',
     fontWeight: '800',
-    
   },
 });
