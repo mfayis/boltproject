@@ -50,12 +50,12 @@ export default function ChallengeDetailPage() {
                 <Text style={styles.statLabel}>PLAYERS</Text>
               </View>
               <View style={styles.statCard}>
-                <Clock size={28} color="#FFD700" />       
+                <Clocklock size={28} color="#FFD700" />       
                 <Text style={styles.statValue}>{challenge.timeRemaining}</Text>
                 <Text style={styles.statLabel}>TIME LEFT</Text>
               </View>
               <View style={styles.statCard}>
-                <Text style={styles.statIcon}>📅</Text>
+              <IndianRupee size={28} color="#00D4AA" />
                 <Text style={styles.statValue}>{challenge.date}</Text>
                 <Text style={styles.statLabel}>DATE</Text>
               </View>
