@@ -45,17 +45,17 @@ export default function ChallengeDetailPage() {
             <Text style={styles.description}>{challenge.description}</Text>
             <View style={styles.statsRow}>
               <View style={styles.statCard}>
-                <Award size={28} color="#FF4757" />
+                <Award size={30} color="#FF4757" />
                 <Text style={styles.statValue}>{challenge.participants}</Text>
                 <Text style={styles.statLabel}>PLAYERS</Text>
               </View>
               <View style={styles.statCard}>
-                <Clock size={28} color="#FFD700" />       
+                <Clock size={30} color="#FFD700" />       
                 <Text style={styles.statValue}>{challenge.timeRemaining}</Text>
                 <Text style={styles.statLabel}>TIME LEFT</Text>
               </View>
               <View style={styles.statCard}>
-                <IndianRupee size={28} color="#00D4AA"/>
+                <IndianRupee size={30} color="#00D4AA"/>
                 <Text style={styles.statValue}>{challenge.prize}</Text>
                 <Text style={styles.statLabel}>PRIZE</Text>
               </View>
