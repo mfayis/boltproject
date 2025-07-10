@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, SafeAreaView, Image } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { IndianRupee, Award, clock } from 'lucide-react-native';
+import { IndianRupee, Award, Clock } from 'lucide-react-native';
 
 // Mock data (should be replaced with real data source)
 const mockChallenges = [
@@ -50,7 +50,7 @@ export default function ChallengeDetailPage() {
                 <Text style={styles.statLabel}>PLAYERS</Text>
               </View>
               <View style={styles.statCard}>
-                <clock size={28} color="#FFD700" />       
+                <Clock size={28} color="#FFD700" />       
                 <Text style={styles.statValue}>{challenge.timeRemaining}</Text>
                 <Text style={styles.statLabel}>TIME LEFT</Text>
               </View>
