@@ -166,7 +166,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 20,
     paddingHorizontal: 0,
-    shadowRadius: 6,
     elevation: 3,
     minWidth: 90,
     maxWidth: 120, 
