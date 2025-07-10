@@ -165,7 +165,7 @@ const styles = StyleSheet.create({
     borderColor: '#2D254D',
     alignItems: 'center',
     paddingVertical: 20,
-    paddingHorizontal: 0,
+    paddingHorizontal: 20,
     minWidth: 90,
     maxWidth: 120, 
   },
