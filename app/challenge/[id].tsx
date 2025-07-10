@@ -163,8 +163,6 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     borderWidth: 2,
     borderColor: '#2D254D',
-    alignItems: 'center',
-    justifyContent: 'center',
     marginHorizontal: 4,
     paddingVertical: 20,
     paddingHorizontal: 0,
