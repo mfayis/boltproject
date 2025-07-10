@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import { Trophy, Medal, Award, Calendar, IndianRupee, Crown, Star, Target, Search } from 'lucide-react-native';
 import ResultCard from '../../components/ResultCard';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const mockLeaderboard = [
   {
@@ -106,6 +107,7 @@ const filterOptions = ['This Week', 'This Month', 'This Year'];
 export default function ResultsPage() {
   const [activeFilter, setActiveFilter] = useState('This Week');
   const [searchText, setSearchText] = useState('');
+  const insets = useSafeAreaInsets();
 
   const mockResults = [
   {
@@ -199,7 +201,7 @@ export default function ResultsPage() {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { paddingTop: insets.top }]}>
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.header}>
           <View>

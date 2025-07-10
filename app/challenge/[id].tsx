@@ -44,17 +44,20 @@ export default function ChallengeDetailPage() {
             <Text style={styles.title}>🏆 {challenge.title}</Text>
             <Text style={styles.description}>{challenge.description}</Text>
             <View style={styles.statsRow}>
-              <View style={styles.statPill}>
-                <Text style={styles.statEmoji}>👥</Text>
-                <Text style={styles.statPillText}>{challenge.participants} players</Text>
+              <View style={styles.statCard}>
+                <Text style={styles.statIcon}>👥</Text>
+                <Text style={styles.statValue}>{challenge.participants}</Text>
+                <Text style={styles.statLabel}>PLAYERS</Text>
               </View>
-              <View style={styles.statPill}>
-                <Text style={styles.statEmoji}>⏰</Text>
-                <Text style={styles.statPillText}>{challenge.timeRemaining} left</Text>
+              <View style={styles.statCard}>
+                <Text style={styles.statIcon}>⏰</Text>
+                <Text style={styles.statValue}>{challenge.timeRemaining}</Text>
+                <Text style={styles.statLabel}>TIME LEFT</Text>
               </View>
-              <View style={styles.statPill}>
-                <Text style={styles.statEmoji}>📅</Text>
-                <Text style={styles.statPillText}>{challenge.date}</Text>
+              <View style={styles.statCard}>
+                <Text style={styles.statIcon}>📅</Text>
+                <Text style={styles.statValue}>{challenge.date}</Text>
+                <Text style={styles.statLabel}>DATE</Text>
               </View>
             </View>
             <View style={styles.sectionCard}>
@@ -154,34 +157,43 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 10, // less space below
     marginTop: 0, // no extra space above
-    gap: 10,
-    // no wrap, always horizontal
+    gap: 16,
     width: '100%',
   },
-  statPill: {
-    flexDirection: 'row',
-    alignItems: 'center',
+  statCard: {
+    flex: 1,
     backgroundColor: '#232042',
-    borderRadius: 16,
-    paddingHorizontal: 6, // slightly reduced for fit
-    paddingVertical: 4, // more compact
-    marginHorizontal: 2,
+    borderRadius: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginHorizontal: 4,
+    paddingVertical: 18,
+    paddingHorizontal: 0,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.08,
-    shadowRadius: 2,
-    elevation: 2,
-    marginBottom: 0, // no extra space needed
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.10,
+    shadowRadius: 6,
+    elevation: 3,
+    minWidth: 90,
+    maxWidth: 120,
   },
-  statEmoji: {
-    fontSize: 16,
-    marginRight: 4,
+  statIcon: {
+    fontSize: 28,
+    marginBottom: 6,
+    color: '#FFD700',
   },
-  statPillText: {
+  statValue: {
+    fontSize: 22,
+    fontWeight: 'bold',
     color: '#00FFD1',
-    fontWeight: '700',
+    marginBottom: 2,
+  },
+  statLabel: {
     fontSize: 13,
-    marginLeft: 2,
+    color: '#B8B8D1',
+    fontWeight: '700',
+    marginTop: 2,
+    letterSpacing: 1,
   },
   sectionCard: {
     width: '100%',

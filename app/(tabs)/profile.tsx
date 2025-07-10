@@ -21,6 +21,7 @@ import {
   Crown,
   Phone
 } from 'lucide-react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const mockUserData = {
   name: 'Alex Johnson',
@@ -73,9 +74,10 @@ const mockRecentActivity = [
 
 export default function ProfilePage() {
   const progressPercentage = (mockUserData.xp / (mockUserData.xp + mockUserData.xpToNext)) * 100;
+  const insets = useSafeAreaInsets();
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { paddingTop: insets.top }]}>
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.header}>
           <View>

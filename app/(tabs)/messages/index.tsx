@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import { Search, Users, IndianRupee, MessageCircle } from 'lucide-react-native';
 import { router } from 'expo-router';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const mockGroupChats = [
   {
@@ -83,6 +84,7 @@ const mockGroupChats = [
 
 export default function MessagesPage() {
   const [searchText, setSearchText] = useState('');
+  const insets = useSafeAreaInsets();
 
   const filteredChats = mockGroupChats.filter(chat =>
     chat.name.toLowerCase().includes(searchText.toLowerCase()) ||
@@ -94,7 +96,7 @@ export default function MessagesPage() {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { paddingTop: insets.top }]}>
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.header}>
           <View>

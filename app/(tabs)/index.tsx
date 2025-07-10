@@ -12,6 +12,7 @@ import {
 import { Search, Filter, IndianRupee, Users, Clock, Star } from 'lucide-react-native';
 import JawgMapView from '../../components/JawgMapView';
 import { useRouter } from 'expo-router';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const categories = [
   { id: 'all', name: 'All', icon: '🌟', color: '#00D4AA' },
@@ -96,6 +97,7 @@ export default function ChallengesPage() {
   const [selectedLocation, setSelectedLocation] = useState('All');
   const [showDropdown, setShowDropdown] = useState(true);
   const router = useRouter();
+  const insets = useSafeAreaInsets();
 
   const filteredChallenges = mockChallenges.filter(challenge => {
     const matchesCategory = activeCategory === 'all' || challenge.category === activeCategory;
@@ -121,7 +123,7 @@ export default function ChallengesPage() {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { paddingTop: insets.top }]}>
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.header}>
           <View>
@@ -240,7 +242,6 @@ const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
     backgroundColor: '#18122B',
-    padding: 24,
   },
   header: {
     flexDirection: 'row',
