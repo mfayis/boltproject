@@ -55,7 +55,7 @@ export default function ChallengeDetailPage() {
                 <Text style={styles.statLabel}>TIME LEFT</Text>
               </View>
               <View style={styles.statCard}>
-                <IndianRupee/>
+                <IndianRupee size={28} color="#00D4AA"/>
                 <Text style={styles.statIcon}>📅</Text>
                 <Text style={styles.statValue}>{challenge.date}</Text>
                 <Text style={styles.statLabel}>DATE</Text>
