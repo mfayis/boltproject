@@ -578,7 +578,6 @@ const styles = StyleSheet.create({
   },
   locationDropdownItemSelected: {
     backgroundColor: '#00D4AA',
-    
   },
   locationDropdownItemText: {
     color: '#B8B8D1',
