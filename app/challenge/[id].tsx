@@ -153,10 +153,9 @@ const styles = StyleSheet.create({
   },
   statsRow: {
     flexDirection: 'row',
-    paddingHorizontal: 20,
+    paddingHorizontal: 200,
     paddingBottom: 20,
     gap: 12,
-    margintop:100,
   },
   statCard: {
     flex: 1,
