@@ -172,8 +172,7 @@ const styles = StyleSheet.create({
     shadowRadius: 6,
     elevation: 3,
     minWidth: 90,
-    maxWidth: 120,
-    
+    maxWidth: 120, 
   },
   statValue: {   
     fontSize: 18,
