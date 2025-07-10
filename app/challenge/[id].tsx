@@ -152,9 +152,11 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   statsRow: {
-    flexDirection: 'row',
+    flexDirection:'row',
     justifyContent: 'center',
     alignItems: 'center',
+    paddingHorizontal: 20,
+    paddingBottom: 20,
     marginBottom: 10, // less space below
     marginTop: 0, // no extra space above
     gap: 16,
