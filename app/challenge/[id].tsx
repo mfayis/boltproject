@@ -184,7 +184,6 @@ const styles = StyleSheet.create({
   },
   statValue: {
     fontSize: 2,
-    
     fontWeight: 'bold',
     color: '#00FFD1',
     marginBottom: 2,
