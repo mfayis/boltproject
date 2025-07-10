@@ -46,17 +46,17 @@ export default function ChallengeDetailPage() {
             <View style={styles.statsRow}>
               <View style={styles.statCard}>
                 <Award size={30} color="#FF4757" />
-                <Text style={styles.statValue}>{challenge.participants}</Text>
+                <Text style={styles.statNumber}>{challenge.participants}</Text>
                 <Text style={styles.statLabel}>PLAYERS</Text>
               </View>
               <View style={styles.statCard}>
                 <Clock size={30} color="#FFD700" />       
-                <Text style={styles.statValue}>{challenge.timeRemaining}</Text>
+                <Text style={styles.statNumber}>{challenge.timeRemaining}</Text>
                 <Text style={styles.statLabel}>TIME LEFT</Text>
               </View>
               <View style={styles.statCard}>
                 <IndianRupee size={30} color="#00D4AA"/>
-                <Text style={styles.statValue}>{challenge.prize}</Text>
+                <Text style={styles.statNumber}>{challenge.prize}</Text>
                 <Text style={styles.statLabel}>PRIZE</Text>
               </View>
             </View>
@@ -152,7 +152,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   statsRow: {
-    flexDirection:'row',
+    flexDirection: 'row',
     paddingHorizontal: 20,
     paddingBottom: 20,
     gap: 12,
@@ -160,31 +160,23 @@ const styles = StyleSheet.create({
   statCard: {
     flex: 1,
     backgroundColor: '#232046',
-    borderRadius: 20,
+    padding: 20,
+    borderRadius: 16,
+    alignItems: 'center',
     borderWidth: 2,
     borderColor: '#2D254D',
-    alignItems: 'center',
-    paddingVertical: 20,
-    paddingHorizontal: 0,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.10,
-    shadowRadius: 6,
-    elevation: 3,
-    minWidth: 90,
-    maxWidth: 120,
   },
-  statValue: {   
-    fontSize: 18,
+  statNumber: {
+    fontSize: 20,
     fontWeight: '800',
     color: '#FFFFFF',
     marginBottom: 4,
+    marginTop: 8,
   },
   statLabel: {
     fontSize: 12,
     color: '#B8B8D1',
     fontWeight: '600',
-    marginTop: 2,
   },
   sectionCard: {
     width: '100%',
