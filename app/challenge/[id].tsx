@@ -50,8 +50,7 @@ export default function ChallengeDetailPage() {
                 <Text style={styles.statLabel}>PLAYERS</Text>
               </View>
               <View style={styles.statCard}>
-                <Text style={styles.statIcon}>⏰</Text>
-                
+                <Text style={styles.statIcon}>⏰</Text>       
                 <Text style={styles.statValue}>{challenge.timeRemaining}</Text>
                 <Text style={styles.statLabel}>TIME LEFT</Text>
               </View>
