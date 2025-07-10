@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderWidth: 2,
     borderColor: '#2D254D',
-    minWidth: 90,
+    minWidth: 100,
     maxWidth: 120,
   },
   statNumber: {
