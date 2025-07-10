@@ -94,7 +94,7 @@ export default function ChallengesPage() {
   const [activeCategory, setActiveCategory] = useState('all');
   const [searchText, setSearchText] = useState('');
   const [selectedLocation, setSelectedLocation] = useState('All');
-  const [showDropdown, setShowDropdown] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(true);
   const router = useRouter();
 
   const filteredChallenges = mockChallenges.filter(challenge => {
@@ -148,7 +148,7 @@ export default function ChallengesPage() {
           <TouchableOpacity
             style={[
               styles.locationDropdownButton,
-              showDropdown && { borderColor: '#00D4AA' },
+              showDropdown && { borderColor: '#1A1A1A' },
             ]}
             activeOpacity={0.7}
             onPress={() => setShowDropdown(!showDropdown)}
