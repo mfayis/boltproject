@@ -542,7 +542,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#1A1A1A',
     borderRadius: 24,
     borderWidth: 2,
-    borderColor: '#2A2A2A',
+    borderColor: '#00D4AA',
     paddingHorizontal: 20,
     paddingVertical: 10,
     alignSelf: 'flex-start',
