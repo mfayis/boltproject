@@ -21,6 +21,7 @@ const categories = [
   { id: 'social', name: 'Social', icon: '👥', color: '#A8E6CF' },
 ];
 
+const mockLocations = ['All', 'Delhi', 'Mumbai', 'Bangalore', 'Chennai'];
 const mockChallenges = [
   {
     id: '1',
@@ -33,6 +34,7 @@ const mockChallenges = [
     xpReward: 100,
     image: 'https://images.pexels.com/photos/3822622/pexels-photo-3822622.jpeg?auto=compress&cs=tinysrgb&w=400',
     completed: false,
+    location: 'Delhi',
   },
   {
     id: '2',
@@ -45,6 +47,7 @@ const mockChallenges = [
     xpReward: 150,
     image: 'https://images.pexels.com/photos/256417/pexels-photo-256417.jpeg?auto=compress&cs=tinysrgb&w=400',
     completed: false,
+    location: 'Mumbai',
   },
   {
     id: '3',
@@ -57,6 +60,7 @@ const mockChallenges = [
     xpReward: 120,
     image: 'https://images.pexels.com/photos/1053687/pexels-photo-1053687.jpeg?auto=compress&cs=tinysrgb&w=400',
     completed: true,
+    location: 'Bangalore',
   },
   {
     id: '4',
@@ -69,6 +73,7 @@ const mockChallenges = [
     xpReward: 200,
     image: 'https://images.pexels.com/photos/339620/pexels-photo-339620.jpeg?auto=compress&cs=tinysrgb&w=400',
     completed: false,
+    location: 'Chennai',
   },
   {
     id: '5',
@@ -81,18 +86,22 @@ const mockChallenges = [
     xpReward: 500,
     image: 'https://images.pexels.com/photos/416809/pexels-photo-416809.jpeg?auto=compress&cs=tinysrgb&w=400',
     completed: false,
+    location: 'Delhi',
   },
 ];
 
 export default function ChallengesPage() {
   const [activeCategory, setActiveCategory] = useState('all');
   const [searchText, setSearchText] = useState('');
+  const [selectedLocation, setSelectedLocation] = useState('All');
+  const [showDropdown, setShowDropdown] = useState(false);
   const router = useRouter();
 
   const filteredChallenges = mockChallenges.filter(challenge => {
     const matchesCategory = activeCategory === 'all' || challenge.category === activeCategory;
     const matchesSearch = challenge.title.toLowerCase().includes(searchText.toLowerCase());
-    return matchesCategory && matchesSearch;
+    const matchesLocation = selectedLocation === 'All' || challenge.location === selectedLocation;
+    return matchesCategory && matchesSearch && matchesLocation;
   });
 
   const getDifficultyColor = (difficulty: string) => {
@@ -135,6 +144,47 @@ export default function ChallengesPage() {
               placeholderTextColor="#6B7280"
             />
           </View>
+        </View>
+
+        {/* Location Dropdown Filter */}
+        <View style={styles.locationDropdownContainer}>
+          <TouchableOpacity
+            style={[
+              styles.locationDropdownButton,
+              showDropdown && { borderColor: '#00D4AA' },
+            ]}
+            activeOpacity={0.7}
+            onPress={() => setShowDropdown(!showDropdown)}
+          >
+            <Text style={styles.locationDropdownText}>{selectedLocation}</Text>
+          </TouchableOpacity>
+          {showDropdown && (
+            <View style={styles.locationDropdownList}>
+              {mockLocations.map((loc) => (
+                <TouchableOpacity
+                  key={loc}
+                  style={[
+                    styles.locationDropdownItem,
+                    selectedLocation === loc && styles.locationDropdownItemSelected,
+                  ]}
+                  onPress={() => {
+                    setSelectedLocation(loc);
+                    setShowDropdown(false);
+                  }}
+                  activeOpacity={0.7}
+                >
+                  <Text
+                    style={[
+                      styles.locationDropdownItemText,
+                      selectedLocation === loc && styles.locationDropdownItemTextSelected,
+                    ]}
+                  >
+                    {loc}
+                  </Text>
+                </TouchableOpacity>
+              ))}
+            </View>
+          )}
         </View>
 
        
@@ -485,5 +535,60 @@ const styles = StyleSheet.create({
   completedChallengeItem: {
     backgroundColor: '#232136', // a muted/darker color for completed
     opacity: 0.7,
+  },
+  locationDropdownContainer: {
+    marginHorizontal: 20,
+    marginBottom: 12,
+    zIndex: 10,
+  },
+  locationDropdownButton: {
+    backgroundColor: '#18122B',
+    borderRadius: 24,
+    borderWidth: 2,
+    borderColor: '#2A2A2A',
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    alignSelf: 'flex-start',
+    marginTop: 0,
+  },
+  locationDropdownText: {
+    color: '#00D4AA',
+    fontWeight: '700',
+    fontSize: 16,
+  },
+  locationDropdownList: {
+    position: 'absolute',
+    top: 48,
+    left: 0,
+    right: 0,
+    backgroundColor: '#18122B',
+    borderRadius: 20,
+    borderWidth: 2,
+    borderColor: '#2A2A2A',
+    marginTop: 4,
+    elevation: 6,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+  },
+  locationDropdownItem: {
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: '#2A2A2A',
+    borderRadius: 20,
+  },
+  locationDropdownItemSelected: {
+    backgroundColor: '#00D4AA',
+  },
+  locationDropdownItemText: {
+    color: '#B8B8D1',
+    fontWeight: '600',
+    fontSize: 16,
+  },
+  locationDropdownItemTextSelected: {
+    color: '#18122B',
+    fontWeight: '800',
   },
 });
