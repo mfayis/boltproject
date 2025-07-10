@@ -35,6 +35,10 @@ export default function ChallengeDetailPage() {
   return (
     <View style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
+        {/* Back Button */}
+        <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
+          <Text style={styles.backButtonIcon}>←</Text>
+        </TouchableOpacity>
         <ScrollView contentContainerStyle={styles.contentContainer}>
           <View style={styles.card}>
             <View style={styles.xpBadgeLarge}>
@@ -91,6 +95,29 @@ const styles = StyleSheet.create({
   },
   safeArea: {
     flex: 1,
+  },
+  backButton: {
+    position: 'absolute',
+    top: 18,
+    left: 18,
+    zIndex: 10,
+    width: 44,
+    height: 44,
+    borderRadius: 22,
+    backgroundColor: '#232042',
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.15,
+    shadowRadius: 4,
+    elevation: 3,
+  },
+  backButtonIcon: {
+    fontSize: 22,
+    color: '#00FFD1',
+    fontWeight: '900',
+    marginTop: -2,
   },
   contentContainer: {
     padding: 24,
