@@ -12,7 +12,7 @@ const mockChallenges = [
     instructions: 'Find a quiet place, set a timer for 10 minutes, and focus on your breath.',
     clues: 'Try to meditate at sunrise for best results.',
     date: '2024-06-10',
-    prize: '100 XP',
+    prize: '100',
     participants: 1247,
     timeRemaining: '2 days',
     xpReward: 100,
