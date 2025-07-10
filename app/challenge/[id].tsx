@@ -161,7 +161,6 @@ const styles = StyleSheet.create({
     marginTop: 15, // no extra space above
     gap: 12,
   },
-  
   statCard: {
     flex: 1,
     backgroundColor: '#232046',
