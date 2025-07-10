@@ -155,8 +155,6 @@ const styles = StyleSheet.create({
     flexDirection:'row',
     paddingHorizontal: 20,
     paddingBottom: 20,
-    marginBottom: 10, // less space below
-    marginTop: 10, // no extra space above
     gap: 12,
   },
   statCard: {
