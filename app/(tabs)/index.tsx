@@ -539,7 +539,7 @@ const styles = StyleSheet.create({
     zIndex: 10,
   },
   locationDropdownButton: {
-    backgroundColor: '#18122B',
+    backgroundColor: '#1A1A1A',
     borderRadius: 24,
     borderWidth: 2,
     borderColor: '#2A2A2A',
