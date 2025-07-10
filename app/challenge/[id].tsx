@@ -181,11 +181,6 @@ const styles = StyleSheet.create({
     minWidth: 90,
     maxWidth: 120,
   },
-  statIcon: {
-    fontSize: 28,
-    marginBottom: 6,
-    color: '#FFD700',
-  },
   statValue: {   
     fontSize: 15,
     fontWeight: 'bold',
