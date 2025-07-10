@@ -165,7 +165,7 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     paddingHorizontal: 10, // slightly reduced for fit
     paddingVertical: 4, // more compact
-    marginHorizontal: 4,
+    marginHorizontal: 0,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.08,
