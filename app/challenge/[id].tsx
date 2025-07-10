@@ -162,12 +162,18 @@ const styles = StyleSheet.create({
     backgroundColor: '#232046',
     borderRadius: 20,
     borderWidth: 2,
+    
     borderColor: '#2D254D',
     alignItems: 'center',
     paddingVertical: 20,
-    paddingHorizontal: 20,
+    paddingHorizontal: 0,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.10,
+    shadowRadius: 6,
+    elevation: 3,
     minWidth: 90,
-    maxWidth: 120, 
+    maxWidth: 120,
   },
   statValue: {   
     fontSize: 18,
@@ -179,6 +185,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#B8B8D1',
     fontWeight: '600',
+    marginTop: 2,
   },
   sectionCard: {
     width: '100%',
