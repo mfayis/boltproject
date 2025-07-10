@@ -587,6 +587,6 @@ const styles = StyleSheet.create({
   locationDropdownItemTextSelected: {
     color: '#18122B',
     fontWeight: '800',
-     borderColor: '#00D4AA',
+    
   },
 });
