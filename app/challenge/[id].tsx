@@ -156,6 +156,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingBottom: 20,
     gap: 12,
+    margintop:10,
   },
   statCard: {
     flex: 1,
