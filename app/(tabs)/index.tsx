@@ -583,10 +583,10 @@ const styles = StyleSheet.create({
     color: '#B8B8D1',
     fontWeight: '600',
     fontSize: 16,
-    borderColor: '#00D4AA'
   },
   locationDropdownItemTextSelected: {
     color: '#18122B',
     fontWeight: '800',
+     borderColor: '#00D4AA',
   },
 });
