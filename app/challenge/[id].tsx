@@ -164,6 +164,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: '#2D254D',
     alignItems: 'center',
+    padding:20,
   },
   statValue: {   
     fontSize: 18,
