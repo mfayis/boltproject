@@ -163,8 +163,11 @@ const styles = StyleSheet.create({
     padding: 20,
     borderRadius: 16,
     alignItems: 'center',
+    justig
     borderWidth: 2,
     borderColor: '#2D254D',
+    minWidth: 90,
+    maxWidth: 120,
   },
   statNumber: {
     fontSize: 20,
