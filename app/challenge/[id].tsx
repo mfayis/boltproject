@@ -171,6 +171,13 @@ const styles = StyleSheet.create({
     marginHorizontal: 4,
     paddingVertical: 20,
     paddingHorizontal: 0,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.10,
+    shadowRadius: 6,
+    elevation: 3,
+    minWidth: 90,
+    maxWidth: 120,
   },
   statValue: {   
     fontSize: 18,
