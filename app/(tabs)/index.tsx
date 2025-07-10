@@ -21,7 +21,7 @@ const categories = [
   { id: 'social', name: 'Social', icon: '👥', color: '#A8E6CF' },
 ];
 
-const mockLocations = ['All Location', 'Delhi', 'Mumbai', 'Bangalore', 'Chennai'];
+const mockLocations = ['All', 'Delhi', 'Mumbai', 'Bangalore', 'Chennai'];
 const mockChallenges = [
   {
     id: '1',
