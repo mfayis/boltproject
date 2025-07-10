@@ -153,18 +153,33 @@ const styles = StyleSheet.create({
   },
   statsRow: {
     flexDirection:'row',
+    justifyContent: 'center',
+    alignItems: 'center',
     paddingHorizontal: 20,
     paddingBottom: 20,
+    marginBottom: 10, // less space below
+    marginTop: 15, // no extra space above
     gap: 12,
   },
+  
   statCard: {
     flex: 1,
     backgroundColor: '#232046',
-    borderRadius: 16,
+    borderRadius: 20,
     borderWidth: 2,
     borderColor: '#2D254D',
     alignItems: 'center',
-    padding:20,
+    justifyContent: 'center',
+    marginHorizontal: 4,
+    paddingVertical: 20,
+    paddingHorizontal: 0,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.10,
+    shadowRadius: 6,
+    elevation: 3,
+    minWidth: 90,
+    maxWidth: 120,
   },
   statValue: {   
     fontSize: 18,
